@@ -1,0 +1,144 @@
+{
+ "id": "v001_rule_breaks",
+ "tag": "Example journal · demo data",
+ "scenes": [
+  {
+   "type": "hook",
+   "kicker": "Trading journal",
+   "text": "Breaking your own rules has a price. Do you know yours?",
+   "say": "Breaking your own rules has a price. Do you know yours?"
+  },
+  {
+   "type": "shot",
+   "img": "add_trade",
+   "title": "Ten fields per trade. The rest is automatic.",
+   "chips": [
+    {
+     "html": "R <b>+2.00R</b>"
+    },
+    {
+     "html": "P&amp;L <b>+$77.52</b>"
+    },
+    {
+     "html": "<b>Win</b>"
+    }
+   ],
+   "say": "Log every trade in ten fields. Risk, R and P and L calculate themselves."
+  },
+  {
+   "type": "rows",
+   "title": "Did you follow your plan?",
+   "head": [
+    "My plan",
+    "Trades",
+    "Net P&L"
+   ],
+   "rows": [
+    {
+     "cells": [
+      "Followed",
+      "73",
+      "+$2,033"
+     ],
+     "good": true
+    },
+    {
+     "cells": [
+      "Broke a rule",
+      "16",
+      "−$555"
+     ],
+     "hl": true
+    }
+   ],
+   "say": "Mark whether you followed your plan. In this example, sixteen rule breaks cost five hundred and fifty five dollars."
+  },
+  {
+   "type": "rows",
+   "title": "Your costliest mistakes",
+   "head": [
+    "Mistake",
+    "Times",
+    "Net P&L"
+   ],
+   "rows": [
+    {
+     "cells": [
+      "FOMO entry",
+      "5",
+      "−$609"
+     ],
+     "hl": true
+    },
+    {
+     "cells": [
+      "No setup",
+      "3",
+      "−$122"
+     ]
+    },
+    {
+     "cells": [
+      "Chased price",
+      "1",
+      "−$65"
+     ]
+    }
+   ],
+   "say": "And you see which mistake costs the most. Here, it's FOMO entries."
+  },
+  {
+   "type": "shot",
+   "img": "oneclick",
+   "title": "One click. Your AI reviews your week.",
+   "ring": "btn_claude",
+   "chips": [
+    {
+     "text": "Claude",
+     "color": "mint"
+    },
+    {
+     "text": "ChatGPT",
+     "color": "blue"
+    },
+    {
+     "text": "Gemini",
+     "color": "gold"
+    }
+   ],
+   "say": "Then one click, and your own AI reviews your week."
+  },
+  {
+   "type": "chat",
+   "me": "Weekly review, last 14 days.",
+   "ai": [
+    "Net P&amp;L <span class='m'>+385.28</span> · win rate <b>67%</b> · profit factor <b>3.80</b>",
+    "Your best hours: <b>10:00–12:00</b>, 7 wins out of 8. One rule for next week: <b>no trades before 10:00.</b>"
+   ],
+   "say": "Claude, ChatGPT or Gemini, working from your real numbers."
+  },
+  {
+   "type": "cta",
+   "title": "Trading Journal AI",
+   "sub": "Desktop app · Windows & Mac",
+   "text": "A calm, honest record of every trade.",
+   "button": "Link in bio",
+   "say": "Trading Journal AI. Link in bio."
+  }
+ ],
+ "post": {
+  "instagram": "Breaking your own rules has a price. In this example journal, 16 rule breaks cost $555, and FOMO entries were the costliest mistake.\n\nTrading Journal AI: desktop app for Windows & Mac, with a one-click AI review. Link in bio.\n\n#riskmanagement #tradingrules #tradingjournal #daytrading #trading #tradingpsychology #futurestrading",
+  "tiktok": "Breaking your own rules has a price. In this example journal, 16 rule breaks cost $555, and FOMO entries were the costliest mistake. #riskmanagement #tradingrules #tradingjournal #daytrading #trading",
+  "youtube": {
+   "title": "What breaking your trading rules really costs #shorts",
+   "description": "Breaking your own rules has a price. In this example journal, 16 rule breaks cost $555, and FOMO entries were the costliest mistake.\n\nTrading Journal AI (Windows & Mac): https://kallas8.gumroad.com/l/axltbh\n\nExample journal with demo data. Not financial advice.\n\n#riskmanagement #tradingrules #tradingjournal #daytrading #trading #tradingpsychology #futurestrading #shorts"
+  },
+  "facebook": "Breaking your own rules has a price. In this example journal, 16 rule breaks cost $555, and FOMO entries were the costliest mistake.\n\nTrading Journal AI: https://kallas8.gumroad.com/l/axltbh",
+  "pinterest": {
+   "title": "How much do broken trading rules cost you?",
+   "description": "Breaking your own rules has a price. In this example journal, 16 rule breaks cost $555, and FOMO entries were the costliest mistake. Trading journal app for Windows & Mac with AI weekly review.",
+   "link": "https://kallas8.gumroad.com/l/axltbh"
+  }
+ },
+ "voice": "andrew_up"
+}

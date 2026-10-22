@@ -1,0 +1,60 @@
+---
+{"slug": "position-size-calculator", "order": 1, "title": "Position size calculator",
+ "seo_title": "Position size calculator for futures, stocks, forex and crypto",
+ "description": "Free position size calculator: enter your account, risk %, entry and stop to get contracts, shares or lots for futures, stocks, forex and crypto.",
+ "intro": "How many contracts, shares or lots can you take so that a stop-out costs exactly what you planned to risk?",
+ "faq": [
+  ["How do you calculate position size?", "Position size = money at risk ÷ (stop distance × point value). With $100 at risk, a 4-point stop and MES at $5 per point: 100 ÷ (4 × 5) = 5 contracts."],
+  ["What is a point value?", "The money made or lost when price moves 1.0 for one contract, share, lot or coin. MES = $5, ES = $50, MNQ = $2, NQ = $20, one share = $1, a standard EUR/USD lot = $100,000 per 1.0 move (so $10 per pip)."],
+  ["Should I round the size down?", "Yes. Rounding down keeps your loss at or below the amount you planned. The calculator rounds down and shows the real risk of the rounded size."],
+  ["What percentage should I risk per trade?", "Many traders risk between 0.5% and 1% of their account per trade, so a losing streak doesn't do lasting damage. It's a personal decision; this page is not financial advice."]
+ ]}
+---
+<div class="calc" id="ps">
+  <div class="fields">
+    <label>Account balance <input id="bal" type="number" inputmode="decimal" value="10000" min="0" step="any"></label>
+    <label>Risk per trade (%) <input id="pct" type="number" inputmode="decimal" value="1" min="0" step="any"></label>
+    <label>Instrument
+      <select id="inst">
+        <option value="5">MES (Micro E-mini S&amp;P) · $5</option><option value="50">ES (E-mini S&amp;P) · $50</option>
+        <option value="2">MNQ (Micro Nasdaq) · $2</option><option value="20">NQ (E-mini Nasdaq) · $20</option>
+        <option value="10">MGC (Micro Gold) · $10</option><option value="1">Stock / ETF / crypto · $1</option>
+        <option value="100000">Forex standard lot · 100,000</option><option value="custom">Custom point value…</option>
+      </select></label>
+    <label id="customL" hidden>Point value <input id="pv" type="number" inputmode="decimal" value="1" min="0" step="any"></label>
+    <label>Entry price <input id="entry" type="number" inputmode="decimal" value="5000" step="any"></label>
+    <label>Stop price <input id="stop" type="number" inputmode="decimal" value="4996" step="any"></label>
+  </div>
+  <div class="out">
+    <div class="res"><small>Money at risk</small><b id="oRisk">–</b></div>
+    <div class="res" style="--accent:var(--blue)"><small>Stop distance</small><b id="oDist">–</b></div>
+    <div class="res" style="--accent:var(--gold)"><small>Position size</small><b id="oSize">–</b></div>
+    <div class="res" style="--accent:var(--coral)"><small>Real risk at this size</small><b id="oReal">–</b></div>
+  </div>
+  <p class="note" id="oNote">Size is rounded down to whole units. For forex, the result is in standard lots (0.01 = micro lot).</p>
+</div>
+<script>
+(() => {
+  const $ = (id) => document.getElementById(id);
+  const money = (v) => isFinite(v) ? "$" + v.toLocaleString("en-US", { maximumFractionDigits: 2, minimumFractionDigits: 2 }) : "–";
+  function calc() {
+    const custom = $("inst").value === "custom"; $("customL").hidden = !custom;
+    const pv = custom ? +$("pv").value : +$("inst").value, fx = !custom && pv === 100000;
+    const risk = (+$("bal").value) * (+$("pct").value) / 100, dist = Math.abs(+$("entry").value - +$("stop").value);
+    $("oRisk").textContent = money(risk);
+    $("oDist").textContent = dist ? dist.toLocaleString("en-US", { maximumFractionDigits: 6 }) : "–";
+    if (!dist || !pv || !risk) { $("oSize").textContent = "–"; $("oReal").textContent = "–"; return; }
+    const raw = risk / (dist * pv), size = fx ? Math.floor(raw * 100) / 100 : Math.floor(raw);
+    $("oSize").textContent = size ? (fx ? size.toFixed(2) + " lots" : size.toLocaleString("en-US") + (pv === 1 ? " units" : " contracts")) : "0 (stop too wide)";
+    $("oReal").textContent = money(size * dist * pv);
+  }
+  document.querySelectorAll("#ps input, #ps select").forEach((el) => el.addEventListener("input", calc));
+  calc();
+})();
+</script>
+<h2>How the calculator works</h2>
+<p>Position sizing answers one question: if your stop is hit, how much do you lose? You decide that amount first, as a percentage of your account. Then the size follows from the distance to your stop and from what one point is worth.</p>
+<div class="formula">Size = (balance × risk %) ÷ (|entry − stop| × point value)</div>
+<p>Example: a $10,000 account risking 1% has $100 at risk. A long MES at 5,000 with a stop at 4,996 is a 4-point stop. One MES point is worth $5, so each contract risks $20, and you can trade 5 contracts.</p>
+<p>Keeping the same risk on every trade is what makes your results comparable. It's also what makes the <a href="/learn/r-multiple-explained/">R multiple</a> meaningful: a +2R trade means the same thing whether you traded 1 contract or 10.</p>
+{{app}}

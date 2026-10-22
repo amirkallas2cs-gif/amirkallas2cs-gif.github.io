@@ -1,0 +1,51 @@
+---
+{"slug": "r-multiple-calculator", "order": 2, "title": "R multiple calculator",
+ "seo_title": "R multiple calculator: risk, reward and R for any trade",
+ "description": "Free R multiple calculator: enter entry, stop, exit and size to get the risk, P&L and R of a trade, plus the reward-to-risk of your target.",
+ "intro": "What did this trade make compared with what you risked? Enter the prices and get the R multiple, for longs and shorts.",
+ "faq": [
+  ["What is an R multiple?", "R is the result of a trade divided by the amount you risked on it (entry to stop). Risk $40 and make $80: +2R. Lose the full risk: −1R."],
+  ["Why measure trades in R instead of dollars?", "R lets you compare every trade, whatever the position size, market or account size. Your average R per trade tells you whether your method has an edge."],
+  ["Do fees change the R?", "Yes, slightly. This calculator subtracts fees from the P&amp;L, so a trade that exits at entry with fees shows a small negative result."]
+ ]}
+---
+<div class="calc" id="rc">
+  <div class="fields">
+    <label>Side <select id="side"><option>Long</option><option>Short</option></select></label>
+    <label>Entry <input id="entry" type="number" inputmode="decimal" value="100" step="any"></label>
+    <label>Stop <input id="stop" type="number" inputmode="decimal" value="98" step="any"></label>
+    <label>Exit (or target) <input id="exit" type="number" inputmode="decimal" value="104" step="any"></label>
+    <label>Size (contracts, shares, lots) <input id="size" type="number" inputmode="decimal" value="10" step="any"></label>
+    <label>Point value <input id="pv" type="number" inputmode="decimal" value="1" step="any"></label>
+    <label>Fees (total) <input id="fees" type="number" inputmode="decimal" value="0" step="any"></label>
+  </div>
+  <div class="out">
+    <div class="res" style="--accent:var(--coral)"><small>Money at risk</small><b id="oRisk">–</b></div>
+    <div class="res"><small>P&amp;L after fees</small><b id="oPnl">–</b></div>
+    <div class="res" style="--accent:var(--gold)"><small>R multiple</small><b id="oR">–</b></div>
+  </div>
+  <p class="note" id="oWarn"></p>
+</div>
+<script>
+(() => {
+  const $ = (id) => document.getElementById(id);
+  const money = (v) => (v < 0 ? "−$" : "$") + Math.abs(v).toLocaleString("en-US", { maximumFractionDigits: 2, minimumFractionDigits: 2 });
+  function calc() {
+    const dir = $("side").value === "Long" ? 1 : -1, e = +$("entry").value, s = +$("stop").value, x = +$("exit").value;
+    const size = +$("size").value, pv = +$("pv").value, fees = +$("fees").value || 0;
+    const risk = (e - s) * dir * size * pv, pnl = (x - e) * dir * size * pv - fees;
+    $("oWarn").textContent = risk <= 0 ? "The stop is on the wrong side of the entry for a " + $("side").value.toLowerCase() + " trade." : "";
+    if (risk <= 0 || !size || !pv) { ["oRisk", "oPnl", "oR"].forEach((i) => $(i).textContent = "–"); return; }
+    $("oRisk").textContent = money(risk);
+    $("oPnl").textContent = money(pnl); $("oPnl").className = pnl > 0 ? "pos" : pnl < 0 ? "neg" : "";
+    const r = pnl / risk; $("oR").textContent = (r > 0 ? "+" : r < 0 ? "−" : "") + Math.abs(r).toFixed(2) + "R"; $("oR").className = r > 0 ? "pos" : r < 0 ? "neg" : "";
+  }
+  document.querySelectorAll("#rc input, #rc select").forEach((el) => el.addEventListener("input", calc));
+  calc();
+})();
+</script>
+<h2>The formula</h2>
+<div class="formula">R = P&amp;L ÷ money at risk&nbsp;&nbsp;·&nbsp;&nbsp;money at risk = |entry − stop| × size × point value</div>
+<p>For a long, risk is entry minus stop; for a short, it's stop minus entry. A trade that reaches a target twice as far as the stop is a +2R trade. A full stop-out is −1R. A stop that slips gives you a little worse than −1R, which is exactly what you want your journal to show.</p>
+<p>Read the full guide: <a href="/learn/r-multiple-explained/">R multiple explained</a>.</p>
+{{app}}

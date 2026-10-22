@@ -1,0 +1,87 @@
+{
+ "id": "v013_long_short",
+ "tag": "Example journal · demo data",
+ "scenes": [
+  {
+   "type": "hook",
+   "kicker": "Your edge",
+   "text": "Long or short: where's your edge?",
+   "say": "Long or short. Where's your edge, really?"
+  },
+  {
+   "type": "rows",
+   "title": "By side",
+   "head": [
+    "Side",
+    "Trades",
+    "Net P&L"
+   ],
+   "rows": [
+    {
+     "cells": [
+      "Long",
+      "58",
+      "+$1,119"
+     ]
+    },
+    {
+     "cells": [
+      "Short",
+      "31",
+      "+$360"
+     ]
+    }
+   ],
+   "say": "In this example journal, longs made more in total, but there were almost twice as many of them."
+  },
+  {
+   "type": "hook",
+   "text": "Compare per trade, not just in total.",
+   "say": "Compare per trade, not just in total. That's what average R is for."
+  },
+  {
+   "type": "shot",
+   "img": "oneclick",
+   "title": "One click. Your AI reviews your week.",
+   "ring": "btn_claude",
+   "chips": [
+    {
+     "text": "Claude",
+     "color": "mint"
+    },
+    {
+     "text": "ChatGPT",
+     "color": "blue"
+    },
+    {
+     "text": "Gemini",
+     "color": "gold"
+    }
+   ],
+   "say": "Then one click, and your own AI reviews your week."
+  },
+  {
+   "type": "cta",
+   "title": "Trading Journal AI",
+   "sub": "Desktop app · Windows & Mac",
+   "text": "A calm, honest record of every trade.",
+   "button": "Link in bio",
+   "say": "Trading Journal AI. Link in bio."
+  }
+ ],
+ "post": {
+  "instagram": "Compare long and short trades per trade, not just in total. Average R tells you where your edge really is.\n\nTrading Journal AI: desktop app for Windows & Mac, with a one-click AI review. Link in bio.\n\n#tradingstrategy #tradingjournal #daytrading #trading #tradingpsychology #futurestrading",
+  "tiktok": "Compare long and short trades per trade, not just in total. Average R tells you where your edge really is. #tradingstrategy #tradingjournal #daytrading #trading",
+  "youtube": {
+   "title": "Long vs short: where is your trading edge? #shorts",
+   "description": "Compare long and short trades per trade, not just in total. Average R tells you where your edge really is.\n\nTrading Journal AI (Windows & Mac): https://kallas8.gumroad.com/l/axltbh\n\nExample journal with demo data. Not financial advice.\n\n#tradingstrategy #tradingjournal #daytrading #trading #tradingpsychology #futurestrading #shorts"
+  },
+  "facebook": "Compare long and short trades per trade, not just in total. Average R tells you where your edge really is.\n\nTrading Journal AI: https://kallas8.gumroad.com/l/axltbh",
+  "pinterest": {
+   "title": "Long vs short trading edge",
+   "description": "Compare long and short trades per trade, not just in total. Average R tells you where your edge really is. Trading journal app for Windows & Mac with AI weekly review.",
+   "link": "https://kallas8.gumroad.com/l/axltbh"
+  }
+ },
+ "voice": "andrew_up"
+}

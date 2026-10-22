@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ title }}</title>
+<meta name="description" content="{{ description }}">
+<link rel="canonical" href="{{ site }}{{ path }}">
+<meta property="og:type" content="{{ og_type or 'website' }}">
+<meta property="og:title" content="{{ title }}">
+<meta property="og:description" content="{{ description }}">
+<meta property="og:url" content="{{ site }}{{ path }}">
+<meta property="og:image" content="{{ site }}/static/img/{{ og_image or '01_cover.jpg' }}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0F1720">
+<link rel="icon" href="/static/img/logo.png">
+<link rel="preload" href="/static/fonts/Inter-Bold.woff" as="font" type="font/woff" crossorigin>
+<link rel="stylesheet" href="/static/site.css?v={{ version }}">
+{% for ld in jsonld %}<script type="application/ld+json">{{ ld | tojson }}</script>
+{% endfor %}
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="brand" href="/"><img src="/static/img/logo.png" alt="" width="30" height="30">Calm Edge</a>
+  <nav class="nav" aria-label="Main">
+    <a href="/tools/" {% if section == 'tools' %}aria-current="page"{% endif %}>Free tools</a>
+    <a href="/learn/" {% if section == 'learn' %}aria-current="page"{% endif %}>Learn</a>
+    <a href="/trading-journal-ai/" {% if section == 'product' %}aria-current="page"{% endif %}>Trading Journal AI</a>
+    <a class="btn small" href="{{ product_url }}">Get the app</a>
+  </nav>
+</div></header>
+<main>
+{{ body }}
+</main>
+<footer class="foot"><div class="wrap">
+  <div>© {{ year }} Calm Edge · Calm, honest tools for traders.</div>
+  <div><a href="/tools/">Free tools</a> · <a href="/learn/">Learn</a> · <a href="/trading-journal-ai/">Trading Journal AI</a>{% if freebie_url %} · <a href="{{ freebie_url }}">Free review kit</a>{% endif %}</div>
+  <div class="muted" style="flex-basis:100%;font-size:13px">Educational content. Nothing on this site is financial advice. Trading involves risk of loss.</div>
+</div></footer>
+</body>
+</html>

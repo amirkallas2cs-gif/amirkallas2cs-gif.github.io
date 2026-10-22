@@ -1,0 +1,89 @@
+{
+ "id": "v005_r_multiple",
+ "scenes": [
+  {
+   "type": "hook",
+   "kicker": "Trading maths",
+   "text": "Stop counting dollars. Count R.",
+   "say": "Stop counting dollars. Count R."
+  },
+  {
+   "type": "rows",
+   "title": "One trade, in R",
+   "head": [
+    "",
+    "",
+    "Value"
+   ],
+   "rows": [
+    {
+     "cells": [
+      "Risk (entry to stop)",
+      "",
+      "$40"
+     ]
+    },
+    {
+     "cells": [
+      "Result",
+      "",
+      "+$80"
+     ],
+     "good": true
+    },
+    {
+     "cells": [
+      "R multiple",
+      "",
+      "+2.00R"
+     ],
+     "good": true,
+     "hl": true
+    }
+   ],
+   "say": "R is what a trade made, divided by what you risked. Risk forty, make eighty: that's plus two R."
+  },
+  {
+   "type": "hook",
+   "text": "R lets you compare every trade, whatever the size.",
+   "say": "R lets you compare every trade, whatever the size, the market or the account."
+  },
+  {
+   "type": "shot",
+   "img": "add_trade",
+   "title": "Your journal does the maths.",
+   "chips": [
+    {
+     "html": "Risk <b>$40</b>"
+    },
+    {
+     "html": "R <b>+2.00R</b>"
+    }
+   ],
+   "say": "Type entry, stop and exit. The R appears as you type."
+  },
+  {
+   "type": "cta",
+   "title": "Trading Journal AI",
+   "sub": "Desktop app · Windows & Mac",
+   "text": "Every trade in R, automatically.",
+   "button": "Link in bio",
+   "say": "Trading Journal AI. Link in bio."
+  }
+ ],
+ "post": {
+  "instagram": "R = what a trade made / what you risked. Risk $40, make $80: +2R. It lets you compare every trade, whatever the size.\n\nTrading Journal AI: desktop app for Windows & Mac, with a one-click AI review. Link in bio.\n\n#tradingeducation #riskmanagement #tradingjournal #daytrading #trading #tradingpsychology #futurestrading",
+  "tiktok": "R = what a trade made / what you risked. Risk $40, make $80: +2R. It lets you compare every trade, whatever the size. #tradingeducation #riskmanagement #tradingjournal #daytrading #trading",
+  "youtube": {
+   "title": "R multiple explained: the number pro traders track #shorts",
+   "description": "R = what a trade made / what you risked. Risk $40, make $80: +2R. It lets you compare every trade, whatever the size.\n\nTrading Journal AI (Windows & Mac): https://kallas8.gumroad.com/l/axltbh\n\nExample journal with demo data. Not financial advice.\n\n#tradingeducation #riskmanagement #tradingjournal #daytrading #trading #tradingpsychology #futurestrading #shorts"
+  },
+  "facebook": "R = what a trade made / what you risked. Risk $40, make $80: +2R. It lets you compare every trade, whatever the size.\n\nTrading Journal AI: https://kallas8.gumroad.com/l/axltbh",
+  "pinterest": {
+   "title": "R multiple explained for day traders",
+   "description": "R = what a trade made / what you risked. Risk $40, make $80: +2R. It lets you compare every trade, whatever the size. Trading journal app for Windows & Mac with AI weekly review.",
+   "link": "https://kallas8.gumroad.com/l/axltbh"
+  }
+ },
+ "voice": "andrew_up"
+}

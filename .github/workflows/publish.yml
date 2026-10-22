@@ -1,0 +1,60 @@
+name: Publish to social media
+
+# Posts the approved videos whose time has come (marketing/schedule.json) and records the links
+# in marketing/published.json. Runs every 30 minutes; each video goes out once per channel.
+on:
+  schedule:
+    - cron: "*/30 * * * *"
+  workflow_dispatch:
+
+permissions: { contents: write }
+concurrency: { group: publish, cancel-in-progress: false }
+
+jobs:
+  publish:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - name: Anything due?
+        id: due
+        run: |
+          python3 - <<'PY' >> "$GITHUB_OUTPUT"
+          import json, datetime, pathlib
+          from zoneinfo import ZoneInfo
+          now = datetime.datetime.now(ZoneInfo("Europe/Rome"))
+          s = json.loads(pathlib.Path("marketing/schedule.json").read_text())
+          due = [i for i in s if datetime.datetime.fromisoformat(f"{i['date']}T{i.get('time','17:30')}").replace(tzinfo=ZoneInfo("Europe/Rome")) <= now]
+          print("any=" + ("yes" if due else "no"))
+          PY
+      - name: Download today's videos
+        if: steps.due.outputs.any == 'yes'
+        run: |
+          mkdir -p media
+          python3 - <<'PY'
+          import json, pathlib, urllib.request
+          for i in json.loads(pathlib.Path("marketing/schedule.json").read_text()):
+              if "youtube" in i.get("channels", []):
+                  try: urllib.request.urlretrieve(f"https://amirkallas2cs-gif.github.io/media/{i['id']}.mp4", f"media/{i['id']}.mp4")
+                  except Exception as e: print("missing", i["id"], e)
+          PY
+      - name: Publish
+        if: steps.due.outputs.any == 'yes'
+        env:
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          META_TOKEN: ${{ secrets.META_TOKEN }}
+          FB_PAGE_ID: ${{ secrets.FB_PAGE_ID }}
+          META_PAGE_TOKEN: ${{ secrets.META_PAGE_TOKEN }}
+          YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+          YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+          YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+          PINTEREST_TOKEN: ${{ secrets.PINTEREST_TOKEN }}
+          PINTEREST_BOARD_ID: ${{ secrets.PINTEREST_BOARD_ID }}
+        run: |
+          python3 marketing/publish/publish.py --schedule marketing/schedule.json --log marketing/published.json \
+            --media-base https://amirkallas2cs-gif.github.io/media --media-dir media || echo "some channels failed (see log)"
+      - name: Save the log
+        if: steps.due.outputs.any == 'yes'
+        run: |
+          git add marketing/published.json 2>/dev/null || true
+          git diff --cached --quiet || (git -c user.name="Calm Edge bot" -c user.email="bot@users.noreply.github.com" commit -qm "Published $(date -u +%F)" && git push)

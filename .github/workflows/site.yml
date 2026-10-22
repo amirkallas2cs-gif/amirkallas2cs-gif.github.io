@@ -1,0 +1,61 @@
+name: Site and videos
+
+# Builds the site, renders new or changed videos (unchanged ones come from the cache)
+# and publishes everything on GitHub Pages: https://amirkallas2cs-gif.github.io
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "13 4 * * *"
+  workflow_dispatch:
+
+permissions: { contents: read, pages: write, id-token: write }
+concurrency: { group: pages, cancel-in-progress: false }
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 180
+    env:
+      KOKORO_DIR: ${{ github.workspace }}/.kokoro
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12", cache: pip, cache-dependency-path: marketing/video/requirements.txt }
+      - name: Tools
+        run: |
+          sudo apt-get update && sudo apt-get install -y ffmpeg
+          pip install -r marketing/video/requirements.txt markdown jinja2
+          python -m playwright install --with-deps chromium
+      - name: Rendered videos (cache)
+        uses: actions/cache@v4
+        with:
+          path: build/media
+          key: media-${{ github.run_id }}
+          restore-keys: media-
+      - name: Backup voice model (cache)
+        uses: actions/cache@v4
+        with: { path: .kokoro, key: kokoro-v1.0 }
+      - name: Backup voice model
+        run: |
+          mkdir -p .kokoro && cd .kokoro
+          base=https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files-v1.0
+          [ -f kokoro-v1.0.onnx ] || curl -sSfL -o kokoro-v1.0.onnx $base/kokoro-v1.0.onnx
+          [ -f voices-v1.0.bin ] || curl -sSfL -o voices-v1.0.bin $base/voices-v1.0.bin
+      - name: Videos and pins
+        run: python marketing/render_all.py build/media --jobs 3
+      - name: Site
+        run: |
+          python site/build.py build/site
+          mkdir -p build/site/media && cp build/media/*.mp4 build/media/*.jpg build/media/index.json build/site/media/
+          python site/tests/site_test.py build/site
+      - uses: actions/upload-pages-artifact@v3
+        with: { path: build/site }
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-24.04
+    environment: { name: github-pages, url: "${{ steps.d.outputs.page_url }}" }
+    steps:
+      - id: d
+        uses: actions/deploy-pages@v4

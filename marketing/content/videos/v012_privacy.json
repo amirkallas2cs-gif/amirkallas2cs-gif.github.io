@@ -1,0 +1,84 @@
+{
+ "id": "v012_privacy",
+ "scenes": [
+  {
+   "type": "hook",
+   "kicker": "Trading journal",
+   "text": "Your trades are nobody's business.",
+   "say": "Your trades are nobody's business."
+  },
+  {
+   "type": "rows",
+   "title": "Trading Journal AI",
+   "head": [
+    "",
+    "",
+    ""
+   ],
+   "rows": [
+    {
+     "cells": [
+      "Stored on your computer",
+      "",
+      "✓"
+     ],
+     "good": true
+    },
+    {
+     "cells": [
+      "No account, no cloud",
+      "",
+      "✓"
+     ],
+     "good": true
+    },
+    {
+     "cells": [
+      "Daily backups",
+      "",
+      "✓"
+     ],
+     "good": true
+    },
+    {
+     "cells": [
+      "Export to CSV",
+      "",
+      "✓"
+     ],
+     "good": true
+    }
+   ],
+   "say": "Your journal lives on your computer. No account, no cloud, daily backups, and you can export everything."
+  },
+  {
+   "type": "shot",
+   "img": "kpis",
+   "title": "A desktop app for Windows and Mac.",
+   "say": "A fast desktop app for Windows and Mac."
+  },
+  {
+   "type": "cta",
+   "title": "Trading Journal AI",
+   "sub": "Desktop app · Windows & Mac",
+   "text": "Private by design.",
+   "button": "Link in bio",
+   "say": "Trading Journal AI. Link in bio."
+  }
+ ],
+ "post": {
+  "instagram": "No account, no cloud. Your trading journal lives on your computer, with daily backups and CSV export.\n\nTrading Journal AI: desktop app for Windows & Mac, with a one-click AI review. Link in bio.\n\n#privacy #tradingtools #tradingjournal #daytrading #trading #tradingpsychology #futurestrading",
+  "tiktok": "No account, no cloud. Your trading journal lives on your computer, with daily backups and CSV export. #privacy #tradingtools #tradingjournal #daytrading #trading",
+  "youtube": {
+   "title": "A private trading journal: your data stays on your computer #shorts",
+   "description": "No account, no cloud. Your trading journal lives on your computer, with daily backups and CSV export.\n\nTrading Journal AI (Windows & Mac): https://kallas8.gumroad.com/l/axltbh\n\nExample journal with demo data. Not financial advice.\n\n#privacy #tradingtools #tradingjournal #daytrading #trading #tradingpsychology #futurestrading #shorts"
+  },
+  "facebook": "No account, no cloud. Your trading journal lives on your computer, with daily backups and CSV export.\n\nTrading Journal AI: https://kallas8.gumroad.com/l/axltbh",
+  "pinterest": {
+   "title": "Private trading journal app for Windows and Mac",
+   "description": "No account, no cloud. Your trading journal lives on your computer, with daily backups and CSV export. Trading journal app for Windows & Mac with AI weekly review.",
+   "link": "https://kallas8.gumroad.com/l/axltbh"
+  }
+ },
+ "voice": "andrew_up"
+}

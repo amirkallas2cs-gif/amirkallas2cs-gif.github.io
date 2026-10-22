@@ -1,0 +1,115 @@
+{
+ "id": "v002_best_setup",
+ "tag": "Example journal · demo data",
+ "scenes": [
+  {
+   "type": "hook",
+   "kicker": "Your edge",
+   "text": "Your favourite setup might be the one losing you money.",
+   "say": "Your favourite setup might be the one losing you money."
+  },
+  {
+   "type": "rows",
+   "title": "Average R by setup",
+   "head": [
+    "Setup",
+    "Trades",
+    "Avg R"
+   ],
+   "rows": [
+    {
+     "cells": [
+      "Trend pullback",
+      "16",
+      "+0.89R"
+     ],
+     "good": true,
+     "hl": true
+    },
+    {
+     "cells": [
+      "Opening range",
+      "29",
+      "+0.63R"
+     ]
+    },
+    {
+     "cells": [
+      "VWAP reclaim",
+      "24",
+      "+0.11R"
+     ]
+    },
+    {
+     "cells": [
+      "Failed breakout",
+      "20",
+      "−0.41R"
+     ],
+     "hl": true
+    }
+   ],
+   "say": "In this example journal, trend pullbacks earn almost one R per trade. Failed breakouts lose almost half an R, every time."
+  },
+  {
+   "type": "stat",
+   "label": "Failed breakouts, 20 trades",
+   "value": -713,
+   "prefix": "$",
+   "color": "coral",
+   "sub": "20% win rate",
+   "say": "Twenty trades, seven hundred and thirteen dollars gone."
+  },
+  {
+   "type": "shot",
+   "img": "by_setup",
+   "title": "Every setup, with its sample size.",
+   "ring": "setup_worst",
+   "say": "The journal ranks every setup for you, so you know what's real and what's noise."
+  },
+  {
+   "type": "shot",
+   "img": "oneclick",
+   "title": "One click. Your AI reviews your week.",
+   "ring": "btn_claude",
+   "chips": [
+    {
+     "text": "Claude",
+     "color": "mint"
+    },
+    {
+     "text": "ChatGPT",
+     "color": "blue"
+    },
+    {
+     "text": "Gemini",
+     "color": "gold"
+    }
+   ],
+   "say": "Then one click, and your own AI reviews your week."
+  },
+  {
+   "type": "cta",
+   "title": "Trading Journal AI",
+   "sub": "Desktop app · Windows & Mac",
+   "text": "Know your edge, setup by setup.",
+   "button": "Link in bio",
+   "say": "Trading Journal AI. Link in bio."
+  }
+ ],
+ "post": {
+  "instagram": "Rank your setups by average R, not by feel. In this example journal, one setup made +0.89R per trade and another lost -0.41R.\n\nTrading Journal AI: desktop app for Windows & Mac, with a one-click AI review. Link in bio.\n\n#tradingstrategy #edge #tradingjournal #daytrading #trading #tradingpsychology #futurestrading",
+  "tiktok": "Rank your setups by average R, not by feel. In this example journal, one setup made +0.89R per trade and another lost -0.41R. #tradingstrategy #edge #tradingjournal #daytrading #trading",
+  "youtube": {
+   "title": "Your favourite trading setup might be losing you money #shorts",
+   "description": "Rank your setups by average R, not by feel. In this example journal, one setup made +0.89R per trade and another lost -0.41R.\n\nTrading Journal AI (Windows & Mac): https://kallas8.gumroad.com/l/axltbh\n\nExample journal with demo data. Not financial advice.\n\n#tradingstrategy #edge #tradingjournal #daytrading #trading #tradingpsychology #futurestrading #shorts"
+  },
+  "facebook": "Rank your setups by average R, not by feel. In this example journal, one setup made +0.89R per trade and another lost -0.41R.\n\nTrading Journal AI: https://kallas8.gumroad.com/l/axltbh",
+  "pinterest": {
+   "title": "Find your best trading setup by average R",
+   "description": "Rank your setups by average R, not by feel. In this example journal, one setup made +0.89R per trade and another lost -0.41R. Trading journal app for Windows & Mac with AI weekly review.",
+   "link": "https://kallas8.gumroad.com/l/axltbh"
+  }
+ },
+ "voice": "andrew_up"
+}

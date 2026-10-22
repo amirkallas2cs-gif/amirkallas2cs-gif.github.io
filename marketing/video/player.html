@@ -1,0 +1,189 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face { font-family: Inter; font-weight: 400; src: url(fonts/Inter-Regular.woff); }
+@font-face { font-family: Inter; font-weight: 600; src: url(fonts/Inter-SemiBold.woff); }
+@font-face { font-family: Inter; font-weight: 700; src: url(fonts/Inter-Bold.woff); }
+:root { --canvas:#0F1720; --card:#16212D; --card2:#1B2836; --line:#2A3A4C; --ink:#E8EDF3; --muted:#93A3B5;
+  --mint:#5FD3A0; --coral:#F2848A; --gold:#F2C14E; --blue:#6CA8FF; }
+* { margin:0; padding:0; box-sizing:border-box; }
+html, body { width:1080px; height:1920px; overflow:hidden; background:var(--canvas); font-family:Inter, sans-serif; color:var(--ink); }
+.glow { position:absolute; border-radius:50%; filter:blur(140px); opacity:.33; }
+#stage { position:absolute; inset:0; }
+.layer { position:absolute; inset:0; will-change:transform, opacity; }
+/* Safe area: platforms cover ~220px at the top and ~420px at the bottom, ~140px on the right. */
+.safe { position:absolute; left:80px; right:140px; top:330px; bottom:640px; }
+.kicker { font-size:34px; letter-spacing:6px; text-transform:uppercase; font-weight:700; color:var(--mint); }
+.big { font-size:92px; font-weight:700; line-height:1.06; letter-spacing:-2px; text-wrap:balance; }
+.big .w { display:inline-block; }
+.mid { font-size:58px; font-weight:700; line-height:1.15; letter-spacing:-1px; text-wrap:balance; }
+.shot { position:absolute; border-radius:28px; overflow:hidden; border:3px solid var(--line); box-shadow:0 50px 110px rgba(0,0,0,.55); background:var(--card); }
+.shot img { display:block; width:100%; }
+.ring { position:absolute; border:6px solid var(--gold); border-radius:22px; box-shadow:0 0 0 9999px rgba(8,12,18,.45); }
+.statv { font-size:220px; font-weight:700; letter-spacing:-6px; line-height:1; white-space:nowrap; }
+.label { font-size:46px; color:var(--muted); font-weight:600; }
+.bubble { border-radius:34px; padding:34px 40px; font-size:40px; line-height:1.42; }
+.me { background:#22344A; margin-left:auto; max-width:78%; }
+.ai { background:var(--card); border:3px solid var(--line); }
+.ai b { color:#fff; } .m { color:var(--mint); font-weight:700; } .c { color:var(--coral); font-weight:700; }
+.caption { position:absolute; left:80px; right:140px; bottom:470px; display:flex; justify-content:center; }
+.caption span.box { background:rgba(10,15,22,.86); border:2px solid var(--line); border-radius:22px; padding:18px 30px; font-size:52px; font-weight:700;
+  line-height:1.25; text-align:center; max-width:100%; }
+.caption .on { color:var(--mint); }
+.tag { position:absolute; left:80px; top:240px; font-size:26px; color:var(--muted); background:rgba(22,33,45,.8); border:2px solid var(--line); border-radius:30px; padding:8px 20px; }
+.rows { background:var(--card); border-radius:30px; border:3px solid var(--line); overflow:hidden; }
+.rows .hd, .rows .r { display:grid; grid-template-columns: 1.6fr 1fr 1.2fr; align-items:center; padding:0 34px; }
+.rows .hd { background:var(--card2); color:var(--muted); font-size:32px; font-weight:700; height:86px; }
+.rows.two .hd, .rows.two .r { grid-template-columns: 3fr 1.2fr; }
+.rows .r:first-child { border-top:0; }
+.rows .r { height:118px; font-size:44px; border-top:2px solid var(--line); }
+.rows .r > :not(:first-child), .rows .hd > :not(:first-child) { text-align:right; }
+.rows .r.hl { background:rgba(242,132,138,.10); box-shadow: inset 8px 0 0 var(--coral); }
+.rows .r.good.hl { background:rgba(95,211,160,.10); box-shadow: inset 8px 0 0 var(--mint); }
+.pos { color:var(--mint); font-weight:700; } .neg { color:var(--coral); font-weight:700; }
+.chips { position:absolute; left:80px; right:140px; display:flex; flex-wrap:wrap; gap:18px; justify-content:center; }
+.chip { background:var(--card); border:3px solid var(--c); color:var(--ink); border-radius:24px; padding:16px 28px; font-size:44px; font-weight:700; white-space:nowrap; }
+.chip b { color:var(--c); }
+.logo { display:flex; align-items:center; gap:28px; }
+.cta { background:var(--mint); color:#0F1720; font-weight:700; font-size:50px; border-radius:24px; padding:26px 44px; display:inline-block; }
+</style></head>
+<body>
+<div class="glow" style="width:1100px;height:1100px;left:-420px;top:-480px;background:#5FD3A0"></div>
+<div class="glow" style="width:1000px;height:1000px;right:-420px;bottom:-420px;background:#6CA8FF"></div>
+<div id="stage"></div>
+<script>
+// Everything on screen is a pure function of time: render(t) draws exactly frame t, so capture is frame-accurate.
+const LOGO = (s) => `<svg width="${s}" height="${s}" viewBox="0 0 1024 1024"><circle cx="512" cy="512" r="470" fill="#16212D" stroke="#2A3A4C" stroke-width="24"/><path d="M236 640 C 330 640, 360 560, 430 575 S 520 650, 590 540 S 700 420, 790 380" fill="none" stroke="#5FD3A0" stroke-width="64" stroke-linecap="round"/></svg>`;
+const clamp = (x, a = 0, b = 1) => Math.max(a, Math.min(b, x));
+const ease = (x) => { x = clamp(x); return 1 - Math.pow(1 - x, 3); };
+const inout = (x) => { x = clamp(x); return x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; };
+const esc = (s) => String(s).replace(/[&<>]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" }[c]));
+let SPEC = null, TIMES = [];
+
+window.load = (spec) => {
+  SPEC = spec; let t = 0;
+  TIMES = spec.scenes.map((s) => { const st = t; t += s.duration; return [st, t]; });
+  const stage = document.getElementById("stage");
+  stage.innerHTML = spec.scenes.map((s, i) => `<div class="layer" id="s${i}">${build(s, i)}</div>`).join("") +
+    `<div class="caption"><span class="box" id="cap"></span></div>${spec.tag ? `<div class="tag">${esc(spec.tag)}</div>` : ""}`;
+  const fit = () => spec.scenes.forEach((s, i) => { if (s.type !== "stat") return; // size the number for its final value
+    const el = document.getElementById(`v${i}`), lay = document.getElementById(`s${i}`); lay.style.display = "block";
+    el.style.fontSize = "220px"; el.textContent = fmtNum(s.value, s);
+    if (el.scrollWidth > el.clientWidth) el.style.fontSize = Math.floor(220 * el.clientWidth / el.scrollWidth) - 2 + "px";
+    lay.style.display = "none"; });
+  return Promise.all([...document.images].map((im) => im.complete ? 0 : new Promise((r) => { im.onload = im.onerror = r; }))).then(() => document.fonts.ready).then(() => { fit(); return t; });
+};
+
+function build(s, i) {
+  if (s.type === "hook") return `<div class="safe" style="display:flex;flex-direction:column;justify-content:center;gap:40px">
+      ${s.kicker ? `<div class="kicker">${esc(s.kicker)}</div>` : ""}
+      <div class="big">${s.text.split(" ").map((w) => `<span class="w">${esc(w)}</span>`).join(" ")}</div></div>`;
+  if (s.type === "shot") return `${s.title ? `<div class="safe" style="bottom:auto"><div class="mid" id="t${i}">${esc(s.title)}</div></div>` : ""}
+      <div class="shot" id="sh${i}"><img src="${s.img}"></div><div class="ring" id="r${i}" style="opacity:0"></div>
+      ${s.chips ? `<div class="chips" id="ch${i}">${s.chips.map((c, k) => `<span class="chip" id="chip${i}_${k}" style="--c:var(--${c.color || "mint"})">${c.html || esc(c.text)}</span>`).join("")}</div>` : ""}`;
+  if (s.type === "rows" && !s._norm) { // drop an empty middle column and an all-empty header
+    s._norm = true;
+    if (s.head.length === 3 && s.head[1] === "" && s.rows.every((r) => r.cells[1] === "")) { s.head.splice(1, 1); s.rows.forEach((r) => r.cells.splice(1, 1)); s.two = true; }
+    if (s.head.every((h) => h === "")) s.nohead = true;
+  }
+  if (s.type === "rows") return `<div class="safe" style="display:flex;flex-direction:column;justify-content:center;gap:46px">
+      ${s.title ? `<div class="mid">${esc(s.title)}</div>` : ""}
+      <div class="rows ${s.two ? "two" : ""}">${s.nohead ? "" : `<div class="hd">${s.head.map((h) => `<div>${esc(h)}</div>`).join("")}</div>`}
+      ${s.rows.map((r, k) => `<div class="r ${r.hl ? "hl" : ""} ${r.good ? "good" : ""}" id="row${i}_${k}">${r.cells.map((c, j) => `<div class="${j === r.cells.length - 1 ? (String(c).startsWith("−") || String(c).startsWith("-") ? "neg" : String(c).startsWith("+") ? "pos" : "") : ""}">${esc(c)}</div>`).join("")}</div>`).join("")}</div>
+      ${s.note ? `<div class="label" style="font-size:38px">${esc(s.note)}</div>` : ""}</div>`;
+  if (s.type === "stat") return `<div class="safe" style="display:flex;flex-direction:column;justify-content:center;gap:34px">
+      <div class="label">${esc(s.label)}</div><div class="statv" id="v${i}" style="color:var(--${s.color || "mint"})"></div>
+      ${s.sub ? `<div class="label" style="font-size:40px">${esc(s.sub)}</div>` : ""}</div>`;
+  if (s.type === "chat") return `<div class="safe" style="display:flex;flex-direction:column;justify-content:center;gap:30px">
+      <div class="bubble me" id="me${i}">${esc(s.me)}</div>
+      ${s.ai.map((p, k) => `<div class="bubble ai" id="ai${i}_${k}">${p}</div>`).join("")}</div>`;
+  if (s.type === "cta") return `<div class="safe" style="display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:46px">
+      <div class="logo">${LOGO(150)}<div><div style="font-size:74px;font-weight:700;letter-spacing:-1.5px">${esc(s.title || "Trading Journal AI")}</div>
+      <div class="label" style="font-size:38px">${esc(s.sub || "Desktop app · Windows & Mac")}</div></div></div>
+      <div class="mid" style="font-size:54px;color:var(--muted)">${esc(s.text || "")}</div>
+      <div class="cta">${esc(s.button || "Link in bio")}</div></div>`;
+  return "";
+}
+
+// Places a screenshot so it fills the width, then zooms toward a focus rectangle (fractions of the image).
+function placeShot(i, s, p) {
+  const sh = document.getElementById(`sh${i}`), img = sh.querySelector("img");
+  const iw = img.naturalWidth, ih = img.naturalHeight;
+  const W = 860, top0 = s.title ? 600 : 360, avail = 1920 - top0 - 660 - (s.chips ? 190 : 0);
+  const baseScale = Math.min(W / iw, avail / ih);
+  let scale = baseScale, cx = iw / 2, cy = ih / 2;
+  if (s.focus) {
+    // Zoom to a readable size (app text ~13 css px = 26 image px -> ~40 px on the frame), centred on the focus area.
+    const [fx, fy, fw, fh] = s.focus;
+    const target = Math.max(baseScale, s.zoom || 1.5);
+    const k = inout((p - 0.15) / 0.4);
+    scale = baseScale + (target - baseScale) * k;
+    const tx = (fx + fw / 2) * iw, ty = (fy + fh / 2) * ih;
+    // keep the view inside the image
+    const halfW = Math.min(W, iw * target) / 2 / target, halfH = Math.min(avail, ih * target) / 2 / target;
+    const ex = Math.min(Math.max(tx, halfW), iw - halfW), ey = Math.min(Math.max(ty, halfH), ih - halfH);
+    cx = iw / 2 + (ex - iw / 2) * k; cy = ih / 2 + (ey - ih / 2) * k;
+  }
+  const w = iw * scale, h = ih * scale;
+  const boxW = Math.min(W, w), boxH = Math.min(avail, h);
+  const left = 80 + (W - boxW) / 2 + 30, top = top0 + (avail - boxH) / 2;
+  sh.style.left = left + "px"; sh.style.top = top + "px"; sh.style.width = boxW + "px"; sh.style.height = boxH + "px";
+  img.style.width = w + "px"; img.style.transform = `translate(${boxW / 2 - cx * scale}px, ${boxH / 2 - cy * scale}px)`;
+  const chips = document.getElementById(`ch${i}`);
+  if (chips) { chips.style.top = top + boxH + 44 + "px";
+    s.chips.forEach((_, k) => { const e = document.getElementById(`chip${i}_${k}`), st = 0.25 + k * 0.12;
+      e.style.opacity = ease((p - st) / 0.1); e.style.transform = `scale(${0.9 + 0.1 * ease((p - st) / 0.12)})`; }); }
+  const ring = document.getElementById(`r${i}`);
+  if (s.ring) {
+    const [rx, ry, rw, rh] = s.ring;
+    const x = left + boxW / 2 + (rx * iw - cx) * scale, y = top + boxH / 2 + (ry * ih - cy) * scale;
+    Object.assign(ring.style, { left: x - 10 + "px", top: y - 10 + "px", width: rw * iw * scale + 20 + "px", height: rh * ih * scale + 20 + "px" });
+    ring.style.opacity = ease((p - 0.55) / 0.12);
+  }
+}
+
+const fmtNum = (v, s) => `${v < 0 ? "−" : s.plus && v > 0 ? "+" : ""}${s.prefix || ""}${Math.abs(v).toLocaleString("en-US", { minimumFractionDigits: s.decimals || 0, maximumFractionDigits: s.decimals || 0 })}${s.suffix || ""}`;
+
+window.render = (t) => {
+  SPEC.scenes.forEach((s, i) => {
+    const [a, b] = TIMES[i], el = document.getElementById(`s${i}`);
+    const d = b - a, local = t - a, p = local / d;
+    const fadeIn = i === 0 ? 1 : ease(local / 0.22), fadeOut = i === SPEC.scenes.length - 1 ? 1 : 1 - ease((local - d + 0.12) / 0.12);
+    const vis = t >= a - 0.001 && t < b + 0.3;
+    el.style.display = vis ? "block" : "none";
+    if (!vis) return;
+    el.style.opacity = Math.min(fadeIn, fadeOut);
+    el.style.transform = `translateY(${(1 - ease(local / 0.45)) * 40}px)`;
+    if (s.type === "hook") el.querySelectorAll(".w").forEach((w, k, all) => {
+      const st = (k / all.length) * Math.min(1.1, d * 0.45); w.style.opacity = ease((local - st) / 0.22);
+      w.style.transform = `translateY(${(1 - ease((local - st) / 0.3)) * 26}px)`; });
+    if (s.type === "shot") placeShot(i, s, p);
+    if (s.type === "rows") s.rows.forEach((_, k) => { const e = document.getElementById(`row${i}_${k}`), st = 0.3 + k * 0.25;
+      e.style.opacity = ease((local - st) / 0.3); e.style.transform = `translateX(${(1 - ease((local - st) / 0.35)) * 40}px)`; });
+    if (s.type === "rows") return `<div class="safe" style="display:flex;flex-direction:column;justify-content:center;gap:46px">
+      ${s.title ? `<div class="mid">${esc(s.title)}</div>` : ""}
+      <div class="rows ${s.two ? "two" : ""}">${s.nohead ? "" : `<div class="hd">${s.head.map((h) => `<div>${esc(h)}</div>`).join("")}</div>`}
+      ${s.rows.map((r, k) => `<div class="r ${r.hl ? "hl" : ""} ${r.good ? "good" : ""}" id="row${i}_${k}">${r.cells.map((c, j) => `<div class="${j === r.cells.length - 1 ? (String(c).startsWith("−") || String(c).startsWith("-") ? "neg" : String(c).startsWith("+") ? "pos" : "") : ""}">${esc(c)}</div>`).join("")}</div>`).join("")}</div>
+      ${s.note ? `<div class="label" style="font-size:38px">${esc(s.note)}</div>` : ""}</div>`;
+  if (s.type === "stat") document.getElementById(`v${i}`).textContent = fmtNum(s.value * ease((local - 0.2) / Math.min(1.2, d * 0.5)), s);
+    if (s.type === "chat") {
+      document.getElementById(`me${i}`).style.opacity = ease(local / 0.3);
+      s.ai.forEach((_, k) => { const st = 0.6 + k * Math.max(0.6, (d - 1.2) / s.ai.length); const e = document.getElementById(`ai${i}_${k}`);
+        e.style.opacity = ease((local - st) / 0.3); e.style.transform = `translateY(${(1 - ease((local - st) / 0.35)) * 30}px)`; });
+    }
+  });
+  // Captions: the line being spoken, a few words at a time, current word in mint.
+  const i = Math.max(0, TIMES.findIndex(([a, b]) => t >= a && t < b));
+  const s = SPEC.scenes[i === -1 ? SPEC.scenes.length - 1 : i], [a] = TIMES[i];
+  const cap = document.getElementById("cap");
+  if (!s.say || SPEC.captions === false || s.captions === false || s.type === "hook" || s.type === "cta") { cap.parentElement.style.display = "none"; return; }
+  cap.parentElement.style.display = "flex";
+  const words = s.say.split(/\s+/), weights = words.map((w) => w.length + 2), total = weights.reduce((x, y) => x + y, 0);
+  const speech = s.speech || (s.duration - 0.35), lt = (t - a - (s.lead || 0.12)) / speech;
+  let acc = 0, cur = words.length - 1;
+  for (let k = 0; k < words.length; k++) { acc += weights[k] / total; if (lt < acc) { cur = k; break; } }
+  const per = 4, g = Math.floor(cur / per) * per;
+  cap.innerHTML = words.slice(g, g + per).map((w, k) => `<span class="${g + k === cur && lt >= 0 ? "on" : ""}">${esc(w)}</span>`).join(" ");
+};
+</script>
+</body></html>

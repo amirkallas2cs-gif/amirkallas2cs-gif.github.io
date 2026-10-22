@@ -1,0 +1,108 @@
+{
+ "id": "v003_emotions",
+ "tag": "Example journal · demo data",
+ "scenes": [
+  {
+   "type": "hook",
+   "kicker": "Trading psychology",
+   "text": "Six frustrated trades. $674 gone.",
+   "say": "Six frustrated trades. Six hundred and seventy four dollars, gone."
+  },
+  {
+   "type": "rows",
+   "title": "Net P&L by emotion",
+   "head": [
+    "Emotion",
+    "Trades",
+    "Net P&L"
+   ],
+   "rows": [
+    {
+     "cells": [
+      "Calm",
+      "55",
+      "+$1,994"
+     ],
+     "good": true,
+     "hl": true
+    },
+    {
+     "cells": [
+      "Confident",
+      "18",
+      "+$39"
+     ]
+    },
+    {
+     "cells": [
+      "Anxious",
+      "5",
+      "−$114"
+     ]
+    },
+    {
+     "cells": [
+      "Frustrated",
+      "6",
+      "−$674"
+     ],
+     "hl": true
+    }
+   ],
+   "say": "In this example journal, calm trades made almost two thousand dollars. Six frustrated ones lost six hundred and seventy four."
+  },
+  {
+   "type": "stat",
+   "label": "Win rate when frustrated",
+   "value": 0,
+   "suffix": "%",
+   "color": "coral",
+   "sub": "0 wins out of 6",
+   "say": "Zero wins out of six. Your mood leaves a trace in your numbers."
+  },
+  {
+   "type": "shot",
+   "img": "oneclick",
+   "title": "One click. Your AI reviews your week.",
+   "ring": "btn_claude",
+   "chips": [
+    {
+     "text": "Claude",
+     "color": "mint"
+    },
+    {
+     "text": "ChatGPT",
+     "color": "blue"
+    },
+    {
+     "text": "Gemini",
+     "color": "gold"
+    }
+   ],
+   "say": "Then one click, and your own AI reviews your week."
+  },
+  {
+   "type": "cta",
+   "title": "Trading Journal AI",
+   "sub": "Desktop app · Windows & Mac",
+   "text": "See what your emotions cost you.",
+   "button": "Link in bio",
+   "say": "Trading Journal AI. Link in bio."
+  }
+ ],
+ "post": {
+  "instagram": "Tag each trade with how you felt. In this example journal, 55 calm trades made +$1,994 and 6 frustrated trades lost -$674.\n\nTrading Journal AI: desktop app for Windows & Mac, with a one-click AI review. Link in bio.\n\n#mindset #tradingmindset #tradingjournal #daytrading #trading #tradingpsychology #futurestrading",
+  "tiktok": "Tag each trade with how you felt. In this example journal, 55 calm trades made +$1,994 and 6 frustrated trades lost -$674. #mindset #tradingmindset #tradingjournal #daytrading #trading",
+  "youtube": {
+   "title": "Your emotions are in your trading numbers #shorts",
+   "description": "Tag each trade with how you felt. In this example journal, 55 calm trades made +$1,994 and 6 frustrated trades lost -$674.\n\nTrading Journal AI (Windows & Mac): https://kallas8.gumroad.com/l/axltbh\n\nExample journal with demo data. Not financial advice.\n\n#mindset #tradingmindset #tradingjournal #daytrading #trading #tradingpsychology #futurestrading #shorts"
+  },
+  "facebook": "Tag each trade with how you felt. In this example journal, 55 calm trades made +$1,994 and 6 frustrated trades lost -$674.\n\nTrading Journal AI: https://kallas8.gumroad.com/l/axltbh",
+  "pinterest": {
+   "title": "How emotions affect trading results",
+   "description": "Tag each trade with how you felt. In this example journal, 55 calm trades made +$1,994 and 6 frustrated trades lost -$674. Trading journal app for Windows & Mac with AI weekly review.",
+   "link": "https://kallas8.gumroad.com/l/axltbh"
+  }
+ },
+ "voice": "andrew_up"
+}

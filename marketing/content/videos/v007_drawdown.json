@@ -1,0 +1,58 @@
+{
+ "id": "v007_drawdown",
+ "tag": "Example journal · demo data",
+ "scenes": [
+  {
+   "type": "hook",
+   "kicker": "Risk",
+   "text": "The number that decides if you survive.",
+   "say": "There's one number that decides if you survive as a trader."
+  },
+  {
+   "type": "stat",
+   "label": "Max drawdown",
+   "value": -612,
+   "prefix": "$",
+   "color": "coral",
+   "sub": "on a $10,000 account · 6.1%",
+   "say": "Max drawdown: the biggest drop from a peak. In this example, six hundred and twelve dollars."
+  },
+  {
+   "type": "shot",
+   "img": "equity",
+   "title": "Your equity curve, trade by trade.",
+   "say": "Your equity curve shows every peak and every dip."
+  },
+  {
+   "type": "stat",
+   "label": "Longest losing streak",
+   "value": 4,
+   "suffix": " trades",
+   "color": "gold",
+   "say": "Know your longest losing streak before it surprises you."
+  },
+  {
+   "type": "cta",
+   "title": "Trading Journal AI",
+   "sub": "Desktop app · Windows & Mac",
+   "text": "Know your risk before the market tells you.",
+   "button": "Link in bio",
+   "say": "Trading Journal AI. Link in bio."
+  }
+ ],
+ "post": {
+  "instagram": "Max drawdown is the biggest drop from a peak in your account. Track it, together with your longest losing streak.\n\nTrading Journal AI: desktop app for Windows & Mac, with a one-click AI review. Link in bio.\n\n#riskmanagement #drawdown #tradingjournal #daytrading #trading #tradingpsychology #futurestrading",
+  "tiktok": "Max drawdown is the biggest drop from a peak in your account. Track it, together with your longest losing streak. #riskmanagement #drawdown #tradingjournal #daytrading #trading",
+  "youtube": {
+   "title": "Max drawdown: the number that decides if you survive #shorts",
+   "description": "Max drawdown is the biggest drop from a peak in your account. Track it, together with your longest losing streak.\n\nTrading Journal AI (Windows & Mac): https://kallas8.gumroad.com/l/axltbh\n\nExample journal with demo data. Not financial advice.\n\n#riskmanagement #drawdown #tradingjournal #daytrading #trading #tradingpsychology #futurestrading #shorts"
+  },
+  "facebook": "Max drawdown is the biggest drop from a peak in your account. Track it, together with your longest losing streak.\n\nTrading Journal AI: https://kallas8.gumroad.com/l/axltbh",
+  "pinterest": {
+   "title": "Max drawdown explained for traders",
+   "description": "Max drawdown is the biggest drop from a peak in your account. Track it, together with your longest losing streak. Trading journal app for Windows & Mac with AI weekly review.",
+   "link": "https://kallas8.gumroad.com/l/axltbh"
+  }
+ },
+ "voice": "andrew_up"
+}

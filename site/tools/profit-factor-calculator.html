@@ -1,0 +1,50 @@
+---
+{"slug": "profit-factor-calculator", "order": 3, "title": "Profit factor & expectancy calculator",
+ "seo_title": "Profit factor and expectancy calculator for traders",
+ "description": "Free profit factor and expectancy calculator: enter your win rate, average win and average loss to see your profit factor, expectancy per trade and breakeven win rate.",
+ "intro": "Win rate alone tells you almost nothing. Combine it with your average win and loss to see whether your trading has an edge.",
+ "faq": [
+  ["What is a good profit factor?", "Below 1.0 the strategy loses money. Between 1.0 and 1.5 the edge is thin and easily wiped out by costs or a bad month. Above 1.5 is generally considered solid, provided the sample is large enough."],
+  ["What is expectancy in trading?", "Expectancy is the average amount you can expect to make (or lose) per trade: win rate × average win − loss rate × average loss."],
+  ["How many trades do I need?", "The fewer trades, the more luck dominates. Treat results from fewer than 30 trades as early signals, and look at 100 or more before drawing conclusions."]
+ ]}
+---
+<div class="calc" id="pf">
+  <div class="fields">
+    <label>Win rate (%) <input id="wr" type="number" inputmode="decimal" value="51" min="0" max="100" step="any"></label>
+    <label>Average win ($) <input id="aw" type="number" inputmode="decimal" value="108.89" min="0" step="any"></label>
+    <label>Average loss ($, as a positive number) <input id="al" type="number" inputmode="decimal" value="77.76" min="0" step="any"></label>
+    <label>Number of trades <input id="n" type="number" inputmode="numeric" value="100" min="1" step="1"></label>
+  </div>
+  <div class="out">
+    <div class="res"><small>Profit factor</small><b id="oPF">–</b></div>
+    <div class="res" style="--accent:var(--blue)"><small>Expectancy per trade</small><b id="oE">–</b></div>
+    <div class="res" style="--accent:var(--gold)"><small>Breakeven win rate</small><b id="oBE">–</b></div>
+    <div class="res" style="--accent:var(--coral)"><small>Expected result over N trades</small><b id="oN">–</b></div>
+  </div>
+  <p class="note" id="oVerdict"></p>
+</div>
+<script>
+(() => {
+  const $ = (id) => document.getElementById(id);
+  const money = (v) => (v < 0 ? "−$" : "$") + Math.abs(v).toLocaleString("en-US", { maximumFractionDigits: 2, minimumFractionDigits: 2 });
+  function calc() {
+    const w = Math.min(100, Math.max(0, +$("wr").value)) / 100, aw = Math.abs(+$("aw").value), al = Math.abs(+$("al").value), n = Math.max(1, +$("n").value || 1);
+    const gw = w * aw, gl = (1 - w) * al, pf = gl ? gw / gl : Infinity, e = gw - gl, be = aw + al ? al / (aw + al) : NaN;
+    $("oPF").textContent = isFinite(pf) ? pf.toFixed(2) : "∞";
+    $("oE").textContent = money(e); $("oE").className = e > 0 ? "pos" : e < 0 ? "neg" : "";
+    $("oBE").textContent = isFinite(be) ? (be * 100).toFixed(1) + "%" : "–";
+    $("oN").textContent = money(e * n); $("oN").className = e > 0 ? "pos" : e < 0 ? "neg" : "";
+    $("oVerdict").textContent = !isFinite(pf) ? "No losing trades yet: the sample is too small to judge." : pf < 1 ? "Profit factor below 1: on these numbers the method loses money." :
+      pf < 1.5 ? "A thin edge: positive, but costs, slippage or a bad month can erase it." : "A solid edge on these numbers. Check that the sample is large enough.";
+  }
+  document.querySelectorAll("#pf input").forEach((el) => el.addEventListener("input", calc));
+  calc();
+})();
+</script>
+<h2>The formulas</h2>
+<div class="formula">Profit factor = (win rate × average win) ÷ (loss rate × average loss)</div>
+<div class="formula">Expectancy = win rate × average win − loss rate × average loss</div>
+<div class="formula">Breakeven win rate = average loss ÷ (average win + average loss)</div>
+<p>The example values are those of a sample journal with 89 trades: a 51% win rate, an average win of $108.89 and an average loss of $77.76 give a profit factor of about 1.46 (the journal itself shows 1.43: the gap comes from rounding the win rate). That's a positive but modest edge. Read more in <a href="/learn/profit-factor-explained/">Profit factor explained</a>.</p>
+{{app}}

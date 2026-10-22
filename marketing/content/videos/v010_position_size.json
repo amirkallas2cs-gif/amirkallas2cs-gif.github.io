@@ -1,0 +1,80 @@
+{
+ "id": "v010_position_size",
+ "scenes": [
+  {
+   "type": "hook",
+   "kicker": "Risk management",
+   "text": "Position size in three numbers.",
+   "say": "Position size, in three numbers."
+  },
+  {
+   "type": "rows",
+   "title": "Example: MES futures",
+   "head": [
+    "",
+    "",
+    "Value"
+   ],
+   "rows": [
+    {
+     "cells": [
+      "Risk per trade",
+      "",
+      "$100"
+     ]
+    },
+    {
+     "cells": [
+      "Stop distance",
+      "",
+      "4 points"
+     ]
+    },
+    {
+     "cells": [
+      "Point value",
+      "",
+      "$5"
+     ]
+    }
+   ],
+   "say": "How much you'll risk, how far your stop is, and what one point is worth."
+  },
+  {
+   "type": "stat",
+   "label": "Contracts = 100 ÷ (4 × 5)",
+   "value": 5,
+   "suffix": " contracts",
+   "color": "mint",
+   "say": "Risk divided by stop times point value. Here, five contracts."
+  },
+  {
+   "type": "hook",
+   "text": "Same risk on every trade. That's what makes R honest.",
+   "say": "Same risk on every trade. That's what makes your results comparable."
+  },
+  {
+   "type": "cta",
+   "title": "Trading Journal AI",
+   "sub": "Desktop app · Windows & Mac",
+   "text": "Point values for futures, stocks, forex and crypto.",
+   "button": "Link in bio",
+   "say": "Trading Journal AI. Link in bio."
+  }
+ ],
+ "post": {
+  "instagram": "Contracts = risk / (stop distance x point value). $100 risk, 4-point stop on MES ($5/point) = 5 contracts.\n\nTrading Journal AI: desktop app for Windows & Mac, with a one-click AI review. Link in bio.\n\n#positionsizing #riskmanagement #futures #tradingjournal #daytrading #trading #tradingpsychology #futurestrading",
+  "tiktok": "Contracts = risk / (stop distance x point value). $100 risk, 4-point stop on MES ($5/point) = 5 contracts. #positionsizing #riskmanagement #futures #tradingjournal #daytrading #trading",
+  "youtube": {
+   "title": "Position size in 3 numbers (futures example) #shorts",
+   "description": "Contracts = risk / (stop distance x point value). $100 risk, 4-point stop on MES ($5/point) = 5 contracts.\n\nTrading Journal AI (Windows & Mac): https://kallas8.gumroad.com/l/axltbh\n\nExample journal with demo data. Not financial advice.\n\n#positionsizing #riskmanagement #futures #tradingjournal #daytrading #trading #tradingpsychology #futurestrading #shorts"
+  },
+  "facebook": "Contracts = risk / (stop distance x point value). $100 risk, 4-point stop on MES ($5/point) = 5 contracts.\n\nTrading Journal AI: https://kallas8.gumroad.com/l/axltbh",
+  "pinterest": {
+   "title": "How to calculate position size for futures",
+   "description": "Contracts = risk / (stop distance x point value). $100 risk, 4-point stop on MES ($5/point) = 5 contracts. Trading journal app for Windows & Mac with AI weekly review.",
+   "link": "https://kallas8.gumroad.com/l/axltbh"
+  }
+ },
+ "voice": "andrew_up"
+}

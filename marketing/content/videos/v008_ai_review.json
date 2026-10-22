@@ -1,0 +1,70 @@
+{
+ "id": "v008_ai_review",
+ "tag": "Example journal · demo data",
+ "scenes": [
+  {
+   "type": "hook",
+   "kicker": "AI for traders",
+   "text": "Your AI can review your trading week. In one click.",
+   "say": "Your AI can review your trading week. In one click."
+  },
+  {
+   "type": "shot",
+   "img": "oneclick",
+   "title": "Pick a period. Pick your AI.",
+   "ring": "btn_claude",
+   "chips": [
+    {
+     "text": "Claude",
+     "color": "mint"
+    },
+    {
+     "text": "ChatGPT",
+     "color": "blue"
+    },
+    {
+     "text": "Gemini",
+     "color": "gold"
+    }
+   ],
+   "say": "Pick a period and your AI. It opens with your numbers already in the chat."
+  },
+  {
+   "type": "chat",
+   "me": "Weekly review, last 14 days.",
+   "ai": [
+    "Net P&amp;L <span class='m'>+385.28</span> · win rate <b>67%</b> · profit factor <b>3.80</b>",
+    "Calm trades: <span class='m'>+395</span>. One FOMO entry: <span class='c'>−2.48</span>. It's the habit, not the amount."
+   ],
+   "say": "No uploads, no prompts. It uses the same numbers you see in the journal."
+  },
+  {
+   "type": "hook",
+   "text": "No signals. No predictions. Just what you actually did.",
+   "say": "No signals, no predictions. Just an honest look at what you actually did."
+  },
+  {
+   "type": "cta",
+   "title": "Trading Journal AI",
+   "sub": "Desktop app · Windows & Mac",
+   "text": "Uses the AI you already have.",
+   "button": "Link in bio",
+   "say": "Trading Journal AI. Link in bio."
+  }
+ ],
+ "post": {
+  "instagram": "Pick a period, click Claude, ChatGPT or Gemini, and your AI reviews your week from your real numbers. No uploads, no prompts.\n\nTrading Journal AI: desktop app for Windows & Mac, with a one-click AI review. Link in bio.\n\n#ai #chatgpt #claude #tradingjournal #daytrading #trading #tradingpsychology #futurestrading",
+  "tiktok": "Pick a period, click Claude, ChatGPT or Gemini, and your AI reviews your week from your real numbers. No uploads, no prompts. #ai #chatgpt #claude #tradingjournal #daytrading #trading",
+  "youtube": {
+   "title": "Let your AI review your trading week in one click #shorts",
+   "description": "Pick a period, click Claude, ChatGPT or Gemini, and your AI reviews your week from your real numbers. No uploads, no prompts.\n\nTrading Journal AI (Windows & Mac): https://kallas8.gumroad.com/l/axltbh\n\nExample journal with demo data. Not financial advice.\n\n#ai #chatgpt #claude #tradingjournal #daytrading #trading #tradingpsychology #futurestrading #shorts"
+  },
+  "facebook": "Pick a period, click Claude, ChatGPT or Gemini, and your AI reviews your week from your real numbers. No uploads, no prompts.\n\nTrading Journal AI: https://kallas8.gumroad.com/l/axltbh",
+  "pinterest": {
+   "title": "AI trading journal review in one click",
+   "description": "Pick a period, click Claude, ChatGPT or Gemini, and your AI reviews your week from your real numbers. No uploads, no prompts. Trading journal app for Windows & Mac with AI weekly review.",
+   "link": "https://kallas8.gumroad.com/l/axltbh"
+  }
+ },
+ "voice": "andrew_up"
+}

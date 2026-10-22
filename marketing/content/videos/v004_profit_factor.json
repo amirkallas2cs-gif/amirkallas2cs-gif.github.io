@@ -1,0 +1,87 @@
+{
+ "id": "v004_profit_factor",
+ "tag": "Example journal · demo data",
+ "scenes": [
+  {
+   "type": "hook",
+   "kicker": "Trading maths",
+   "text": "A 51% win rate tells you almost nothing.",
+   "say": "A fifty one percent win rate tells you almost nothing."
+  },
+  {
+   "type": "stat",
+   "label": "Profit factor",
+   "value": 1.43,
+   "decimals": 2,
+   "color": "mint",
+   "sub": "gross profit ÷ gross loss",
+   "say": "Profit factor does. It's everything you won, divided by everything you lost."
+  },
+  {
+   "type": "rows",
+   "title": "How to read it",
+   "head": [
+    "Profit factor",
+    "",
+    "Meaning"
+   ],
+   "rows": [
+    {
+     "cells": [
+      "Below 1",
+      "",
+      "Losing"
+     ],
+     "hl": true
+    },
+    {
+     "cells": [
+      "1 to 1.5",
+      "",
+      "Thin edge"
+     ]
+    },
+    {
+     "cells": [
+      "Above 1.5",
+      "",
+      "Solid edge"
+     ],
+     "good": true,
+     "hl": true
+    }
+   ],
+   "say": "Below one, you're losing money. Above one and a half, you have a solid edge."
+  },
+  {
+   "type": "shot",
+   "img": "kpis",
+   "title": "Calculated for you, for any period.",
+   "ring": "kpi_pf",
+   "say": "Your journal calculates it for any period, with win rate, R and drawdown."
+  },
+  {
+   "type": "cta",
+   "title": "Trading Journal AI",
+   "sub": "Desktop app · Windows & Mac",
+   "text": "Your real numbers, not your feelings.",
+   "button": "Link in bio",
+   "say": "Trading Journal AI. Link in bio."
+  }
+ ],
+ "post": {
+  "instagram": "Win rate alone tells you almost nothing. Profit factor = gross profit / gross loss. Below 1 you're losing, above 1.5 you have a solid edge.\n\nTrading Journal AI: desktop app for Windows & Mac, with a one-click AI review. Link in bio.\n\n#tradingeducation #profitfactor #tradingjournal #daytrading #trading #tradingpsychology #futurestrading",
+  "tiktok": "Win rate alone tells you almost nothing. Profit factor = gross profit / gross loss. Below 1 you're losing, above 1.5 you have a solid edge. #tradingeducation #profitfactor #tradingjournal #daytrading #trading",
+  "youtube": {
+   "title": "Profit factor explained in 30 seconds #shorts",
+   "description": "Win rate alone tells you almost nothing. Profit factor = gross profit / gross loss. Below 1 you're losing, above 1.5 you have a solid edge.\n\nTrading Journal AI (Windows & Mac): https://kallas8.gumroad.com/l/axltbh\n\nExample journal with demo data. Not financial advice.\n\n#tradingeducation #profitfactor #tradingjournal #daytrading #trading #tradingpsychology #futurestrading #shorts"
+  },
+  "facebook": "Win rate alone tells you almost nothing. Profit factor = gross profit / gross loss. Below 1 you're losing, above 1.5 you have a solid edge.\n\nTrading Journal AI: https://kallas8.gumroad.com/l/axltbh",
+  "pinterest": {
+   "title": "Profit factor explained for traders",
+   "description": "Win rate alone tells you almost nothing. Profit factor = gross profit / gross loss. Below 1 you're losing, above 1.5 you have a solid edge. Trading journal app for Windows & Mac with AI weekly review.",
+   "link": "https://kallas8.gumroad.com/l/axltbh"
+  }
+ },
+ "voice": "andrew_up"
+}

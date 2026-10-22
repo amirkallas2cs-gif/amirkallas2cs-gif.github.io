@@ -1,0 +1,105 @@
+{
+ "id": "v006_time_of_day",
+ "tag": "Example journal · demo data",
+ "scenes": [
+  {
+   "type": "hook",
+   "kicker": "Your edge",
+   "text": "When do you actually make money?",
+   "say": "When do you actually make money? Most traders guess."
+  },
+  {
+   "type": "rows",
+   "title": "Net P&L by time of day",
+   "head": [
+    "Hours",
+    "Trades",
+    "Net P&L"
+   ],
+   "rows": [
+    {
+     "cells": [
+      "09–10 h",
+      "26",
+      "+$471"
+     ]
+    },
+    {
+     "cells": [
+      "10–12 h",
+      "39",
+      "+$315"
+     ]
+    },
+    {
+     "cells": [
+      "12–14 h",
+      "11",
+      "+$145"
+     ]
+    },
+    {
+     "cells": [
+      "14–17 h",
+      "13",
+      "+$548"
+     ],
+     "good": true,
+     "hl": true
+    }
+   ],
+   "say": "In this example journal, the afternoon made the most with the fewest trades. Thirteen trades, five hundred and forty eight dollars."
+  },
+  {
+   "type": "shot",
+   "img": "by_hour",
+   "title": "By hour and by weekday.",
+   "ring": "hour_best",
+   "say": "Your journal splits every result by hour and by weekday."
+  },
+  {
+   "type": "shot",
+   "img": "oneclick",
+   "title": "One click. Your AI reviews your week.",
+   "ring": "btn_claude",
+   "chips": [
+    {
+     "text": "Claude",
+     "color": "mint"
+    },
+    {
+     "text": "ChatGPT",
+     "color": "blue"
+    },
+    {
+     "text": "Gemini",
+     "color": "gold"
+    }
+   ],
+   "say": "Then one click, and your own AI reviews your week."
+  },
+  {
+   "type": "cta",
+   "title": "Trading Journal AI",
+   "sub": "Desktop app · Windows & Mac",
+   "text": "Trade your best hours.",
+   "button": "Link in bio",
+   "say": "Trading Journal AI. Link in bio."
+  }
+ ],
+ "post": {
+  "instagram": "Split your results by hour. In this example journal, 13 afternoon trades made more than 39 trades in the late morning.\n\nTrading Journal AI: desktop app for Windows & Mac, with a one-click AI review. Link in bio.\n\n#daytrader #tradingtips #tradingjournal #daytrading #trading #tradingpsychology #futurestrading",
+  "tiktok": "Split your results by hour. In this example journal, 13 afternoon trades made more than 39 trades in the late morning. #daytrader #tradingtips #tradingjournal #daytrading #trading",
+  "youtube": {
+   "title": "When do you actually make money trading? #shorts",
+   "description": "Split your results by hour. In this example journal, 13 afternoon trades made more than 39 trades in the late morning.\n\nTrading Journal AI (Windows & Mac): https://kallas8.gumroad.com/l/axltbh\n\nExample journal with demo data. Not financial advice.\n\n#daytrader #tradingtips #tradingjournal #daytrading #trading #tradingpsychology #futurestrading #shorts"
+  },
+  "facebook": "Split your results by hour. In this example journal, 13 afternoon trades made more than 39 trades in the late morning.\n\nTrading Journal AI: https://kallas8.gumroad.com/l/axltbh",
+  "pinterest": {
+   "title": "Best time of day to trade? Check your journal",
+   "description": "Split your results by hour. In this example journal, 13 afternoon trades made more than 39 trades in the late morning. Trading journal app for Windows & Mac with AI weekly review.",
+   "link": "https://kallas8.gumroad.com/l/axltbh"
+  }
+ },
+ "voice": "andrew_up"
+}

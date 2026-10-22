@@ -1,0 +1,111 @@
+{
+ "id": "v011_weekday",
+ "tag": "Example journal · demo data",
+ "scenes": [
+  {
+   "type": "hook",
+   "kicker": "Your edge",
+   "text": "Is there a day you should just not trade?",
+   "say": "Is there a day of the week you should just not trade?"
+  },
+  {
+   "type": "rows",
+   "title": "Net P&L by weekday",
+   "head": [
+    "Day",
+    "Trades",
+    "Net P&L"
+   ],
+   "rows": [
+    {
+     "cells": [
+      "Monday",
+      "22",
+      "+$841"
+     ],
+     "good": true,
+     "hl": true
+    },
+    {
+     "cells": [
+      "Tuesday",
+      "16",
+      "+$320"
+     ]
+    },
+    {
+     "cells": [
+      "Wednesday",
+      "19",
+      "+$267"
+     ]
+    },
+    {
+     "cells": [
+      "Thursday",
+      "17",
+      "−$30"
+     ],
+     "hl": true
+    },
+    {
+     "cells": [
+      "Friday",
+      "15",
+      "+$80"
+     ]
+    }
+   ],
+   "say": "In this example journal, Mondays made the most. Thursdays lost money over seventeen trades."
+  },
+  {
+   "type": "hook",
+   "text": "Small samples lie. Your journal shows the count.",
+   "say": "Careful with small samples. Your journal always shows how many trades are behind each number."
+  },
+  {
+   "type": "shot",
+   "img": "oneclick",
+   "title": "One click. Your AI reviews your week.",
+   "ring": "btn_claude",
+   "chips": [
+    {
+     "text": "Claude",
+     "color": "mint"
+    },
+    {
+     "text": "ChatGPT",
+     "color": "blue"
+    },
+    {
+     "text": "Gemini",
+     "color": "gold"
+    }
+   ],
+   "say": "Then one click, and your own AI reviews your week."
+  },
+  {
+   "type": "cta",
+   "title": "Trading Journal AI",
+   "sub": "Desktop app · Windows & Mac",
+   "text": "A calm, honest record of every trade.",
+   "button": "Link in bio",
+   "say": "Trading Journal AI. Link in bio."
+  }
+ ],
+ "post": {
+  "instagram": "Split your results by weekday, and always check the sample size. In this example journal, Thursdays lost money over 17 trades.\n\nTrading Journal AI: desktop app for Windows & Mac, with a one-click AI review. Link in bio.\n\n#daytrader #tradingtips #tradingjournal #daytrading #trading #tradingpsychology #futurestrading",
+  "tiktok": "Split your results by weekday, and always check the sample size. In this example journal, Thursdays lost money over 17 trades. #daytrader #tradingtips #tradingjournal #daytrading #trading",
+  "youtube": {
+   "title": "Is there a day you should not trade? #shorts",
+   "description": "Split your results by weekday, and always check the sample size. In this example journal, Thursdays lost money over 17 trades.\n\nTrading Journal AI (Windows & Mac): https://kallas8.gumroad.com/l/axltbh\n\nExample journal with demo data. Not financial advice.\n\n#daytrader #tradingtips #tradingjournal #daytrading #trading #tradingpsychology #futurestrading #shorts"
+  },
+  "facebook": "Split your results by weekday, and always check the sample size. In this example journal, Thursdays lost money over 17 trades.\n\nTrading Journal AI: https://kallas8.gumroad.com/l/axltbh",
+  "pinterest": {
+   "title": "Best day of the week to trade? Check your data",
+   "description": "Split your results by weekday, and always check the sample size. In this example journal, Thursdays lost money over 17 trades. Trading journal app for Windows & Mac with AI weekly review.",
+   "link": "https://kallas8.gumroad.com/l/axltbh"
+  }
+ },
+ "voice": "andrew_up"
+}
