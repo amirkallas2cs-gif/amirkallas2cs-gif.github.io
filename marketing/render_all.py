@@ -25,19 +25,21 @@ def one(spec, media):
         return vid, "cached", None
     r1 = subprocess.run([sys.executable, str(ROOT / "video" / "render.py"), str(spec), str(media), "--shots", str(ROOT / "shots")], capture_output=True, text=True)
     r2 = subprocess.run([sys.executable, str(ROOT / "video" / "pin.py"), str(spec), str(media), "--shots", str(ROOT / "shots")], capture_output=True, text=True)
-    if r1.returncode or r2.returncode:
+    if r1.returncode or r2.returncode:  # never publish a video that failed its checks; it's retried next run
+        for f in media.glob(f"{vid}*"):
+            f.unlink()
         return vid, "failed", (r1.stdout + r1.stderr + r2.stdout + r2.stderr)[-1500:]
     stamp.write_text(want)
     return vid, "rendered", None
 
 
 def main():
-    ap = argparse.ArgumentParser(); ap.add_argument("media"); ap.add_argument("--jobs", type=int, default=3)
+    ap = argparse.ArgumentParser(); ap.add_argument("media"); ap.add_argument("--jobs", type=int, default=2)
     a = ap.parse_args()
     media = pathlib.Path(a.media); media.mkdir(parents=True, exist_ok=True)
     keep = {s.stem for s in SPECS}
     for f in media.iterdir():  # drop media of videos that no longer exist
-        if f.is_file() and not any(f.name.startswith(k) for k in keep):
+        if f.is_file() and not any(f.name.startswith(k) for k in keep) and f.name != "failed.json":
             f.unlink()
     with ThreadPoolExecutor(a.jobs) as ex:
         results = list(ex.map(lambda s: one(s, media), SPECS))
@@ -47,7 +49,8 @@ def main():
         if err:
             print(err)
     (media / "index.json").write_text(json.dumps({v: json.loads((media / f"{v}.json").read_text()) for v, s, _ in results if s != "failed"}, indent=1))
-    sys.exit(1 if failed else 0)
+    (media / "failed.json").write_text(json.dumps([{"id": v, "error": e} for v, _, e in failed], indent=1))
+    print(f"{len(failed)} failed: they'll be retried on the next run")
 
 
 if __name__ == "__main__":

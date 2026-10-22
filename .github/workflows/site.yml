@@ -43,11 +43,11 @@ jobs:
           [ -f kokoro-v1.0.onnx ] || curl -sSfL -o kokoro-v1.0.onnx $base/kokoro-v1.0.onnx
           [ -f voices-v1.0.bin ] || curl -sSfL -o voices-v1.0.bin $base/voices-v1.0.bin
       - name: Videos and pins
-        run: python marketing/render_all.py build/media --jobs 3
+        run: python marketing/render_all.py build/media --jobs 2
       - name: Site
         run: |
           python site/build.py build/site
-          mkdir -p build/site/media && cp build/media/*.mp4 build/media/*.jpg build/media/index.json build/site/media/
+          mkdir -p build/site/media && cp build/media/*.mp4 build/media/*.jpg build/media/index.json build/media/failed.json build/site/media/ 2>/dev/null || true
           python site/tests/site_test.py build/site
       - uses: actions/upload-pages-artifact@v3
         with: { path: build/site }

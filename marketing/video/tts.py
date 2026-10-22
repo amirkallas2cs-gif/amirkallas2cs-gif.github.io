@@ -2,7 +2,7 @@
 Each voice has a preferred engine and a fallback: Microsoft Edge neural voices (online) or
 Kokoro (open model, runs offline); silence only for local previews without any voice.
 Voices can be tuned: rate (+% faster) and pitch (Hz) for Edge, speed for Kokoro."""
-import asyncio, os, pathlib, subprocess, wave
+import asyncio, os, pathlib, subprocess, time, wave
 
 KOKORO_DIR = pathlib.Path(os.environ.get("KOKORO_DIR", pathlib.Path.home() / ".cache" / "kokoro"))
 VOICES = {
@@ -59,9 +59,15 @@ def speak(text, dst, voice="andrew_up", speed=None, engine=None):
         try:
             if e == "kokoro":
                 _kokoro(text, v["kokoro"], dst, speed or v.get("speed", 1.0))
-            elif e == "edge":
+            elif e == "edge":  # online service: retry before giving up, so a video keeps one voice
                 rate = round((speed - 1) * 100) if speed else v.get("rate", 0)
-                _edge(text, v["edge"], dst, rate, v.get("pitch", 0))
+                for attempt in range(5):
+                    try:
+                        _edge(text, v["edge"], dst, rate, v.get("pitch", 0)); break
+                    except Exception:
+                        if attempt == 4:
+                            raise
+                        time.sleep(3 * 2 ** attempt)
             elif e == "silence":
                 _silence(text, dst)
             return e
