@@ -16,10 +16,7 @@
  },
  "facebook": {
   "name": "Calm Edge",
-  "fan_count": 0,
-  "permissions": {
-   "error": "(#100) Tried accessing nonexisting field (permissions)"
-  }
+  "fan_count": 0
  },
  "youtube": {
   "configured": true
