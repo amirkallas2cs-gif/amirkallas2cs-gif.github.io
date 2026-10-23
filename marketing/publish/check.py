@@ -24,8 +24,6 @@ else:
 if page and ptok:
     r = get(f"{GRAPH}/{page}?fields=name,fan_count&access_token={ptok}")
     out["facebook"] = {k: r.get(k) for k in ("name", "fan_count", "error") if r.get(k) is not None}
-    dbg = get(f"{GRAPH}/me/permissions?access_token={ptok}")
-    out["facebook"]["permissions"] = [p["permission"] for p in dbg.get("data", []) if p.get("status") == "granted"] or dbg
 else:
     out["facebook"] = {"error": "FB_PAGE_ID / META_PAGE_TOKEN not set"}
 for k, names in (("youtube", ("YT_CLIENT_ID", "YT_CLIENT_SECRET", "YT_REFRESH_TOKEN")), ("pinterest", ("PINTEREST_TOKEN", "PINTEREST_BOARD_ID"))):
