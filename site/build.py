@@ -121,6 +121,9 @@ def build(out):
     page(out, "/privacy/", "Privacy policy | Calm Edge", "How Calm Edge handles data on this site, in Trading Journal AI and in its social media publishing tool.",
          (ROOT / "pages" / "privacy.html").read_text(encoding="utf-8"))
 
+    page(out, "/terms/", "Terms of use | Calm Edge", "Terms of use for the Calm Edge site, free tools, videos and Trading Journal AI.",
+         (ROOT / "pages" / "terms.html").read_text(encoding="utf-8"))
+
     # 404, robots, sitemap
     page(out, "/404/", "Page not found | Calm Edge", "Page not found.", '<div class="read" style="padding-top:60px"><h1>Page not found</h1><p><a href="/">Back to the home page</a></p></div>')
     shutil.move(out / "404" / "index.html", out / "404.html"); (out / "404").rmdir(); PAGES.remove("/404/")
