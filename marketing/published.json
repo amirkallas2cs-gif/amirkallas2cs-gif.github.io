@@ -1,1 +1,14 @@
-[]
+[
+ {
+  "id": "v001_rule_breaks",
+  "channel": "instagram",
+  "time": "2026-10-23T12:23+02:00",
+  "url": "https://www.instagram.com/reel/De1VeMqAThr/"
+ },
+ {
+  "id": "v001_rule_breaks",
+  "channel": "facebook",
+  "time": "2026-10-23T12:23+02:00",
+  "url": "https://www.facebook.com/1470032662849525/videos/1613183970484148"
+ }
+]
