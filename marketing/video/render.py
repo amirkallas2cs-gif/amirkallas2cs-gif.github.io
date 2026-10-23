@@ -111,7 +111,8 @@ def main():
     shutil.rmtree(work, ignore_errors=True)
     if len(engines - {"silence"}) > 1:
         problems.add("mixed voices: " + ", ".join(sorted(engines)))
-    meta = {"id": vid, "seconds": round(total, 2), "voice": voice, "engines": sorted(engines), "problems": sorted(problems)}
+    import datetime
+    meta = {"id": vid, "rendered_at": datetime.datetime.utcnow().isoformat(timespec="seconds") + "Z", "seconds": round(total, 2), "voice": voice, "engines": sorted(engines), "problems": sorted(problems)}
     (out / f"{vid}.json").write_text(json.dumps(meta, indent=2))
     print(json.dumps(meta))
     if ff.returncode or problems:

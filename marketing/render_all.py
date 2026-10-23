@@ -48,7 +48,8 @@ def main():
         print(f"{vid}: {status}")
         if err:
             print(err)
-    (media / "index.json").write_text(json.dumps({v: json.loads((media / f"{v}.json").read_text()) for v, s, _ in results if s != "failed"}, indent=1))
+    index = {v: {**json.loads((media / f"{v}.json").read_text()), "status": s} for v, s, _ in results if s != "failed"}
+    (media / "index.json").write_text(json.dumps(index, indent=1))
     (media / "failed.json").write_text(json.dumps([{"id": v, "error": e} for v, _, e in failed], indent=1))
     print(f"{len(failed)} failed: they'll be retried on the next run")
 
