@@ -1,0 +1,30 @@
+{
+ "checked_at": "2026-10-23T10:23Z",
+ "instagram": {
+  "username": "calmedgeofficial",
+  "name": "Amir Kallas",
+  "followers_count": 0,
+  "publishing_limit": [
+   {
+    "quota_usage": 0,
+    "config": {
+     "quota_total": 100,
+     "quota_duration": 86400
+    }
+   }
+  ]
+ },
+ "facebook": {
+  "name": "Calm Edge",
+  "fan_count": 0,
+  "permissions": {
+   "error": "(#100) Tried accessing nonexisting field (permissions)"
+  }
+ },
+ "youtube": {
+  "configured": false
+ },
+ "pinterest": {
+  "configured": false
+ }
+}
