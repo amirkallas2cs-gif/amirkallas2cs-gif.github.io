@@ -117,6 +117,10 @@ def build(out):
     page(out, "/", "Calm Edge: honest trading journal and free trading calculators", "Calm, honest tools for traders: Trading Journal AI for Windows & Mac, free position size and R multiple calculators, and plain-English guides.",
          fill(home), "", [{"@context": "https://schema.org", "@type": "Organization", "name": "Calm Edge", "url": SITE, "logo": f"{SITE}/static/img/logo.png"}])
 
+    # privacy (also used by the social media publishing app)
+    page(out, "/privacy/", "Privacy policy | Calm Edge", "How Calm Edge handles data on this site, in Trading Journal AI and in its social media publishing tool.",
+         (ROOT / "pages" / "privacy.html").read_text(encoding="utf-8"))
+
     # 404, robots, sitemap
     page(out, "/404/", "Page not found | Calm Edge", "Page not found.", '<div class="read" style="padding-top:60px"><h1>Page not found</h1><p><a href="/">Back to the home page</a></p></div>')
     shutil.move(out / "404" / "index.html", out / "404.html"); (out / "404").rmdir(); PAGES.remove("/404/")
