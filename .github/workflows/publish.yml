@@ -5,6 +5,10 @@ name: Publish to social media
 on:
   schedule:
     - cron: "*/30 * * * *"
+    - cron: "7 6 * * *"
+  push:
+    branches: [main]
+    paths: ["marketing/schedule.json", "marketing/publish/**", ".github/workflows/publish.yml"]
   workflow_dispatch:
 
 permissions: { contents: write }
@@ -16,6 +20,19 @@ jobs:
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
+      - name: Check accounts (no posting)
+        if: github.event_name != 'schedule' || github.event.schedule == '7 6 * * *'
+        env:
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          META_TOKEN: ${{ secrets.META_TOKEN }}
+          FB_PAGE_ID: ${{ secrets.FB_PAGE_ID }}
+          META_PAGE_TOKEN: ${{ secrets.META_PAGE_TOKEN }}
+          YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+          YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+          YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+          PINTEREST_TOKEN: ${{ secrets.PINTEREST_TOKEN }}
+          PINTEREST_BOARD_ID: ${{ secrets.PINTEREST_BOARD_ID }}
+        run: python3 marketing/publish/check.py
       - name: Anything due?
         id: due
         run: |
@@ -54,7 +71,7 @@ jobs:
           python3 marketing/publish/publish.py --schedule marketing/schedule.json --log marketing/published.json \
             --media-base https://amirkallas2cs-gif.github.io/media --media-dir media || echo "some channels failed (see log)"
       - name: Save the log
-        if: steps.due.outputs.any == 'yes'
+        if: always()
         run: |
-          git add marketing/published.json 2>/dev/null || true
-          git diff --cached --quiet || (git -c user.name="Calm Edge bot" -c user.email="bot@users.noreply.github.com" commit -qm "Published $(date -u +%F)" && git push)
+          git add marketing/published.json marketing/status.json 2>/dev/null || true
+          git diff --cached --quiet || (git -c user.name="Calm Edge bot" -c user.email="bot@users.noreply.github.com" commit -qm "Published $(date -u +%F)" && git pull -q --rebase && git push)
