@@ -38,7 +38,7 @@ def page(out, path, title, description, body, section="", jsonld=(), og_image=No
     target.parent.mkdir(parents=True, exist_ok=True)
     target.write_text(BASE.render(title=html.escape(title), description=html.escape(description), body=body, site=SITE, path=path,
                                   section=section, jsonld=list(jsonld), og_image=og_image, og_type=og_type, version=VERSION,
-                                  product_url=CFG["product_url"], freebie_url=CFG["freebie_url"], year=datetime.date.today().year), encoding="utf-8")
+                                  product_url=CFG["product_url"], freebie_url=CFG["freebie_url"], pinterest_verify=CFG.get("pinterest_verify", ""), year=datetime.date.today().year), encoding="utf-8")
     PAGES.append(path)
 
 
@@ -52,6 +52,34 @@ def faq_block(faq):
 
 
 PAGES = []
+
+
+def pins_feed(out):
+    from email.utils import format_datetime
+    from zoneinfo import ZoneInfo
+    mk = ROOT.parent / "marketing"
+    sched_p = mk / "schedule.json"
+    if not sched_p.exists():
+        return
+    tz = ZoneInfo("Europe/Rome")
+    now = datetime.datetime.now(tz)
+    items = []
+    for it in json.loads(sched_p.read_text()):
+        when = datetime.datetime.fromisoformat(f"{it['date']}T{it.get('time', '17:30')}").replace(tzinfo=tz)
+        spec_p = mk / "content" / "videos" / f"{it['id']}.json"
+        if when > now or not spec_p.exists():
+            continue
+        p = json.loads(spec_p.read_text())["post"]["pinterest"]
+        img = f"{SITE}/media/{it['id']}_pin.jpg"
+        link = p["link"] + ("&" if "?" in p["link"] else "?") + "utm_source=pinterest"
+        items.append((when, f"<item><title>{html.escape(p['title'])}</title><link>{html.escape(link)}</link>"
+                            f"<description>{html.escape(p['description'])}</description><guid isPermaLink=\"false\">{it['id']}</guid>"
+                            f"<pubDate>{format_datetime(when)}</pubDate><enclosure url=\"{img}\" type=\"image/jpeg\" length=\"0\"/>"
+                            f"<media:content url=\"{img}\" medium=\"image\" type=\"image/jpeg\"/></item>"))
+    items.sort(reverse=True)
+    (out / "pins.xml").write_text('<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:media="http://search.yahoo.com/mrss/"><channel>'
+                                  f'<title>Calm Edge</title><link>{SITE}/</link><description>Calm, honest tools for traders.</description>'
+                                  + "".join(x for _, x in items) + "</channel></rss>", encoding="utf-8")
 
 
 def build(out):
@@ -123,6 +151,9 @@ def build(out):
 
     page(out, "/terms/", "Terms of use | Calm Edge", "Terms of use for the Calm Edge site, free tools, videos and Trading Journal AI.",
          (ROOT / "pages" / "terms.html").read_text(encoding="utf-8"))
+
+    # Pinterest RSS feed: one pin per video whose scheduled time has passed (Pinterest auto-publishes from it)
+    pins_feed(out)
 
     # 404, robots, sitemap
     page(out, "/404/", "Page not found | Calm Edge", "Page not found.", '<div class="read" style="padding-top:60px"><h1>Page not found</h1><p><a href="/">Back to the home page</a></p></div>')
