@@ -1,0 +1,31 @@
+name: Find posts to comment on
+
+# Every morning, before the 08:03 routine: the most relevant fresh posts by other creators
+# (YouTube, Instagram hashtags, Reddit) go to marketing/engage/targets.json.
+on:
+  schedule:
+    - cron: "17 5 * * *"
+  push:
+    branches: [main]
+    paths: ["marketing/engage/**", ".github/workflows/engage.yml"]
+  workflow_dispatch:
+
+permissions: { contents: write }
+concurrency: { group: engage, cancel-in-progress: true }
+
+jobs:
+  find:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Find targets
+        env:
+          YT_API_KEY: ${{ secrets.YT_API_KEY }}
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          META_TOKEN: ${{ secrets.META_TOKEN }}
+        run: python3 marketing/engage/find_targets.py
+      - name: Save
+        run: |
+          git add marketing/engage/targets.json
+          git diff --cached --quiet || (git -c user.name="Calm Edge bot" -c user.email="bot@users.noreply.github.com" commit -qm "Targets to comment on $(date -u +%F)" && git pull -q --rebase && git push)
