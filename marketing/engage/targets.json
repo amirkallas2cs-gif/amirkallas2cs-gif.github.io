@@ -1,0 +1,9 @@
+{
+ "generated_at": "2026-10-24T10:29+00:00",
+ "targets": [],
+ "notes": {
+  "youtube": "YT_API_KEY not set",
+  "instagram": "tradingjournal: HTTP Error 400: Bad Request; tradingpsychology: HTTP Error 400: Bad Request; daytrader: HTTP Error 400: Bad Request; futurestrading: HTTP Error 400: Bad Request; riskmanagement: HTTP Error 400: Bad Request",
+  "reddit": "Daytrading: HTTP Error 403: Blocked; FuturesTrading: HTTP Error 403: Blocked; algotrading: HTTP Error 403: Blocked; Trading: HTTP Error 403: Blocked"
+ }
+}
