@@ -54,6 +54,16 @@ def faq_block(faq):
 PAGES = []
 
 
+PIN_PAGES = {
+    "v004_profit_factor": "/learn/profit-factor-explained/",
+    "v005_r_multiple": "/learn/r-multiple-explained/",
+    "v007_drawdown": "/learn/max-drawdown-explained/",
+    "v008_ai_review": "/learn/ai-trading-journal-review/",
+    "v010_position_size": "/tools/position-size-calculator/",
+    "v014_habit": "/learn/how-to-keep-a-trading-journal/",
+}
+
+
 def pins_feed(out):
     from email.utils import format_datetime
     from zoneinfo import ZoneInfo
@@ -69,9 +79,12 @@ def pins_feed(out):
         spec_p = mk / "content" / "videos" / f"{it['id']}.json"
         if when > now or not spec_p.exists():
             continue
-        p = json.loads(spec_p.read_text())["post"]["pinterest"]
+        spec = json.loads(spec_p.read_text())
+        p = spec["post"]["pinterest"]
         img = f"{SITE}/media/{it['id']}_pin.jpg"
-        link = p["link"] + ("&" if "?" in p["link"] else "?") + "utm_source=pinterest"
+        # Pinterest only accepts links on the claimed domain: send each pin to the most relevant page of the site
+        page_path = spec.get("site_path") or PIN_PAGES.get(it["id"], "/trading-journal-ai/")
+        link = f"{SITE}{page_path}?utm_source=pinterest&utm_content={it['id']}"
         items.append((when, f"<item><title>{html.escape(p['title'])}</title><link>{html.escape(link)}</link>"
                             f"<description>{html.escape(p['description'])}</description><guid isPermaLink=\"false\">{it['id']}</guid>"
                             f"<pubDate>{format_datetime(when)}</pubDate><enclosure url=\"{img}\" type=\"image/jpeg\" length=\"0\"/>"
