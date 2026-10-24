@@ -41,6 +41,8 @@ def youtube():
     out, seen = [], set()
     for v in get(f"https://www.googleapis.com/youtube/v3/videos?{p}").get("items", []):
         s, st = v["snippet"], v.get("statistics", {})
+        if s.get("liveBroadcastContent", "none") != "none" or re.search(r"\blive\b|stream", s["title"], re.I):
+            continue  # live streams: comments get lost in the chat
         if "commentCount" not in st or s["channelId"] in seen or s.get("defaultAudioLanguage", "en")[:2] not in ("en", ""):
             continue
         seen.add(s["channelId"])
