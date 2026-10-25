@@ -100,6 +100,8 @@ def build(out):
         shutil.rmtree(out)
     out.mkdir(parents=True)
     shutil.copytree(ROOT / "static", out / "static")
+    # Public rule cards for the Prop Firm Manager app (it checks this file for updates; nothing is sent).
+    shutil.copytree(ROOT / "prop", out / "prop")
     articles = sorted((front(p) for p in (ROOT / "articles").glob("*.md")), key=lambda a: a["date"], reverse=True)
     tools = sorted((front(p) for p in (ROOT / "tools").glob("*.html")), key=lambda t: t.get("order", 9))
 

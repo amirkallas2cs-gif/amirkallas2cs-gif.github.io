@@ -1,0 +1,4366 @@
+{
+ "version": "2026-10",
+ "verified": "2026-10-25",
+ "summary": "",
+ "changes": [],
+ "cards": [
+  {
+   "minDays": null,
+   "levels": [
+    {
+     "from": 0,
+     "contracts": 5,
+     "dll": 1000
+    }
+   ],
+   "dllEffect": "pause",
+   "consistency": {
+    "pct": 0.55,
+    "base": "total",
+    "mode": "raiseTarget",
+    "strict": false
+   },
+   "payout": null,
+   "expiryDays": null,
+   "inactivity": null,
+   "billing": "monthly",
+   "notes": [
+    "The Maximum Loss Limit trails your end-of-day balance but is checked in real time, open P&L included.",
+    "The daily loss limit (1,000) is optional at checkout: set it to empty if you didn't add it.",
+    "If your best day is more than 55% of the target, the target rises to best day ÷ 0.55. It is not a rule break.",
+    "Positions must be closed by 3:10 PM CT."
+   ],
+   "verified": "2026-10-25",
+   "id": "topstep-combine-50K",
+   "firm": "Topstep",
+   "plan": "Trading Combine",
+   "size": 50000,
+   "phase": "evaluation",
+   "startBalance": 50000,
+   "target": 3000,
+   "drawdown": {
+    "type": "eod",
+    "amount": 2000,
+    "lock": "start",
+    "afterPayout": "none"
+   },
+   "sources": [
+    "https://help.topstep.com/en/articles/8284197-trading-combine-parameters",
+    "https://help.topstep.com/en/articles/8284204-what-is-the-maximum-loss-limit",
+    "https://help.topstep.com/en/articles/8284208-consistency-at-topstep",
+    "https://www.topstep.com/topstep-prop"
+   ]
+  },
+  {
+   "minDays": null,
+   "levels": [
+    {
+     "from": 0,
+     "contracts": 2,
+     "dll": null
+    },
+    {
+     "from": 1500,
+     "contracts": 3,
+     "dll": null
+    },
+    {
+     "from": 2000,
+     "contracts": 5,
+     "dll": null
+    }
+   ],
+   "dllEffect": "pause",
+   "consistency": null,
+   "payout": {
+    "qualDays": 5,
+    "qualMin": 150,
+    "cycleMinNet": 0.01,
+    "minRequest": 125,
+    "caps": [
+     2000
+    ],
+    "capPctProfit": 0.5,
+    "split": 0.9
+   },
+   "expiryDays": null,
+   "inactivity": {
+    "days": 30,
+    "text": "An XFA with no trades for more than 30 days may be closed."
+   },
+   "billing": "one-time",
+   "notes": [
+    "The balance starts at $0. The loss limit locks at $0, and after your first payout it moves to $0 for good.",
+    "Contract limits follow the Scaling Plan on your balance and change from the next session.",
+    "The payout path is chosen when you activate the XFA and can't be changed."
+   ],
+   "verified": "2026-10-25",
+   "id": "topstep-xfa-standard-50K",
+   "firm": "Topstep",
+   "plan": "Express Funded (Standard)",
+   "size": 50000,
+   "phase": "funded",
+   "startBalance": 0,
+   "drawdown": {
+    "type": "eod",
+    "amount": 2000,
+    "lock": "start",
+    "afterPayout": "start"
+   },
+   "sources": [
+    "https://help.topstep.com/en/articles/8284215-express-funded-account-parameters",
+    "https://help.topstep.com/en/articles/8284204-what-is-the-maximum-loss-limit",
+    "https://help.topstep.com/en/articles/8284233-topstep-payout-policy",
+    "https://help.topstep.com/en/articles/8284223-what-is-the-scaling-plan"
+   ]
+  },
+  {
+   "minDays": null,
+   "levels": [
+    {
+     "from": 0,
+     "contracts": 2,
+     "dll": null
+    },
+    {
+     "from": 1500,
+     "contracts": 3,
+     "dll": null
+    },
+    {
+     "from": 2000,
+     "contracts": 5,
+     "dll": null
+    }
+   ],
+   "dllEffect": "pause",
+   "consistency": {
+    "pct": 0.4,
+    "base": "cycle",
+    "mode": "blockPayout",
+    "strict": false
+   },
+   "payout": {
+    "qualDays": 3,
+    "qualMin": null,
+    "cycleMinNet": 0.01,
+    "minRequest": 125,
+    "caps": [
+     3000
+    ],
+    "capPctProfit": 0.5,
+    "split": 0.9
+   },
+   "expiryDays": null,
+   "inactivity": {
+    "days": 30,
+    "text": "An XFA with no trades for more than 30 days may be closed."
+   },
+   "billing": "one-time",
+   "notes": [
+    "The balance starts at $0. The loss limit locks at $0, and after your first payout it moves to $0 for good.",
+    "Contract limits follow the Scaling Plan on your balance and change from the next session.",
+    "The payout path is chosen when you activate the XFA and can't be changed."
+   ],
+   "verified": "2026-10-25",
+   "id": "topstep-xfa-consistency-50K",
+   "firm": "Topstep",
+   "plan": "Express Funded (Consistency)",
+   "size": 50000,
+   "phase": "funded",
+   "startBalance": 0,
+   "drawdown": {
+    "type": "eod",
+    "amount": 2000,
+    "lock": "start",
+    "afterPayout": "start"
+   },
+   "sources": [
+    "https://help.topstep.com/en/articles/8284215-express-funded-account-parameters",
+    "https://help.topstep.com/en/articles/8284204-what-is-the-maximum-loss-limit",
+    "https://help.topstep.com/en/articles/8284233-topstep-payout-policy",
+    "https://help.topstep.com/en/articles/8284223-what-is-the-scaling-plan"
+   ]
+  },
+  {
+   "minDays": null,
+   "levels": [
+    {
+     "from": 0,
+     "contracts": 10,
+     "dll": 2000
+    }
+   ],
+   "dllEffect": "pause",
+   "consistency": {
+    "pct": 0.55,
+    "base": "total",
+    "mode": "raiseTarget",
+    "strict": false
+   },
+   "payout": null,
+   "expiryDays": null,
+   "inactivity": null,
+   "billing": "monthly",
+   "notes": [
+    "The Maximum Loss Limit trails your end-of-day balance but is checked in real time, open P&L included.",
+    "The daily loss limit (2,000) is optional at checkout: set it to empty if you didn't add it.",
+    "If your best day is more than 55% of the target, the target rises to best day ÷ 0.55. It is not a rule break.",
+    "Positions must be closed by 3:10 PM CT."
+   ],
+   "verified": "2026-10-25",
+   "id": "topstep-combine-100K",
+   "firm": "Topstep",
+   "plan": "Trading Combine",
+   "size": 100000,
+   "phase": "evaluation",
+   "startBalance": 100000,
+   "target": 6000,
+   "drawdown": {
+    "type": "eod",
+    "amount": 3000,
+    "lock": "start",
+    "afterPayout": "none"
+   },
+   "sources": [
+    "https://help.topstep.com/en/articles/8284197-trading-combine-parameters",
+    "https://help.topstep.com/en/articles/8284204-what-is-the-maximum-loss-limit",
+    "https://help.topstep.com/en/articles/8284208-consistency-at-topstep",
+    "https://www.topstep.com/topstep-prop"
+   ]
+  },
+  {
+   "minDays": null,
+   "levels": [
+    {
+     "from": 0,
+     "contracts": 3,
+     "dll": null
+    },
+    {
+     "from": 1500,
+     "contracts": 4,
+     "dll": null
+    },
+    {
+     "from": 2000,
+     "contracts": 5,
+     "dll": null
+    },
+    {
+     "from": 3000,
+     "contracts": 10,
+     "dll": null
+    }
+   ],
+   "dllEffect": "pause",
+   "consistency": null,
+   "payout": {
+    "qualDays": 5,
+    "qualMin": 150,
+    "cycleMinNet": 0.01,
+    "minRequest": 125,
+    "caps": [
+     3000
+    ],
+    "capPctProfit": 0.5,
+    "split": 0.9
+   },
+   "expiryDays": null,
+   "inactivity": {
+    "days": 30,
+    "text": "An XFA with no trades for more than 30 days may be closed."
+   },
+   "billing": "one-time",
+   "notes": [
+    "The balance starts at $0. The loss limit locks at $0, and after your first payout it moves to $0 for good.",
+    "Contract limits follow the Scaling Plan on your balance and change from the next session.",
+    "The payout path is chosen when you activate the XFA and can't be changed."
+   ],
+   "verified": "2026-10-25",
+   "id": "topstep-xfa-standard-100K",
+   "firm": "Topstep",
+   "plan": "Express Funded (Standard)",
+   "size": 100000,
+   "phase": "funded",
+   "startBalance": 0,
+   "drawdown": {
+    "type": "eod",
+    "amount": 3000,
+    "lock": "start",
+    "afterPayout": "start"
+   },
+   "sources": [
+    "https://help.topstep.com/en/articles/8284215-express-funded-account-parameters",
+    "https://help.topstep.com/en/articles/8284204-what-is-the-maximum-loss-limit",
+    "https://help.topstep.com/en/articles/8284233-topstep-payout-policy",
+    "https://help.topstep.com/en/articles/8284223-what-is-the-scaling-plan"
+   ]
+  },
+  {
+   "minDays": null,
+   "levels": [
+    {
+     "from": 0,
+     "contracts": 3,
+     "dll": null
+    },
+    {
+     "from": 1500,
+     "contracts": 4,
+     "dll": null
+    },
+    {
+     "from": 2000,
+     "contracts": 5,
+     "dll": null
+    },
+    {
+     "from": 3000,
+     "contracts": 10,
+     "dll": null
+    }
+   ],
+   "dllEffect": "pause",
+   "consistency": {
+    "pct": 0.4,
+    "base": "cycle",
+    "mode": "blockPayout",
+    "strict": false
+   },
+   "payout": {
+    "qualDays": 3,
+    "qualMin": null,
+    "cycleMinNet": 0.01,
+    "minRequest": 125,
+    "caps": [
+     4000
+    ],
+    "capPctProfit": 0.5,
+    "split": 0.9
+   },
+   "expiryDays": null,
+   "inactivity": {
+    "days": 30,
+    "text": "An XFA with no trades for more than 30 days may be closed."
+   },
+   "billing": "one-time",
+   "notes": [
+    "The balance starts at $0. The loss limit locks at $0, and after your first payout it moves to $0 for good.",
+    "Contract limits follow the Scaling Plan on your balance and change from the next session.",
+    "The payout path is chosen when you activate the XFA and can't be changed."
+   ],
+   "verified": "2026-10-25",
+   "id": "topstep-xfa-consistency-100K",
+   "firm": "Topstep",
+   "plan": "Express Funded (Consistency)",
+   "size": 100000,
+   "phase": "funded",
+   "startBalance": 0,
+   "drawdown": {
+    "type": "eod",
+    "amount": 3000,
+    "lock": "start",
+    "afterPayout": "start"
+   },
+   "sources": [
+    "https://help.topstep.com/en/articles/8284215-express-funded-account-parameters",
+    "https://help.topstep.com/en/articles/8284204-what-is-the-maximum-loss-limit",
+    "https://help.topstep.com/en/articles/8284233-topstep-payout-policy",
+    "https://help.topstep.com/en/articles/8284223-what-is-the-scaling-plan"
+   ]
+  },
+  {
+   "minDays": null,
+   "levels": [
+    {
+     "from": 0,
+     "contracts": 15,
+     "dll": 3000
+    }
+   ],
+   "dllEffect": "pause",
+   "consistency": {
+    "pct": 0.55,
+    "base": "total",
+    "mode": "raiseTarget",
+    "strict": false
+   },
+   "payout": null,
+   "expiryDays": null,
+   "inactivity": null,
+   "billing": "monthly",
+   "notes": [
+    "The Maximum Loss Limit trails your end-of-day balance but is checked in real time, open P&L included.",
+    "The daily loss limit (3,000) is optional at checkout: set it to empty if you didn't add it.",
+    "If your best day is more than 55% of the target, the target rises to best day ÷ 0.55. It is not a rule break.",
+    "Positions must be closed by 3:10 PM CT."
+   ],
+   "verified": "2026-10-25",
+   "id": "topstep-combine-150K",
+   "firm": "Topstep",
+   "plan": "Trading Combine",
+   "size": 150000,
+   "phase": "evaluation",
+   "startBalance": 150000,
+   "target": 9000,
+   "drawdown": {
+    "type": "eod",
+    "amount": 4500,
+    "lock": "start",
+    "afterPayout": "none"
+   },
+   "sources": [
+    "https://help.topstep.com/en/articles/8284197-trading-combine-parameters",
+    "https://help.topstep.com/en/articles/8284204-what-is-the-maximum-loss-limit",
+    "https://help.topstep.com/en/articles/8284208-consistency-at-topstep",
+    "https://www.topstep.com/topstep-prop"
+   ]
+  },
+  {
+   "minDays": null,
+   "levels": [
+    {
+     "from": 0,
+     "contracts": 3,
+     "dll": null
+    },
+    {
+     "from": 1500,
+     "contracts": 4,
+     "dll": null
+    },
+    {
+     "from": 2000,
+     "contracts": 5,
+     "dll": null
+    },
+    {
+     "from": 3000,
+     "contracts": 10,
+     "dll": null
+    },
+    {
+     "from": 4500,
+     "contracts": 15,
+     "dll": null
+    }
+   ],
+   "dllEffect": "pause",
+   "consistency": null,
+   "payout": {
+    "qualDays": 5,
+    "qualMin": 150,
+    "cycleMinNet": 0.01,
+    "minRequest": 125,
+    "caps": [
+     5000
+    ],
+    "capPctProfit": 0.5,
+    "split": 0.9
+   },
+   "expiryDays": null,
+   "inactivity": {
+    "days": 30,
+    "text": "An XFA with no trades for more than 30 days may be closed."
+   },
+   "billing": "one-time",
+   "notes": [
+    "The balance starts at $0. The loss limit locks at $0, and after your first payout it moves to $0 for good.",
+    "Contract limits follow the Scaling Plan on your balance and change from the next session.",
+    "The payout path is chosen when you activate the XFA and can't be changed."
+   ],
+   "verified": "2026-10-25",
+   "id": "topstep-xfa-standard-150K",
+   "firm": "Topstep",
+   "plan": "Express Funded (Standard)",
+   "size": 150000,
+   "phase": "funded",
+   "startBalance": 0,
+   "drawdown": {
+    "type": "eod",
+    "amount": 4500,
+    "lock": "start",
+    "afterPayout": "start"
+   },
+   "sources": [
+    "https://help.topstep.com/en/articles/8284215-express-funded-account-parameters",
+    "https://help.topstep.com/en/articles/8284204-what-is-the-maximum-loss-limit",
+    "https://help.topstep.com/en/articles/8284233-topstep-payout-policy",
+    "https://help.topstep.com/en/articles/8284223-what-is-the-scaling-plan"
+   ]
+  },
+  {
+   "minDays": null,
+   "levels": [
+    {
+     "from": 0,
+     "contracts": 3,
+     "dll": null
+    },
+    {
+     "from": 1500,
+     "contracts": 4,
+     "dll": null
+    },
+    {
+     "from": 2000,
+     "contracts": 5,
+     "dll": null
+    },
+    {
+     "from": 3000,
+     "contracts": 10,
+     "dll": null
+    },
+    {
+     "from": 4500,
+     "contracts": 15,
+     "dll": null
+    }
+   ],
+   "dllEffect": "pause",
+   "consistency": {
+    "pct": 0.4,
+    "base": "cycle",
+    "mode": "blockPayout",
+    "strict": false
+   },
+   "payout": {
+    "qualDays": 3,
+    "qualMin": null,
+    "cycleMinNet": 0.01,
+    "minRequest": 125,
+    "caps": [
+     6000
+    ],
+    "capPctProfit": 0.5,
+    "split": 0.9
+   },
+   "expiryDays": null,
+   "inactivity": {
+    "days": 30,
+    "text": "An XFA with no trades for more than 30 days may be closed."
+   },
+   "billing": "one-time",
+   "notes": [
+    "The balance starts at $0. The loss limit locks at $0, and after your first payout it moves to $0 for good.",
+    "Contract limits follow the Scaling Plan on your balance and change from the next session.",
+    "The payout path is chosen when you activate the XFA and can't be changed."
+   ],
+   "verified": "2026-10-25",
+   "id": "topstep-xfa-consistency-150K",
+   "firm": "Topstep",
+   "plan": "Express Funded (Consistency)",
+   "size": 150000,
+   "phase": "funded",
+   "startBalance": 0,
+   "drawdown": {
+    "type": "eod",
+    "amount": 4500,
+    "lock": "start",
+    "afterPayout": "start"
+   },
+   "sources": [
+    "https://help.topstep.com/en/articles/8284215-express-funded-account-parameters",
+    "https://help.topstep.com/en/articles/8284204-what-is-the-maximum-loss-limit",
+    "https://help.topstep.com/en/articles/8284233-topstep-payout-policy",
+    "https://help.topstep.com/en/articles/8284223-what-is-the-scaling-plan"
+   ]
+  },
+  {
+   "minDays": null,
+   "levels": [
+    {
+     "from": 0,
+     "contracts": 4,
+     "dll": 500
+    }
+   ],
+   "dllEffect": "pause",
+   "consistency": null,
+   "payout": null,
+   "expiryDays": 30,
+   "inactivity": null,
+   "billing": "one-time",
+   "notes": [
+    "The threshold is recalculated at 4:59:59 PM ET on your closing balance and enforced in real time the next session.",
+    "On Rithmic and Wealthcharts the threshold stops at the profit target balance.",
+    "No consistency rule and no minimum days in the evaluation. 30 calendar days of access."
+   ],
+   "verified": "2026-10-25",
+   "id": "apex-eod-eval-rithmic-25K",
+   "firm": "Apex",
+   "plan": "EOD Evaluation (Rithmic / Wealthcharts)",
+   "size": 25000,
+   "phase": "evaluation",
+   "startBalance": 25000,
+   "target": 1500,
+   "drawdown": {
+    "type": "eod",
+    "amount": 1000,
+    "lock": "target",
+    "afterPayout": "none"
+   },
+   "sources": [
+    "https://apextraderfunding.com/help-center/eod-trailing-drawdown-accounts/eod-evaluations/",
+    "https://apextraderfunding.com/help-center/eod-trailing-drawdown-accounts/eod-drawdown-explained/"
+   ]
+  },
+  {
+   "minDays": null,
+   "levels": [
+    {
+     "from": 0,
+     "contracts": 4,
+     "dll": 500
+    }
+   ],
+   "dllEffect": "pause",
+   "consistency": null,
+   "payout": null,
+   "expiryDays": 30,
+   "inactivity": null,
+   "billing": "one-time",
+   "notes": [
+    "The threshold is recalculated at 4:59:59 PM ET on your closing balance and enforced in real time the next session.",
+    "On Tradovate the evaluation drawdown never stops trailing.",
+    "No consistency rule and no minimum days in the evaluation. 30 calendar days of access."
+   ],
+   "verified": "2026-10-25",
+   "id": "apex-eod-eval-tradovate-25K",
+   "firm": "Apex",
+   "plan": "EOD Evaluation (Tradovate)",
+   "size": 25000,
+   "phase": "evaluation",
+   "startBalance": 25000,
+   "target": 1500,
+   "drawdown": {
+    "type": "eod",
+    "amount": 1000,
+    "lock": "none",
+    "afterPayout": "none"
+   },
+   "sources": [
+    "https://apextraderfunding.com/help-center/eod-trailing-drawdown-accounts/eod-evaluations/",
+    "https://apextraderfunding.com/help-center/eod-trailing-drawdown-accounts/eod-drawdown-explained/"
+   ]
+  },
+  {
+   "minDays": null,
+   "levels": [
+    {
+     "from": 0,
+     "contracts": 4,
+     "dll": null
+    }
+   ],
+   "dllEffect": "pause",
+   "consistency": null,
+   "payout": null,
+   "expiryDays": 30,
+   "inactivity": null,
+   "billing": "one-time",
+   "notes": [
+    "The threshold follows your highest balance during the session, open profit included.",
+    "On Rithmic and Wealthcharts the threshold stops at the profit target balance.",
+    "No consistency rule and no minimum days in the evaluation. 30 calendar days of access."
+   ],
+   "verified": "2026-10-25",
+   "id": "apex-intraday-eval-rithmic-25K",
+   "firm": "Apex",
+   "plan": "Intraday Evaluation (Rithmic / Wealthcharts)",
+   "size": 25000,
+   "phase": "evaluation",
+   "startBalance": 25000,
+   "target": 1500,
+   "drawdown": {
+    "type": "intraday",
+    "amount": 1000,
+    "lock": "target",
+    "afterPayout": "none"
+   },
+   "sources": [
+    "https://apextraderfunding.com/help-center/evaluation-accounts-ea/intraday-trailing-drawdown-evaluations/",
+    "https://apextraderfunding.com/help-center/intraday-trailing-drawdown-accounts/intraday-trailing-drawdown-explained/"
+   ]
+  },
+  {
+   "minDays": null,
+   "levels": [
+    {
+     "from": 0,
+     "contracts": 4,
+     "dll": null
+    }
+   ],
+   "dllEffect": "pause",
+   "consistency": null,
+   "payout": null,
+   "expiryDays": 30,
+   "inactivity": null,
+   "billing": "one-time",
+   "notes": [
+    "The threshold follows your highest balance during the session, open profit included.",
+    "On Tradovate the evaluation drawdown never stops trailing.",
+    "No consistency rule and no minimum days in the evaluation. 30 calendar days of access."
+   ],
+   "verified": "2026-10-25",
+   "id": "apex-intraday-eval-tradovate-25K",
+   "firm": "Apex",
+   "plan": "Intraday Evaluation (Tradovate)",
+   "size": 25000,
+   "phase": "evaluation",
+   "startBalance": 25000,
+   "target": 1500,
+   "drawdown": {
+    "type": "intraday",
+    "amount": 1000,
+    "lock": "none",
+    "afterPayout": "none"
+   },
+   "sources": [
+    "https://apextraderfunding.com/help-center/evaluation-accounts-ea/intraday-trailing-drawdown-evaluations/",
+    "https://apextraderfunding.com/help-center/intraday-trailing-drawdown-accounts/intraday-trailing-drawdown-explained/"
+   ]
+  },
+  {
+   "minDays": null,
+   "levels": [
+    {
+     "from": 0,
+     "contracts": 1,
+     "dll": 500
+    },
+    {
+     "from": 1000,
+     "contracts": 2,
+     "dll": 500
+    },
+    {
+     "from": 2000,
+     "contracts": 2,
+     "dll": 1250
+    }
+   ],
+   "dllEffect": "pause",
+   "consistency": {
+    "pct": 0.5,
+    "base": "cycle",
+    "mode": "blockPayout",
+    "strict": true
+   },
+   "payout": {
+    "qualDays": 5,
+    "qualMin": 100,
+    "bufferProfit": 1100,
+    "aboveBuffer": true,
+    "minRequest": 500,
+    "caps": [
+     1000,
+     1000,
+     1000,
+     1000,
+     1000,
+     1000
+    ],
+    "split": 1,
+    "maxPayouts": 6
+   },
+   "expiryDays": null,
+   "inactivity": {
+    "days": 30,
+    "text": "Apex closes inactive PAs: at least two $50+ profit days in every 30 calendar days (intraday PA rule; check your dashboard for EOD PAs)."
+   },
+   "billing": "one-time",
+   "notes": [
+    "The threshold stops at 25,100 (start + $100) once your peak reaches the safety net of 26,100.",
+    "Only profit above the safety net can be paid out. Contracts and daily loss limit change by level from the next session.",
+    "Hitting the daily loss limit pauses the session; it doesn't close the account.",
+    "Apex's page says a day must be below 50% of profit since the last payout; its example treats exactly 50% as met. This card uses the stricter reading.",
+    "After 6 payouts the PA closes."
+   ],
+   "verified": "2026-10-25",
+   "id": "apex-eod-pa-25K",
+   "firm": "Apex",
+   "plan": "EOD Performance Account",
+   "size": 25000,
+   "phase": "funded",
+   "startBalance": 25000,
+   "drawdown": {
+    "type": "eod",
+    "amount": 1000,
+    "lock": "start+100",
+    "afterPayout": "none"
+   },
+   "sources": [
+    "https://apextraderfunding.com/help-center/eod-trailing-drawdown-accounts/eod-performance-accounts-pa/",
+    "https://apextraderfunding.com/help-center/eod-trailing-drawdown-accounts/eod-payouts/",
+    "https://apextraderfunding.com/help-center/additional-helpful-items/scaling-levels-pa-explained/",
+    "https://apextraderfunding.com/help-center/additional-helpful-items/50-consistency-requirement/"
+   ]
+  },
+  {
+   "minDays": null,
+   "levels": [
+    {
+     "from": 0,
+     "contracts": 1,
+     "dll": null
+    },
+    {
+     "from": 1000,
+     "contracts": 2,
+     "dll": null
+    },
+    {
+     "from": 2000,
+     "contracts": 2,
+     "dll": null
+    }
+   ],
+   "dllEffect": "pause",
+   "consistency": {
+    "pct": 0.5,
+    "base": "cycle",
+    "mode": "blockPayout",
+    "strict": true
+   },
+   "payout": {
+    "qualDays": 5,
+    "qualMin": 100,
+    "bufferProfit": 1100,
+    "aboveBuffer": true,
+    "minRequest": 500,
+    "caps": [
+     1000,
+     1000,
+     1000,
+     1000,
+     1000,
+     1000
+    ],
+    "split": 1,
+    "maxPayouts": 6
+   },
+   "expiryDays": null,
+   "inactivity": {
+    "days": 30,
+    "text": "Apex closes inactive PAs: at least two $50+ profit days in every 30 calendar days (intraday PA rule; check your dashboard for EOD PAs)."
+   },
+   "billing": "one-time",
+   "notes": [
+    "The threshold stops at 25,100 (start + $100) once your peak reaches the safety net of 26,100.",
+    "Only profit above the safety net can be paid out. Contracts and daily loss limit change by level from the next session.",
+    "Apex doesn't list daily loss limit amounts for intraday PAs: add yours if your dashboard shows one.",
+    "Apex's page says a day must be below 50% of profit since the last payout; its example treats exactly 50% as met. This card uses the stricter reading.",
+    "After 6 payouts the PA closes."
+   ],
+   "verified": "2026-10-25",
+   "id": "apex-intraday-pa-25K",
+   "firm": "Apex",
+   "plan": "Intraday Performance Account",
+   "size": 25000,
+   "phase": "funded",
+   "startBalance": 25000,
+   "drawdown": {
+    "type": "intraday",
+    "amount": 1000,
+    "lock": "start+100",
+    "afterPayout": "none"
+   },
+   "sources": [
+    "https://apextraderfunding.com/help-center/intraday-trailing-drawdown-accounts/intraday-trailing-drawdown-performance-accounts-pa/",
+    "https://apextraderfunding.com/help-center/intraday-trailing-drawdown-accounts/intraday-trailing-drawdown-payouts/",
+    "https://apextraderfunding.com/help-center/additional-helpful-items/scaling-levels-pa-explained/",
+    "https://apextraderfunding.com/help-center/additional-helpful-items/50-consistency-requirement/"
+   ]
+  },
+  {
+   "minDays": null,
+   "levels": [
+    {
+     "from": 0,
+     "contracts": 6,
+     "dll": 1000
+    }
+   ],
+   "dllEffect": "pause",
+   "consistency": null,
+   "payout": null,
+   "expiryDays": 30,
+   "inactivity": null,
+   "billing": "one-time",
+   "notes": [
+    "The threshold is recalculated at 4:59:59 PM ET on your closing balance and enforced in real time the next session.",
+    "On Rithmic and Wealthcharts the threshold stops at the profit target balance.",
+    "No consistency rule and no minimum days in the evaluation. 30 calendar days of access."
+   ],
+   "verified": "2026-10-25",
+   "id": "apex-eod-eval-rithmic-50K",
+   "firm": "Apex",
+   "plan": "EOD Evaluation (Rithmic / Wealthcharts)",
+   "size": 50000,
+   "phase": "evaluation",
+   "startBalance": 50000,
+   "target": 3000,
+   "drawdown": {
+    "type": "eod",
+    "amount": 2000,
+    "lock": "target",
+    "afterPayout": "none"
+   },
+   "sources": [
+    "https://apextraderfunding.com/help-center/eod-trailing-drawdown-accounts/eod-evaluations/",
+    "https://apextraderfunding.com/help-center/eod-trailing-drawdown-accounts/eod-drawdown-explained/"
+   ]
+  },
+  {
+   "minDays": null,
+   "levels": [
+    {
+     "from": 0,
+     "contracts": 6,
+     "dll": 1000
+    }
+   ],
+   "dllEffect": "pause",
+   "consistency": null,
+   "payout": null,
+   "expiryDays": 30,
+   "inactivity": null,
+   "billing": "one-time",
+   "notes": [
+    "The threshold is recalculated at 4:59:59 PM ET on your closing balance and enforced in real time the next session.",
+    "On Tradovate the evaluation drawdown never stops trailing.",
+    "No consistency rule and no minimum days in the evaluation. 30 calendar days of access."
+   ],
+   "verified": "2026-10-25",
+   "id": "apex-eod-eval-tradovate-50K",
+   "firm": "Apex",
+   "plan": "EOD Evaluation (Tradovate)",
+   "size": 50000,
+   "phase": "evaluation",
+   "startBalance": 50000,
+   "target": 3000,
+   "drawdown": {
+    "type": "eod",
+    "amount": 2000,
+    "lock": "none",
+    "afterPayout": "none"
+   },
+   "sources": [
+    "https://apextraderfunding.com/help-center/eod-trailing-drawdown-accounts/eod-evaluations/",
+    "https://apextraderfunding.com/help-center/eod-trailing-drawdown-accounts/eod-drawdown-explained/"
+   ]
+  },
+  {
+   "minDays": null,
+   "levels": [
+    {
+     "from": 0,
+     "contracts": 6,
+     "dll": null
+    }
+   ],
+   "dllEffect": "pause",
+   "consistency": null,
+   "payout": null,
+   "expiryDays": 30,
+   "inactivity": null,
+   "billing": "one-time",
+   "notes": [
+    "The threshold follows your highest balance during the session, open profit included.",
+    "On Rithmic and Wealthcharts the threshold stops at the profit target balance.",
+    "No consistency rule and no minimum days in the evaluation. 30 calendar days of access."
+   ],
+   "verified": "2026-10-25",
+   "id": "apex-intraday-eval-rithmic-50K",
+   "firm": "Apex",
+   "plan": "Intraday Evaluation (Rithmic / Wealthcharts)",
+   "size": 50000,
+   "phase": "evaluation",
+   "startBalance": 50000,
+   "target": 3000,
+   "drawdown": {
+    "type": "intraday",
+    "amount": 2000,
+    "lock": "target",
+    "afterPayout": "none"
+   },
+   "sources": [
+    "https://apextraderfunding.com/help-center/evaluation-accounts-ea/intraday-trailing-drawdown-evaluations/",
+    "https://apextraderfunding.com/help-center/intraday-trailing-drawdown-accounts/intraday-trailing-drawdown-explained/"
+   ]
+  },
+  {
+   "minDays": null,
+   "levels": [
+    {
+     "from": 0,
+     "contracts": 6,
+     "dll": null
+    }
+   ],
+   "dllEffect": "pause",
+   "consistency": null,
+   "payout": null,
+   "expiryDays": 30,
+   "inactivity": null,
+   "billing": "one-time",
+   "notes": [
+    "The threshold follows your highest balance during the session, open profit included.",
+    "On Tradovate the evaluation drawdown never stops trailing.",
+    "No consistency rule and no minimum days in the evaluation. 30 calendar days of access."
+   ],
+   "verified": "2026-10-25",
+   "id": "apex-intraday-eval-tradovate-50K",
+   "firm": "Apex",
+   "plan": "Intraday Evaluation (Tradovate)",
+   "size": 50000,
+   "phase": "evaluation",
+   "startBalance": 50000,
+   "target": 3000,
+   "drawdown": {
+    "type": "intraday",
+    "amount": 2000,
+    "lock": "none",
+    "afterPayout": "none"
+   },
+   "sources": [
+    "https://apextraderfunding.com/help-center/evaluation-accounts-ea/intraday-trailing-drawdown-evaluations/",
+    "https://apextraderfunding.com/help-center/intraday-trailing-drawdown-accounts/intraday-trailing-drawdown-explained/"
+   ]
+  },
+  {
+   "minDays": null,
+   "levels": [
+    {
+     "from": 0,
+     "contracts": 2,
+     "dll": 1000
+    },
+    {
+     "from": 1500,
+     "contracts": 3,
+     "dll": 1000
+    },
+    {
+     "from": 3000,
+     "contracts": 4,
+     "dll": 2000
+    },
+    {
+     "from": 6000,
+     "contracts": 4,
+     "dll": 3000
+    }
+   ],
+   "dllEffect": "pause",
+   "consistency": {
+    "pct": 0.5,
+    "base": "cycle",
+    "mode": "blockPayout",
+    "strict": true
+   },
+   "payout": {
+    "qualDays": 5,
+    "qualMin": 250,
+    "bufferProfit": 2100,
+    "aboveBuffer": true,
+    "minRequest": 500,
+    "caps": [
+     1500,
+     1500,
+     2000,
+     2500,
+     2500,
+     3000
+    ],
+    "split": 1,
+    "maxPayouts": 6
+   },
+   "expiryDays": null,
+   "inactivity": {
+    "days": 30,
+    "text": "Apex closes inactive PAs: at least two $50+ profit days in every 30 calendar days (intraday PA rule; check your dashboard for EOD PAs)."
+   },
+   "billing": "one-time",
+   "notes": [
+    "The threshold stops at 50,100 (start + $100) once your peak reaches the safety net of 52,100.",
+    "Only profit above the safety net can be paid out. Contracts and daily loss limit change by level from the next session.",
+    "Hitting the daily loss limit pauses the session; it doesn't close the account.",
+    "Apex's page says a day must be below 50% of profit since the last payout; its example treats exactly 50% as met. This card uses the stricter reading.",
+    "After 6 payouts the PA closes."
+   ],
+   "verified": "2026-10-25",
+   "id": "apex-eod-pa-50K",
+   "firm": "Apex",
+   "plan": "EOD Performance Account",
+   "size": 50000,
+   "phase": "funded",
+   "startBalance": 50000,
+   "drawdown": {
+    "type": "eod",
+    "amount": 2000,
+    "lock": "start+100",
+    "afterPayout": "none"
+   },
+   "sources": [
+    "https://apextraderfunding.com/help-center/eod-trailing-drawdown-accounts/eod-performance-accounts-pa/",
+    "https://apextraderfunding.com/help-center/eod-trailing-drawdown-accounts/eod-payouts/",
+    "https://apextraderfunding.com/help-center/additional-helpful-items/scaling-levels-pa-explained/",
+    "https://apextraderfunding.com/help-center/additional-helpful-items/50-consistency-requirement/"
+   ]
+  },
+  {
+   "minDays": null,
+   "levels": [
+    {
+     "from": 0,
+     "contracts": 2,
+     "dll": null
+    },
+    {
+     "from": 1500,
+     "contracts": 3,
+     "dll": null
+    },
+    {
+     "from": 3000,
+     "contracts": 4,
+     "dll": null
+    },
+    {
+     "from": 6000,
+     "contracts": 4,
+     "dll": null
+    }
+   ],
+   "dllEffect": "pause",
+   "consistency": {
+    "pct": 0.5,
+    "base": "cycle",
+    "mode": "blockPayout",
+    "strict": true
+   },
+   "payout": {
+    "qualDays": 5,
+    "qualMin": 200,
+    "bufferProfit": 2100,
+    "aboveBuffer": true,
+    "minRequest": 500,
+    "caps": [
+     1500,
+     2000,
+     2500,
+     2500,
+     3000,
+     3000
+    ],
+    "split": 1,
+    "maxPayouts": 6
+   },
+   "expiryDays": null,
+   "inactivity": {
+    "days": 30,
+    "text": "Apex closes inactive PAs: at least two $50+ profit days in every 30 calendar days (intraday PA rule; check your dashboard for EOD PAs)."
+   },
+   "billing": "one-time",
+   "notes": [
+    "The threshold stops at 50,100 (start + $100) once your peak reaches the safety net of 52,100.",
+    "Only profit above the safety net can be paid out. Contracts and daily loss limit change by level from the next session.",
+    "Apex doesn't list daily loss limit amounts for intraday PAs: add yours if your dashboard shows one.",
+    "Apex's page says a day must be below 50% of profit since the last payout; its example treats exactly 50% as met. This card uses the stricter reading.",
+    "After 6 payouts the PA closes."
+   ],
+   "verified": "2026-10-25",
+   "id": "apex-intraday-pa-50K",
+   "firm": "Apex",
+   "plan": "Intraday Performance Account",
+   "size": 50000,
+   "phase": "funded",
+   "startBalance": 50000,
+   "drawdown": {
+    "type": "intraday",
+    "amount": 2000,
+    "lock": "start+100",
+    "afterPayout": "none"
+   },
+   "sources": [
+    "https://apextraderfunding.com/help-center/intraday-trailing-drawdown-accounts/intraday-trailing-drawdown-performance-accounts-pa/",
+    "https://apextraderfunding.com/help-center/intraday-trailing-drawdown-accounts/intraday-trailing-drawdown-payouts/",
+    "https://apextraderfunding.com/help-center/additional-helpful-items/scaling-levels-pa-explained/",
+    "https://apextraderfunding.com/help-center/additional-helpful-items/50-consistency-requirement/"
+   ]
+  },
+  {
+   "minDays": null,
+   "levels": [
+    {
+     "from": 0,
+     "contracts": 8,
+     "dll": 1500
+    }
+   ],
+   "dllEffect": "pause",
+   "consistency": null,
+   "payout": null,
+   "expiryDays": 30,
+   "inactivity": null,
+   "billing": "one-time",
+   "notes": [
+    "The threshold is recalculated at 4:59:59 PM ET on your closing balance and enforced in real time the next session.",
+    "On Rithmic and Wealthcharts the threshold stops at the profit target balance.",
+    "No consistency rule and no minimum days in the evaluation. 30 calendar days of access."
+   ],
+   "verified": "2026-10-25",
+   "id": "apex-eod-eval-rithmic-100K",
+   "firm": "Apex",
+   "plan": "EOD Evaluation (Rithmic / Wealthcharts)",
+   "size": 100000,
+   "phase": "evaluation",
+   "startBalance": 100000,
+   "target": 6000,
+   "drawdown": {
+    "type": "eod",
+    "amount": 3000,
+    "lock": "target",
+    "afterPayout": "none"
+   },
+   "sources": [
+    "https://apextraderfunding.com/help-center/eod-trailing-drawdown-accounts/eod-evaluations/",
+    "https://apextraderfunding.com/help-center/eod-trailing-drawdown-accounts/eod-drawdown-explained/"
+   ]
+  },
+  {
+   "minDays": null,
+   "levels": [
+    {
+     "from": 0,
+     "contracts": 8,
+     "dll": 1500
+    }
+   ],
+   "dllEffect": "pause",
+   "consistency": null,
+   "payout": null,
+   "expiryDays": 30,
+   "inactivity": null,
+   "billing": "one-time",
+   "notes": [
+    "The threshold is recalculated at 4:59:59 PM ET on your closing balance and enforced in real time the next session.",
+    "On Tradovate the evaluation drawdown never stops trailing.",
+    "No consistency rule and no minimum days in the evaluation. 30 calendar days of access."
+   ],
+   "verified": "2026-10-25",
+   "id": "apex-eod-eval-tradovate-100K",
+   "firm": "Apex",
+   "plan": "EOD Evaluation (Tradovate)",
+   "size": 100000,
+   "phase": "evaluation",
+   "startBalance": 100000,
+   "target": 6000,
+   "drawdown": {
+    "type": "eod",
+    "amount": 3000,
+    "lock": "none",
+    "afterPayout": "none"
+   },
+   "sources": [
+    "https://apextraderfunding.com/help-center/eod-trailing-drawdown-accounts/eod-evaluations/",
+    "https://apextraderfunding.com/help-center/eod-trailing-drawdown-accounts/eod-drawdown-explained/"
+   ]
+  },
+  {
+   "minDays": null,
+   "levels": [
+    {
+     "from": 0,
+     "contracts": 8,
+     "dll": null
+    }
+   ],
+   "dllEffect": "pause",
+   "consistency": null,
+   "payout": null,
+   "expiryDays": 30,
+   "inactivity": null,
+   "billing": "one-time",
+   "notes": [
+    "The threshold follows your highest balance during the session, open profit included.",
+    "On Rithmic and Wealthcharts the threshold stops at the profit target balance.",
+    "No consistency rule and no minimum days in the evaluation. 30 calendar days of access."
+   ],
+   "verified": "2026-10-25",
+   "id": "apex-intraday-eval-rithmic-100K",
+   "firm": "Apex",
+   "plan": "Intraday Evaluation (Rithmic / Wealthcharts)",
+   "size": 100000,
+   "phase": "evaluation",
+   "startBalance": 100000,
+   "target": 6000,
+   "drawdown": {
+    "type": "intraday",
+    "amount": 3000,
+    "lock": "target",
+    "afterPayout": "none"
+   },
+   "sources": [
+    "https://apextraderfunding.com/help-center/evaluation-accounts-ea/intraday-trailing-drawdown-evaluations/",
+    "https://apextraderfunding.com/help-center/intraday-trailing-drawdown-accounts/intraday-trailing-drawdown-explained/"
+   ]
+  },
+  {
+   "minDays": null,
+   "levels": [
+    {
+     "from": 0,
+     "contracts": 8,
+     "dll": null
+    }
+   ],
+   "dllEffect": "pause",
+   "consistency": null,
+   "payout": null,
+   "expiryDays": 30,
+   "inactivity": null,
+   "billing": "one-time",
+   "notes": [
+    "The threshold follows your highest balance during the session, open profit included.",
+    "On Tradovate the evaluation drawdown never stops trailing.",
+    "No consistency rule and no minimum days in the evaluation. 30 calendar days of access."
+   ],
+   "verified": "2026-10-25",
+   "id": "apex-intraday-eval-tradovate-100K",
+   "firm": "Apex",
+   "plan": "Intraday Evaluation (Tradovate)",
+   "size": 100000,
+   "phase": "evaluation",
+   "startBalance": 100000,
+   "target": 6000,
+   "drawdown": {
+    "type": "intraday",
+    "amount": 3000,
+    "lock": "none",
+    "afterPayout": "none"
+   },
+   "sources": [
+    "https://apextraderfunding.com/help-center/evaluation-accounts-ea/intraday-trailing-drawdown-evaluations/",
+    "https://apextraderfunding.com/help-center/intraday-trailing-drawdown-accounts/intraday-trailing-drawdown-explained/"
+   ]
+  },
+  {
+   "minDays": null,
+   "levels": [
+    {
+     "from": 0,
+     "contracts": 3,
+     "dll": 1750
+    },
+    {
+     "from": 2000,
+     "contracts": 4,
+     "dll": 1750
+    },
+    {
+     "from": 3000,
+     "contracts": 5,
+     "dll": 1750
+    },
+    {
+     "from": 5000,
+     "contracts": 6,
+     "dll": 2500
+    },
+    {
+     "from": 10000,
+     "contracts": 6,
+     "dll": 3500
+    }
+   ],
+   "dllEffect": "pause",
+   "consistency": {
+    "pct": 0.5,
+    "base": "cycle",
+    "mode": "blockPayout",
+    "strict": true
+   },
+   "payout": {
+    "qualDays": 5,
+    "qualMin": 300,
+    "bufferProfit": 3100,
+    "aboveBuffer": true,
+    "minRequest": 500,
+    "caps": [
+     2000,
+     2500,
+     2500,
+     3000,
+     4000,
+     4000
+    ],
+    "split": 1,
+    "maxPayouts": 6
+   },
+   "expiryDays": null,
+   "inactivity": {
+    "days": 30,
+    "text": "Apex closes inactive PAs: at least two $50+ profit days in every 30 calendar days (intraday PA rule; check your dashboard for EOD PAs)."
+   },
+   "billing": "one-time",
+   "notes": [
+    "The threshold stops at 100,100 (start + $100) once your peak reaches the safety net of 103,100.",
+    "Only profit above the safety net can be paid out. Contracts and daily loss limit change by level from the next session.",
+    "Hitting the daily loss limit pauses the session; it doesn't close the account.",
+    "Apex's page says a day must be below 50% of profit since the last payout; its example treats exactly 50% as met. This card uses the stricter reading.",
+    "After 6 payouts the PA closes."
+   ],
+   "verified": "2026-10-25",
+   "id": "apex-eod-pa-100K",
+   "firm": "Apex",
+   "plan": "EOD Performance Account",
+   "size": 100000,
+   "phase": "funded",
+   "startBalance": 100000,
+   "drawdown": {
+    "type": "eod",
+    "amount": 3000,
+    "lock": "start+100",
+    "afterPayout": "none"
+   },
+   "sources": [
+    "https://apextraderfunding.com/help-center/eod-trailing-drawdown-accounts/eod-performance-accounts-pa/",
+    "https://apextraderfunding.com/help-center/eod-trailing-drawdown-accounts/eod-payouts/",
+    "https://apextraderfunding.com/help-center/additional-helpful-items/scaling-levels-pa-explained/",
+    "https://apextraderfunding.com/help-center/additional-helpful-items/50-consistency-requirement/"
+   ]
+  },
+  {
+   "minDays": null,
+   "levels": [
+    {
+     "from": 0,
+     "contracts": 3,
+     "dll": null
+    },
+    {
+     "from": 2000,
+     "contracts": 4,
+     "dll": null
+    },
+    {
+     "from": 3000,
+     "contracts": 5,
+     "dll": null
+    },
+    {
+     "from": 5000,
+     "contracts": 6,
+     "dll": null
+    },
+    {
+     "from": 10000,
+     "contracts": 6,
+     "dll": null
+    }
+   ],
+   "dllEffect": "pause",
+   "consistency": {
+    "pct": 0.5,
+    "base": "cycle",
+    "mode": "blockPayout",
+    "strict": true
+   },
+   "payout": {
+    "qualDays": 5,
+    "qualMin": 250,
+    "bufferProfit": 3100,
+    "aboveBuffer": true,
+    "minRequest": 500,
+    "caps": [
+     2000,
+     2500,
+     3000,
+     3000,
+     4000,
+     4000
+    ],
+    "split": 1,
+    "maxPayouts": 6
+   },
+   "expiryDays": null,
+   "inactivity": {
+    "days": 30,
+    "text": "Apex closes inactive PAs: at least two $50+ profit days in every 30 calendar days (intraday PA rule; check your dashboard for EOD PAs)."
+   },
+   "billing": "one-time",
+   "notes": [
+    "The threshold stops at 100,100 (start + $100) once your peak reaches the safety net of 103,100.",
+    "Only profit above the safety net can be paid out. Contracts and daily loss limit change by level from the next session.",
+    "Apex doesn't list daily loss limit amounts for intraday PAs: add yours if your dashboard shows one.",
+    "Apex's page says a day must be below 50% of profit since the last payout; its example treats exactly 50% as met. This card uses the stricter reading.",
+    "After 6 payouts the PA closes."
+   ],
+   "verified": "2026-10-25",
+   "id": "apex-intraday-pa-100K",
+   "firm": "Apex",
+   "plan": "Intraday Performance Account",
+   "size": 100000,
+   "phase": "funded",
+   "startBalance": 100000,
+   "drawdown": {
+    "type": "intraday",
+    "amount": 3000,
+    "lock": "start+100",
+    "afterPayout": "none"
+   },
+   "sources": [
+    "https://apextraderfunding.com/help-center/intraday-trailing-drawdown-accounts/intraday-trailing-drawdown-performance-accounts-pa/",
+    "https://apextraderfunding.com/help-center/intraday-trailing-drawdown-accounts/intraday-trailing-drawdown-payouts/",
+    "https://apextraderfunding.com/help-center/additional-helpful-items/scaling-levels-pa-explained/",
+    "https://apextraderfunding.com/help-center/additional-helpful-items/50-consistency-requirement/"
+   ]
+  },
+  {
+   "minDays": null,
+   "levels": [
+    {
+     "from": 0,
+     "contracts": 12,
+     "dll": 2000
+    }
+   ],
+   "dllEffect": "pause",
+   "consistency": null,
+   "payout": null,
+   "expiryDays": 30,
+   "inactivity": null,
+   "billing": "one-time",
+   "notes": [
+    "The threshold is recalculated at 4:59:59 PM ET on your closing balance and enforced in real time the next session.",
+    "On Rithmic and Wealthcharts the threshold stops at the profit target balance.",
+    "No consistency rule and no minimum days in the evaluation. 30 calendar days of access."
+   ],
+   "verified": "2026-10-25",
+   "id": "apex-eod-eval-rithmic-150K",
+   "firm": "Apex",
+   "plan": "EOD Evaluation (Rithmic / Wealthcharts)",
+   "size": 150000,
+   "phase": "evaluation",
+   "startBalance": 150000,
+   "target": 9000,
+   "drawdown": {
+    "type": "eod",
+    "amount": 4000,
+    "lock": "target",
+    "afterPayout": "none"
+   },
+   "sources": [
+    "https://apextraderfunding.com/help-center/eod-trailing-drawdown-accounts/eod-evaluations/",
+    "https://apextraderfunding.com/help-center/eod-trailing-drawdown-accounts/eod-drawdown-explained/"
+   ]
+  },
+  {
+   "minDays": null,
+   "levels": [
+    {
+     "from": 0,
+     "contracts": 12,
+     "dll": 2000
+    }
+   ],
+   "dllEffect": "pause",
+   "consistency": null,
+   "payout": null,
+   "expiryDays": 30,
+   "inactivity": null,
+   "billing": "one-time",
+   "notes": [
+    "The threshold is recalculated at 4:59:59 PM ET on your closing balance and enforced in real time the next session.",
+    "On Tradovate the evaluation drawdown never stops trailing.",
+    "No consistency rule and no minimum days in the evaluation. 30 calendar days of access."
+   ],
+   "verified": "2026-10-25",
+   "id": "apex-eod-eval-tradovate-150K",
+   "firm": "Apex",
+   "plan": "EOD Evaluation (Tradovate)",
+   "size": 150000,
+   "phase": "evaluation",
+   "startBalance": 150000,
+   "target": 9000,
+   "drawdown": {
+    "type": "eod",
+    "amount": 4000,
+    "lock": "none",
+    "afterPayout": "none"
+   },
+   "sources": [
+    "https://apextraderfunding.com/help-center/eod-trailing-drawdown-accounts/eod-evaluations/",
+    "https://apextraderfunding.com/help-center/eod-trailing-drawdown-accounts/eod-drawdown-explained/"
+   ]
+  },
+  {
+   "minDays": null,
+   "levels": [
+    {
+     "from": 0,
+     "contracts": 12,
+     "dll": null
+    }
+   ],
+   "dllEffect": "pause",
+   "consistency": null,
+   "payout": null,
+   "expiryDays": 30,
+   "inactivity": null,
+   "billing": "one-time",
+   "notes": [
+    "The threshold follows your highest balance during the session, open profit included.",
+    "On Rithmic and Wealthcharts the threshold stops at the profit target balance.",
+    "No consistency rule and no minimum days in the evaluation. 30 calendar days of access."
+   ],
+   "verified": "2026-10-25",
+   "id": "apex-intraday-eval-rithmic-150K",
+   "firm": "Apex",
+   "plan": "Intraday Evaluation (Rithmic / Wealthcharts)",
+   "size": 150000,
+   "phase": "evaluation",
+   "startBalance": 150000,
+   "target": 9000,
+   "drawdown": {
+    "type": "intraday",
+    "amount": 4000,
+    "lock": "target",
+    "afterPayout": "none"
+   },
+   "sources": [
+    "https://apextraderfunding.com/help-center/evaluation-accounts-ea/intraday-trailing-drawdown-evaluations/",
+    "https://apextraderfunding.com/help-center/intraday-trailing-drawdown-accounts/intraday-trailing-drawdown-explained/"
+   ]
+  },
+  {
+   "minDays": null,
+   "levels": [
+    {
+     "from": 0,
+     "contracts": 12,
+     "dll": null
+    }
+   ],
+   "dllEffect": "pause",
+   "consistency": null,
+   "payout": null,
+   "expiryDays": 30,
+   "inactivity": null,
+   "billing": "one-time",
+   "notes": [
+    "The threshold follows your highest balance during the session, open profit included.",
+    "On Tradovate the evaluation drawdown never stops trailing.",
+    "No consistency rule and no minimum days in the evaluation. 30 calendar days of access."
+   ],
+   "verified": "2026-10-25",
+   "id": "apex-intraday-eval-tradovate-150K",
+   "firm": "Apex",
+   "plan": "Intraday Evaluation (Tradovate)",
+   "size": 150000,
+   "phase": "evaluation",
+   "startBalance": 150000,
+   "target": 9000,
+   "drawdown": {
+    "type": "intraday",
+    "amount": 4000,
+    "lock": "none",
+    "afterPayout": "none"
+   },
+   "sources": [
+    "https://apextraderfunding.com/help-center/evaluation-accounts-ea/intraday-trailing-drawdown-evaluations/",
+    "https://apextraderfunding.com/help-center/intraday-trailing-drawdown-accounts/intraday-trailing-drawdown-explained/"
+   ]
+  },
+  {
+   "minDays": null,
+   "levels": [
+    {
+     "from": 0,
+     "contracts": 4,
+     "dll": 2500
+    },
+    {
+     "from": 2000,
+     "contracts": 5,
+     "dll": 2500
+    },
+    {
+     "from": 3000,
+     "contracts": 7,
+     "dll": 2500
+    },
+    {
+     "from": 5000,
+     "contracts": 10,
+     "dll": 3000
+    },
+    {
+     "from": 10000,
+     "contracts": 10,
+     "dll": 4000
+    }
+   ],
+   "dllEffect": "pause",
+   "consistency": {
+    "pct": 0.5,
+    "base": "cycle",
+    "mode": "blockPayout",
+    "strict": true
+   },
+   "payout": {
+    "qualDays": 5,
+    "qualMin": 350,
+    "bufferProfit": 4100,
+    "aboveBuffer": true,
+    "minRequest": 500,
+    "caps": [
+     2500,
+     3000,
+     3000,
+     3000,
+     4000,
+     5000
+    ],
+    "split": 1,
+    "maxPayouts": 6
+   },
+   "expiryDays": null,
+   "inactivity": {
+    "days": 30,
+    "text": "Apex closes inactive PAs: at least two $50+ profit days in every 30 calendar days (intraday PA rule; check your dashboard for EOD PAs)."
+   },
+   "billing": "one-time",
+   "notes": [
+    "The threshold stops at 150,100 (start + $100) once your peak reaches the safety net of 154,100.",
+    "Only profit above the safety net can be paid out. Contracts and daily loss limit change by level from the next session.",
+    "Hitting the daily loss limit pauses the session; it doesn't close the account.",
+    "Apex's page says a day must be below 50% of profit since the last payout; its example treats exactly 50% as met. This card uses the stricter reading.",
+    "After 6 payouts the PA closes."
+   ],
+   "verified": "2026-10-25",
+   "id": "apex-eod-pa-150K",
+   "firm": "Apex",
+   "plan": "EOD Performance Account",
+   "size": 150000,
+   "phase": "funded",
+   "startBalance": 150000,
+   "drawdown": {
+    "type": "eod",
+    "amount": 4000,
+    "lock": "start+100",
+    "afterPayout": "none"
+   },
+   "sources": [
+    "https://apextraderfunding.com/help-center/eod-trailing-drawdown-accounts/eod-performance-accounts-pa/",
+    "https://apextraderfunding.com/help-center/eod-trailing-drawdown-accounts/eod-payouts/",
+    "https://apextraderfunding.com/help-center/additional-helpful-items/scaling-levels-pa-explained/",
+    "https://apextraderfunding.com/help-center/additional-helpful-items/50-consistency-requirement/"
+   ]
+  },
+  {
+   "minDays": null,
+   "levels": [
+    {
+     "from": 0,
+     "contracts": 4,
+     "dll": null
+    },
+    {
+     "from": 2000,
+     "contracts": 5,
+     "dll": null
+    },
+    {
+     "from": 3000,
+     "contracts": 7,
+     "dll": null
+    },
+    {
+     "from": 5000,
+     "contracts": 10,
+     "dll": null
+    },
+    {
+     "from": 10000,
+     "contracts": 10,
+     "dll": null
+    }
+   ],
+   "dllEffect": "pause",
+   "consistency": {
+    "pct": 0.5,
+    "base": "cycle",
+    "mode": "blockPayout",
+    "strict": true
+   },
+   "payout": {
+    "qualDays": 5,
+    "qualMin": 300,
+    "bufferProfit": 4100,
+    "aboveBuffer": true,
+    "minRequest": 500,
+    "caps": [
+     2500,
+     3000,
+     3000,
+     4000,
+     4000,
+     5000
+    ],
+    "split": 1,
+    "maxPayouts": 6
+   },
+   "expiryDays": null,
+   "inactivity": {
+    "days": 30,
+    "text": "Apex closes inactive PAs: at least two $50+ profit days in every 30 calendar days (intraday PA rule; check your dashboard for EOD PAs)."
+   },
+   "billing": "one-time",
+   "notes": [
+    "The threshold stops at 150,100 (start + $100) once your peak reaches the safety net of 154,100.",
+    "Only profit above the safety net can be paid out. Contracts and daily loss limit change by level from the next session.",
+    "Apex doesn't list daily loss limit amounts for intraday PAs: add yours if your dashboard shows one.",
+    "Apex's page says a day must be below 50% of profit since the last payout; its example treats exactly 50% as met. This card uses the stricter reading.",
+    "After 6 payouts the PA closes."
+   ],
+   "verified": "2026-10-25",
+   "id": "apex-intraday-pa-150K",
+   "firm": "Apex",
+   "plan": "Intraday Performance Account",
+   "size": 150000,
+   "phase": "funded",
+   "startBalance": 150000,
+   "drawdown": {
+    "type": "intraday",
+    "amount": 4000,
+    "lock": "start+100",
+    "afterPayout": "none"
+   },
+   "sources": [
+    "https://apextraderfunding.com/help-center/intraday-trailing-drawdown-accounts/intraday-trailing-drawdown-performance-accounts-pa/",
+    "https://apextraderfunding.com/help-center/intraday-trailing-drawdown-accounts/intraday-trailing-drawdown-payouts/",
+    "https://apextraderfunding.com/help-center/additional-helpful-items/scaling-levels-pa-explained/",
+    "https://apextraderfunding.com/help-center/additional-helpful-items/50-consistency-requirement/"
+   ]
+  },
+  {
+   "minDays": 2,
+   "levels": [
+    {
+     "from": 0,
+     "contracts": 3,
+     "dll": null
+    }
+   ],
+   "dllEffect": "pause",
+   "consistency": {
+    "pct": 0.5,
+    "base": "total",
+    "mode": "blockPass",
+    "strict": false
+   },
+   "payout": null,
+   "expiryDays": null,
+   "inactivity": null,
+   "billing": "one-time",
+   "notes": [
+    "No single day may exceed 50% of your evaluation profit. Going over doesn't fail the account: keep trading until it's back under."
+   ],
+   "verified": "2026-10-25",
+   "id": "mffu-rapid-eval-25K",
+   "firm": "MyFundedFutures",
+   "plan": "Rapid Evaluation",
+   "size": 25000,
+   "phase": "evaluation",
+   "startBalance": 25000,
+   "target": 1500,
+   "drawdown": {
+    "type": "eod",
+    "amount": 1000,
+    "lock": "none",
+    "afterPayout": "none"
+   },
+   "sources": [
+    "https://help.myfundedfutures.com/en/articles/11802636-traders-evaluation-simplified",
+    "https://help.myfundedfutures.com/en/articles/11994562-consistency-rule-at-my-fundedfutures"
+   ]
+  },
+  {
+   "minDays": null,
+   "levels": [
+    {
+     "from": 0,
+     "contracts": 3,
+     "dll": null
+    }
+   ],
+   "dllEffect": "pause",
+   "consistency": null,
+   "payout": {
+    "qualDays": 0,
+    "qualMin": null,
+    "bufferProfit": 1100,
+    "aboveBuffer": true,
+    "minRequest": 500,
+    "caps": [],
+    "split": 0.9
+   },
+   "expiryDays": null,
+   "inactivity": null,
+   "billing": "one-time",
+   "notes": [
+    "Sim funded starts at $0 with an intraday trailing drawdown on your equity high, locked at $100.",
+    "You need 1,100 in profit before the first payout. Daily payouts, no consistency rule.",
+    "MFFU doesn't state whether you can withdraw below the buffer: this card only counts profit above it."
+   ],
+   "verified": "2026-10-25",
+   "id": "mffu-rapid-sim-25K",
+   "firm": "MyFundedFutures",
+   "plan": "Rapid Sim Funded",
+   "size": 25000,
+   "phase": "funded",
+   "startBalance": 0,
+   "drawdown": {
+    "type": "intraday",
+    "amount": 1000,
+    "lock": "start+100",
+    "afterPayout": "none"
+   },
+   "sources": [
+    "https://help.myfundedfutures.com/en/articles/13134709-rapid-plan-50k-a-comprehensive-look"
+   ]
+  },
+  {
+   "minDays": 1,
+   "levels": [
+    {
+     "from": 0,
+     "contracts": 2,
+     "dll": 600
+    }
+   ],
+   "dllEffect": "pause",
+   "consistency": null,
+   "payout": null,
+   "expiryDays": null,
+   "inactivity": null,
+   "billing": "one-time",
+   "notes": [
+    "The daily loss limit is a soft pause: trading stops for the day but the account stays open. No consistency rule."
+   ],
+   "verified": "2026-10-25",
+   "id": "mffu-builder-eval-25K",
+   "firm": "MyFundedFutures",
+   "plan": "Builder Evaluation",
+   "size": 25000,
+   "phase": "evaluation",
+   "startBalance": 25000,
+   "target": 1500,
+   "drawdown": {
+    "type": "eod",
+    "amount": 1000,
+    "lock": "none",
+    "afterPayout": "none"
+   },
+   "sources": [
+    "https://help.myfundedfutures.com/en/articles/11802636-traders-evaluation-simplified",
+    "https://myfundedfutures.com/plans/builder"
+   ]
+  },
+  {
+   "minDays": null,
+   "levels": [
+    {
+     "from": 0,
+     "contracts": 2,
+     "dll": 600
+    }
+   ],
+   "dllEffect": "pause",
+   "consistency": {
+    "pct": 0.5,
+    "base": "cycle",
+    "mode": "blockPayout",
+    "strict": false
+   },
+   "payout": {
+    "qualDays": 2,
+    "qualMin": null,
+    "cycleMinNet": 250,
+    "bufferProfit": 1100,
+    "aboveBuffer": true,
+    "minRequest": 250,
+    "caps": [
+     1000
+    ],
+    "split": 0.8,
+    "maxPayouts": 5
+   },
+   "expiryDays": null,
+   "inactivity": null,
+   "billing": "one-time",
+   "notes": [
+    "Payouts every 48 hours, 50% consistency in each payout cycle. After the 5th approved payout you move to a live account."
+   ],
+   "verified": "2026-10-25",
+   "id": "mffu-builder-sim-25K",
+   "firm": "MyFundedFutures",
+   "plan": "Builder Sim Funded",
+   "size": 25000,
+   "phase": "funded",
+   "startBalance": 0,
+   "drawdown": {
+    "type": "eod",
+    "amount": 1000,
+    "lock": "start+100",
+    "afterPayout": "none"
+   },
+   "sources": [
+    "https://myfundedfutures.com/plans/builder"
+   ]
+  },
+  {
+   "minDays": 2,
+   "levels": [
+    {
+     "from": 0,
+     "contracts": 5,
+     "dll": null
+    }
+   ],
+   "dllEffect": "pause",
+   "consistency": {
+    "pct": 0.5,
+    "base": "total",
+    "mode": "blockPass",
+    "strict": false
+   },
+   "payout": null,
+   "expiryDays": null,
+   "inactivity": null,
+   "billing": "one-time",
+   "notes": [
+    "No single day may exceed 50% of your evaluation profit. Going over doesn't fail the account: keep trading until it's back under."
+   ],
+   "verified": "2026-10-25",
+   "id": "mffu-rapid-eval-50K",
+   "firm": "MyFundedFutures",
+   "plan": "Rapid Evaluation",
+   "size": 50000,
+   "phase": "evaluation",
+   "startBalance": 50000,
+   "target": 3000,
+   "drawdown": {
+    "type": "eod",
+    "amount": 2000,
+    "lock": "none",
+    "afterPayout": "none"
+   },
+   "sources": [
+    "https://help.myfundedfutures.com/en/articles/11802636-traders-evaluation-simplified",
+    "https://help.myfundedfutures.com/en/articles/11994562-consistency-rule-at-my-fundedfutures"
+   ]
+  },
+  {
+   "minDays": null,
+   "levels": [
+    {
+     "from": 0,
+     "contracts": 5,
+     "dll": null
+    }
+   ],
+   "dllEffect": "pause",
+   "consistency": null,
+   "payout": {
+    "qualDays": 0,
+    "qualMin": null,
+    "bufferProfit": 2100,
+    "aboveBuffer": true,
+    "minRequest": 500,
+    "caps": [],
+    "split": 0.9
+   },
+   "expiryDays": null,
+   "inactivity": null,
+   "billing": "one-time",
+   "notes": [
+    "Sim funded starts at $0 with an intraday trailing drawdown on your equity high, locked at $100.",
+    "You need 2,100 in profit before the first payout. Daily payouts, no consistency rule.",
+    "MFFU doesn't state whether you can withdraw below the buffer: this card only counts profit above it."
+   ],
+   "verified": "2026-10-25",
+   "id": "mffu-rapid-sim-50K",
+   "firm": "MyFundedFutures",
+   "plan": "Rapid Sim Funded",
+   "size": 50000,
+   "phase": "funded",
+   "startBalance": 0,
+   "drawdown": {
+    "type": "intraday",
+    "amount": 2000,
+    "lock": "start+100",
+    "afterPayout": "none"
+   },
+   "sources": [
+    "https://help.myfundedfutures.com/en/articles/13134709-rapid-plan-50k-a-comprehensive-look"
+   ]
+  },
+  {
+   "minDays": 1,
+   "levels": [
+    {
+     "from": 0,
+     "contracts": 4,
+     "dll": 1000
+    }
+   ],
+   "dllEffect": "pause",
+   "consistency": null,
+   "payout": null,
+   "expiryDays": null,
+   "inactivity": null,
+   "billing": "one-time",
+   "notes": [
+    "The daily loss limit is a soft pause: trading stops for the day but the account stays open. No consistency rule."
+   ],
+   "verified": "2026-10-25",
+   "id": "mffu-builder-eval-50K",
+   "firm": "MyFundedFutures",
+   "plan": "Builder Evaluation",
+   "size": 50000,
+   "phase": "evaluation",
+   "startBalance": 50000,
+   "target": 3000,
+   "drawdown": {
+    "type": "eod",
+    "amount": 2000,
+    "lock": "none",
+    "afterPayout": "none"
+   },
+   "sources": [
+    "https://help.myfundedfutures.com/en/articles/11802636-traders-evaluation-simplified",
+    "https://myfundedfutures.com/plans/builder"
+   ]
+  },
+  {
+   "minDays": null,
+   "levels": [
+    {
+     "from": 0,
+     "contracts": 4,
+     "dll": 1000
+    }
+   ],
+   "dllEffect": "pause",
+   "consistency": {
+    "pct": 0.5,
+    "base": "cycle",
+    "mode": "blockPayout",
+    "strict": false
+   },
+   "payout": {
+    "qualDays": 2,
+    "qualMin": null,
+    "cycleMinNet": 500,
+    "bufferProfit": 2100,
+    "aboveBuffer": true,
+    "minRequest": 500,
+    "caps": [
+     2000
+    ],
+    "split": 0.8,
+    "maxPayouts": 5
+   },
+   "expiryDays": null,
+   "inactivity": null,
+   "billing": "one-time",
+   "notes": [
+    "Payouts every 48 hours, 50% consistency in each payout cycle. After the 5th approved payout you move to a live account."
+   ],
+   "verified": "2026-10-25",
+   "id": "mffu-builder-sim-50K",
+   "firm": "MyFundedFutures",
+   "plan": "Builder Sim Funded",
+   "size": 50000,
+   "phase": "funded",
+   "startBalance": 0,
+   "drawdown": {
+    "type": "eod",
+    "amount": 2000,
+    "lock": "start+100",
+    "afterPayout": "none"
+   },
+   "sources": [
+    "https://myfundedfutures.com/plans/builder"
+   ]
+  },
+  {
+   "minDays": 2,
+   "levels": [
+    {
+     "from": 0,
+     "contracts": 3,
+     "dll": null
+    }
+   ],
+   "dllEffect": "pause",
+   "consistency": {
+    "pct": 0.5,
+    "base": "total",
+    "mode": "blockPass",
+    "strict": false
+   },
+   "payout": null,
+   "expiryDays": null,
+   "inactivity": null,
+   "billing": "one-time",
+   "notes": [
+    "The Pro 50K One Day add-on has a $4,000 target and no consistency rule: edit the card if you bought it."
+   ],
+   "verified": "2026-10-25",
+   "id": "mffu-pro-eval-50K",
+   "firm": "MyFundedFutures",
+   "plan": "Pro Evaluation",
+   "size": 50000,
+   "phase": "evaluation",
+   "startBalance": 50000,
+   "target": 3000,
+   "drawdown": {
+    "type": "eod",
+    "amount": 2000,
+    "lock": "none",
+    "afterPayout": "none"
+   },
+   "sources": [
+    "https://help.myfundedfutures.com/en/articles/17573707-comprehensive-look-into-redesigned-pro-plan",
+    "https://help.myfundedfutures.com/en/articles/11994562-consistency-rule-at-my-fundedfutures"
+   ]
+  },
+  {
+   "minDays": null,
+   "levels": [
+    {
+     "from": 0,
+     "contracts": 3,
+     "dll": null
+    }
+   ],
+   "dllEffect": "pause",
+   "consistency": null,
+   "payout": {
+    "qualDays": 0,
+    "qualMin": null,
+    "bufferProfit": 2100,
+    "aboveBuffer": true,
+    "minRequest": 1000,
+    "caps": [],
+    "split": 0.8,
+    "waitDays": 14
+   },
+   "expiryDays": null,
+   "inactivity": null,
+   "billing": "one-time",
+   "notes": [
+    "First payout after 14 calendar days from your first trade and once the buffer is cleared.",
+    "After the first payout the loss limit becomes static at 50,100.",
+    "Total payouts are capped at $100,000 per user."
+   ],
+   "verified": "2026-10-25",
+   "id": "mffu-pro-sim-50K",
+   "firm": "MyFundedFutures",
+   "plan": "Pro Sim Funded",
+   "size": 50000,
+   "phase": "funded",
+   "startBalance": 50000,
+   "drawdown": {
+    "type": "eod",
+    "amount": 2000,
+    "lock": "none",
+    "afterPayout": "start+100"
+   },
+   "sources": [
+    "https://help.myfundedfutures.com/en/articles/17573707-comprehensive-look-into-redesigned-pro-plan"
+   ]
+  },
+  {
+   "minDays": 2,
+   "levels": [
+    {
+     "from": 0,
+     "contracts": 8,
+     "dll": null
+    }
+   ],
+   "dllEffect": "pause",
+   "consistency": {
+    "pct": 0.5,
+    "base": "total",
+    "mode": "blockPass",
+    "strict": false
+   },
+   "payout": null,
+   "expiryDays": null,
+   "inactivity": null,
+   "billing": "one-time",
+   "notes": [
+    "No single day may exceed 50% of your evaluation profit. Going over doesn't fail the account: keep trading until it's back under."
+   ],
+   "verified": "2026-10-25",
+   "id": "mffu-rapid-eval-100K",
+   "firm": "MyFundedFutures",
+   "plan": "Rapid Evaluation",
+   "size": 100000,
+   "phase": "evaluation",
+   "startBalance": 100000,
+   "target": 6000,
+   "drawdown": {
+    "type": "eod",
+    "amount": 3000,
+    "lock": "none",
+    "afterPayout": "none"
+   },
+   "sources": [
+    "https://help.myfundedfutures.com/en/articles/11802636-traders-evaluation-simplified",
+    "https://help.myfundedfutures.com/en/articles/11994562-consistency-rule-at-my-fundedfutures"
+   ]
+  },
+  {
+   "minDays": null,
+   "levels": [
+    {
+     "from": 0,
+     "contracts": 8,
+     "dll": null
+    }
+   ],
+   "dllEffect": "pause",
+   "consistency": null,
+   "payout": {
+    "qualDays": 0,
+    "qualMin": null,
+    "bufferProfit": 3100,
+    "aboveBuffer": true,
+    "minRequest": 500,
+    "caps": [],
+    "split": 0.9
+   },
+   "expiryDays": null,
+   "inactivity": null,
+   "billing": "one-time",
+   "notes": [
+    "Sim funded starts at $0 with an intraday trailing drawdown on your equity high, locked at $100.",
+    "You need 3,100 in profit before the first payout. Daily payouts, no consistency rule.",
+    "MFFU doesn't state whether you can withdraw below the buffer: this card only counts profit above it."
+   ],
+   "verified": "2026-10-25",
+   "id": "mffu-rapid-sim-100K",
+   "firm": "MyFundedFutures",
+   "plan": "Rapid Sim Funded",
+   "size": 100000,
+   "phase": "funded",
+   "startBalance": 0,
+   "drawdown": {
+    "type": "intraday",
+    "amount": 3000,
+    "lock": "start+100",
+    "afterPayout": "none"
+   },
+   "sources": [
+    "https://help.myfundedfutures.com/en/articles/13134709-rapid-plan-50k-a-comprehensive-look"
+   ]
+  },
+  {
+   "minDays": 1,
+   "levels": [
+    {
+     "from": 0,
+     "contracts": 6,
+     "dll": 1750
+    }
+   ],
+   "dllEffect": "pause",
+   "consistency": null,
+   "payout": null,
+   "expiryDays": null,
+   "inactivity": null,
+   "billing": "one-time",
+   "notes": [
+    "The daily loss limit is a soft pause: trading stops for the day but the account stays open. No consistency rule."
+   ],
+   "verified": "2026-10-25",
+   "id": "mffu-builder-eval-100K",
+   "firm": "MyFundedFutures",
+   "plan": "Builder Evaluation",
+   "size": 100000,
+   "phase": "evaluation",
+   "startBalance": 100000,
+   "target": 6000,
+   "drawdown": {
+    "type": "eod",
+    "amount": 3000,
+    "lock": "none",
+    "afterPayout": "none"
+   },
+   "sources": [
+    "https://help.myfundedfutures.com/en/articles/11802636-traders-evaluation-simplified",
+    "https://myfundedfutures.com/plans/builder"
+   ]
+  },
+  {
+   "minDays": null,
+   "levels": [
+    {
+     "from": 0,
+     "contracts": 6,
+     "dll": 1750
+    }
+   ],
+   "dllEffect": "pause",
+   "consistency": {
+    "pct": 0.5,
+    "base": "cycle",
+    "mode": "blockPayout",
+    "strict": false
+   },
+   "payout": {
+    "qualDays": 2,
+    "qualMin": null,
+    "cycleMinNet": 1000,
+    "bufferProfit": 3100,
+    "aboveBuffer": true,
+    "minRequest": 1000,
+    "caps": [
+     3000
+    ],
+    "split": 0.8,
+    "maxPayouts": 5
+   },
+   "expiryDays": null,
+   "inactivity": null,
+   "billing": "one-time",
+   "notes": [
+    "Payouts every 48 hours, 50% consistency in each payout cycle. After the 5th approved payout you move to a live account."
+   ],
+   "verified": "2026-10-25",
+   "id": "mffu-builder-sim-100K",
+   "firm": "MyFundedFutures",
+   "plan": "Builder Sim Funded",
+   "size": 100000,
+   "phase": "funded",
+   "startBalance": 0,
+   "drawdown": {
+    "type": "eod",
+    "amount": 3000,
+    "lock": "start+100",
+    "afterPayout": "none"
+   },
+   "sources": [
+    "https://myfundedfutures.com/plans/builder"
+   ]
+  },
+  {
+   "minDays": 2,
+   "levels": [
+    {
+     "from": 0,
+     "contracts": 6,
+     "dll": null
+    }
+   ],
+   "dllEffect": "pause",
+   "consistency": {
+    "pct": 0.5,
+    "base": "total",
+    "mode": "blockPass",
+    "strict": false
+   },
+   "payout": null,
+   "expiryDays": null,
+   "inactivity": null,
+   "billing": "one-time",
+   "notes": [
+    "The Pro 50K One Day add-on has a $4,000 target and no consistency rule: edit the card if you bought it."
+   ],
+   "verified": "2026-10-25",
+   "id": "mffu-pro-eval-100K",
+   "firm": "MyFundedFutures",
+   "plan": "Pro Evaluation",
+   "size": 100000,
+   "phase": "evaluation",
+   "startBalance": 100000,
+   "target": 6000,
+   "drawdown": {
+    "type": "eod",
+    "amount": 3000,
+    "lock": "none",
+    "afterPayout": "none"
+   },
+   "sources": [
+    "https://help.myfundedfutures.com/en/articles/17573707-comprehensive-look-into-redesigned-pro-plan",
+    "https://help.myfundedfutures.com/en/articles/11994562-consistency-rule-at-my-fundedfutures"
+   ]
+  },
+  {
+   "minDays": null,
+   "levels": [
+    {
+     "from": 0,
+     "contracts": 6,
+     "dll": null
+    }
+   ],
+   "dllEffect": "pause",
+   "consistency": null,
+   "payout": {
+    "qualDays": 0,
+    "qualMin": null,
+    "bufferProfit": 3100,
+    "aboveBuffer": true,
+    "minRequest": 1000,
+    "caps": [],
+    "split": 0.8,
+    "waitDays": 14
+   },
+   "expiryDays": null,
+   "inactivity": null,
+   "billing": "one-time",
+   "notes": [
+    "First payout after 14 calendar days from your first trade and once the buffer is cleared.",
+    "After the first payout the loss limit becomes static at 100,100.",
+    "Total payouts are capped at $100,000 per user."
+   ],
+   "verified": "2026-10-25",
+   "id": "mffu-pro-sim-100K",
+   "firm": "MyFundedFutures",
+   "plan": "Pro Sim Funded",
+   "size": 100000,
+   "phase": "funded",
+   "startBalance": 100000,
+   "drawdown": {
+    "type": "eod",
+    "amount": 3000,
+    "lock": "none",
+    "afterPayout": "start+100"
+   },
+   "sources": [
+    "https://help.myfundedfutures.com/en/articles/17573707-comprehensive-look-into-redesigned-pro-plan"
+   ]
+  },
+  {
+   "minDays": 2,
+   "levels": [
+    {
+     "from": 0,
+     "contracts": 10,
+     "dll": null
+    }
+   ],
+   "dllEffect": "pause",
+   "consistency": {
+    "pct": 0.5,
+    "base": "total",
+    "mode": "blockPass",
+    "strict": false
+   },
+   "payout": null,
+   "expiryDays": null,
+   "inactivity": null,
+   "billing": "one-time",
+   "notes": [
+    "No single day may exceed 50% of your evaluation profit. Going over doesn't fail the account: keep trading until it's back under."
+   ],
+   "verified": "2026-10-25",
+   "id": "mffu-rapid-eval-150K",
+   "firm": "MyFundedFutures",
+   "plan": "Rapid Evaluation",
+   "size": 150000,
+   "phase": "evaluation",
+   "startBalance": 150000,
+   "target": 9000,
+   "drawdown": {
+    "type": "eod",
+    "amount": 4500,
+    "lock": "none",
+    "afterPayout": "none"
+   },
+   "sources": [
+    "https://help.myfundedfutures.com/en/articles/11802636-traders-evaluation-simplified",
+    "https://help.myfundedfutures.com/en/articles/11994562-consistency-rule-at-my-fundedfutures"
+   ]
+  },
+  {
+   "minDays": null,
+   "levels": [
+    {
+     "from": 0,
+     "contracts": 10,
+     "dll": null
+    }
+   ],
+   "dllEffect": "pause",
+   "consistency": null,
+   "payout": {
+    "qualDays": 0,
+    "qualMin": null,
+    "bufferProfit": 4600,
+    "aboveBuffer": true,
+    "minRequest": 500,
+    "caps": [],
+    "split": 0.9
+   },
+   "expiryDays": null,
+   "inactivity": null,
+   "billing": "one-time",
+   "notes": [
+    "Sim funded starts at $0 with an intraday trailing drawdown on your equity high, locked at $100.",
+    "You need 4,600 in profit before the first payout. Daily payouts, no consistency rule.",
+    "MFFU doesn't state whether you can withdraw below the buffer: this card only counts profit above it."
+   ],
+   "verified": "2026-10-25",
+   "id": "mffu-rapid-sim-150K",
+   "firm": "MyFundedFutures",
+   "plan": "Rapid Sim Funded",
+   "size": 150000,
+   "phase": "funded",
+   "startBalance": 0,
+   "drawdown": {
+    "type": "intraday",
+    "amount": 4500,
+    "lock": "start+100",
+    "afterPayout": "none"
+   },
+   "sources": [
+    "https://help.myfundedfutures.com/en/articles/13134709-rapid-plan-50k-a-comprehensive-look"
+   ]
+  },
+  {
+   "minDays": 1,
+   "levels": [
+    {
+     "from": 0,
+     "contracts": 9,
+     "dll": 2500
+    }
+   ],
+   "dllEffect": "pause",
+   "consistency": null,
+   "payout": null,
+   "expiryDays": null,
+   "inactivity": null,
+   "billing": "one-time",
+   "notes": [
+    "The daily loss limit is a soft pause: trading stops for the day but the account stays open. No consistency rule."
+   ],
+   "verified": "2026-10-25",
+   "id": "mffu-builder-eval-150K",
+   "firm": "MyFundedFutures",
+   "plan": "Builder Evaluation",
+   "size": 150000,
+   "phase": "evaluation",
+   "startBalance": 150000,
+   "target": 9000,
+   "drawdown": {
+    "type": "eod",
+    "amount": 4500,
+    "lock": "none",
+    "afterPayout": "none"
+   },
+   "sources": [
+    "https://help.myfundedfutures.com/en/articles/11802636-traders-evaluation-simplified",
+    "https://myfundedfutures.com/plans/builder"
+   ]
+  },
+  {
+   "minDays": null,
+   "levels": [
+    {
+     "from": 0,
+     "contracts": 9,
+     "dll": 2500
+    }
+   ],
+   "dllEffect": "pause",
+   "consistency": {
+    "pct": 0.5,
+    "base": "cycle",
+    "mode": "blockPayout",
+    "strict": false
+   },
+   "payout": {
+    "qualDays": 2,
+    "qualMin": null,
+    "cycleMinNet": 1500,
+    "bufferProfit": 4600,
+    "aboveBuffer": true,
+    "minRequest": 1500,
+    "caps": [
+     3500
+    ],
+    "split": 0.8,
+    "maxPayouts": 5
+   },
+   "expiryDays": null,
+   "inactivity": null,
+   "billing": "one-time",
+   "notes": [
+    "Payouts every 48 hours, 50% consistency in each payout cycle. After the 5th approved payout you move to a live account."
+   ],
+   "verified": "2026-10-25",
+   "id": "mffu-builder-sim-150K",
+   "firm": "MyFundedFutures",
+   "plan": "Builder Sim Funded",
+   "size": 150000,
+   "phase": "funded",
+   "startBalance": 0,
+   "drawdown": {
+    "type": "eod",
+    "amount": 4500,
+    "lock": "start+100",
+    "afterPayout": "none"
+   },
+   "sources": [
+    "https://myfundedfutures.com/plans/builder"
+   ]
+  },
+  {
+   "minDays": 2,
+   "levels": [
+    {
+     "from": 0,
+     "contracts": 9,
+     "dll": null
+    }
+   ],
+   "dllEffect": "pause",
+   "consistency": {
+    "pct": 0.5,
+    "base": "total",
+    "mode": "blockPass",
+    "strict": false
+   },
+   "payout": null,
+   "expiryDays": null,
+   "inactivity": null,
+   "billing": "one-time",
+   "notes": [
+    "The Pro 50K One Day add-on has a $4,000 target and no consistency rule: edit the card if you bought it."
+   ],
+   "verified": "2026-10-25",
+   "id": "mffu-pro-eval-150K",
+   "firm": "MyFundedFutures",
+   "plan": "Pro Evaluation",
+   "size": 150000,
+   "phase": "evaluation",
+   "startBalance": 150000,
+   "target": 9000,
+   "drawdown": {
+    "type": "eod",
+    "amount": 4500,
+    "lock": "none",
+    "afterPayout": "none"
+   },
+   "sources": [
+    "https://help.myfundedfutures.com/en/articles/17573707-comprehensive-look-into-redesigned-pro-plan",
+    "https://help.myfundedfutures.com/en/articles/11994562-consistency-rule-at-my-fundedfutures"
+   ]
+  },
+  {
+   "minDays": null,
+   "levels": [
+    {
+     "from": 0,
+     "contracts": 9,
+     "dll": null
+    }
+   ],
+   "dllEffect": "pause",
+   "consistency": null,
+   "payout": {
+    "qualDays": 0,
+    "qualMin": null,
+    "bufferProfit": 4600,
+    "aboveBuffer": true,
+    "minRequest": 1000,
+    "caps": [],
+    "split": 0.8,
+    "waitDays": 14
+   },
+   "expiryDays": null,
+   "inactivity": null,
+   "billing": "one-time",
+   "notes": [
+    "First payout after 14 calendar days from your first trade and once the buffer is cleared.",
+    "After the first payout the loss limit becomes static at 150,100.",
+    "Total payouts are capped at $100,000 per user."
+   ],
+   "verified": "2026-10-25",
+   "id": "mffu-pro-sim-150K",
+   "firm": "MyFundedFutures",
+   "plan": "Pro Sim Funded",
+   "size": 150000,
+   "phase": "funded",
+   "startBalance": 150000,
+   "drawdown": {
+    "type": "eod",
+    "amount": 4500,
+    "lock": "none",
+    "afterPayout": "start+100"
+   },
+   "sources": [
+    "https://help.myfundedfutures.com/en/articles/17573707-comprehensive-look-into-redesigned-pro-plan"
+   ]
+  },
+  {
+   "minDays": null,
+   "levels": [
+    {
+     "from": 0,
+     "contracts": 2,
+     "dll": null
+    }
+   ],
+   "dllEffect": "pause",
+   "consistency": {
+    "pct": 0.4,
+    "base": "total",
+    "mode": "blockPass",
+    "strict": false
+   },
+   "payout": null,
+   "expiryDays": null,
+   "inactivity": null,
+   "billing": "one-time",
+   "notes": [
+    "Consistency is 40%, or 50% if you bought the add-on: edit the card if so.",
+    "The daily loss limit is optional at checkout: add it if you chose it."
+   ],
+   "verified": "2026-10-25",
+   "id": "lucid-flex-eval-25K",
+   "firm": "Lucid Trading",
+   "plan": "LucidFlex Evaluation",
+   "size": 25000,
+   "phase": "evaluation",
+   "startBalance": 25000,
+   "target": 1250,
+   "drawdown": {
+    "type": "eod",
+    "amount": 1000,
+    "lock": "start+100",
+    "afterPayout": "none"
+   },
+   "sources": [
+    "https://support.lucidtrading.com/en/articles/12945790-lucidflex-evaluation-account",
+    "https://support.lucidtrading.com/en/articles/12945815-lucidflex-drawdown"
+   ]
+  },
+  {
+   "minDays": null,
+   "levels": [
+    {
+     "from": 0,
+     "contracts": 2,
+     "dll": null
+    }
+   ],
+   "dllEffect": "pause",
+   "consistency": null,
+   "payout": {
+    "qualDays": 5,
+    "qualMin": 100,
+    "cycleMinNet": 0.01,
+    "minRequest": 500,
+    "caps": [
+     1000
+    ],
+    "capPctProfit": 0.5,
+    "split": 0.9,
+    "maxPayouts": 5
+   },
+   "expiryDays": null,
+   "inactivity": null,
+   "billing": "one-time",
+   "notes": [
+    "Requesting a payout locks the loss limit at start + $100.",
+    "Lucid's page says up to 50% of profit in one place and 50% of balance in another: this card uses profit, the stricter reading.",
+    "After 5 payouts the account moves live."
+   ],
+   "verified": "2026-10-25",
+   "id": "lucid-flex-funded-25K",
+   "firm": "Lucid Trading",
+   "plan": "LucidFlex Funded",
+   "size": 25000,
+   "phase": "funded",
+   "startBalance": 25000,
+   "drawdown": {
+    "type": "eod",
+    "amount": 1000,
+    "lock": "start+100",
+    "afterPayout": "start+100"
+   },
+   "sources": [
+    "https://support.lucidtrading.com/en/articles/12945815-lucidflex-drawdown",
+    "https://support.lucidtrading.com/en/articles/12945796-lucidflex-payouts"
+   ]
+  },
+  {
+   "minDays": null,
+   "levels": [
+    {
+     "from": 0,
+     "contracts": 4,
+     "dll": null
+    }
+   ],
+   "dllEffect": "pause",
+   "consistency": {
+    "pct": 0.4,
+    "base": "total",
+    "mode": "blockPass",
+    "strict": false
+   },
+   "payout": null,
+   "expiryDays": null,
+   "inactivity": null,
+   "billing": "one-time",
+   "notes": [
+    "Consistency is 40%, or 50% if you bought the add-on: edit the card if so.",
+    "The daily loss limit is optional at checkout: add it if you chose it."
+   ],
+   "verified": "2026-10-25",
+   "id": "lucid-flex-eval-50K",
+   "firm": "Lucid Trading",
+   "plan": "LucidFlex Evaluation",
+   "size": 50000,
+   "phase": "evaluation",
+   "startBalance": 50000,
+   "target": 3000,
+   "drawdown": {
+    "type": "eod",
+    "amount": 2000,
+    "lock": "start+100",
+    "afterPayout": "none"
+   },
+   "sources": [
+    "https://support.lucidtrading.com/en/articles/12945790-lucidflex-evaluation-account",
+    "https://support.lucidtrading.com/en/articles/12945815-lucidflex-drawdown"
+   ]
+  },
+  {
+   "minDays": null,
+   "levels": [
+    {
+     "from": 0,
+     "contracts": 4,
+     "dll": null
+    }
+   ],
+   "dllEffect": "pause",
+   "consistency": null,
+   "payout": {
+    "qualDays": 5,
+    "qualMin": 150,
+    "cycleMinNet": 0.01,
+    "minRequest": 500,
+    "caps": [
+     2000
+    ],
+    "capPctProfit": 0.5,
+    "split": 0.9,
+    "maxPayouts": 5
+   },
+   "expiryDays": null,
+   "inactivity": null,
+   "billing": "one-time",
+   "notes": [
+    "Requesting a payout locks the loss limit at start + $100.",
+    "Lucid's page says up to 50% of profit in one place and 50% of balance in another: this card uses profit, the stricter reading.",
+    "After 5 payouts the account moves live."
+   ],
+   "verified": "2026-10-25",
+   "id": "lucid-flex-funded-50K",
+   "firm": "Lucid Trading",
+   "plan": "LucidFlex Funded",
+   "size": 50000,
+   "phase": "funded",
+   "startBalance": 50000,
+   "drawdown": {
+    "type": "eod",
+    "amount": 2000,
+    "lock": "start+100",
+    "afterPayout": "start+100"
+   },
+   "sources": [
+    "https://support.lucidtrading.com/en/articles/12945815-lucidflex-drawdown",
+    "https://support.lucidtrading.com/en/articles/12945796-lucidflex-payouts"
+   ]
+  },
+  {
+   "minDays": null,
+   "levels": [
+    {
+     "from": 0,
+     "contracts": 6,
+     "dll": null
+    }
+   ],
+   "dllEffect": "pause",
+   "consistency": {
+    "pct": 0.4,
+    "base": "total",
+    "mode": "blockPass",
+    "strict": false
+   },
+   "payout": null,
+   "expiryDays": null,
+   "inactivity": null,
+   "billing": "one-time",
+   "notes": [
+    "Consistency is 40%, or 50% if you bought the add-on: edit the card if so.",
+    "The daily loss limit is optional at checkout: add it if you chose it."
+   ],
+   "verified": "2026-10-25",
+   "id": "lucid-flex-eval-100K",
+   "firm": "Lucid Trading",
+   "plan": "LucidFlex Evaluation",
+   "size": 100000,
+   "phase": "evaluation",
+   "startBalance": 100000,
+   "target": 6000,
+   "drawdown": {
+    "type": "eod",
+    "amount": 3000,
+    "lock": "start+100",
+    "afterPayout": "none"
+   },
+   "sources": [
+    "https://support.lucidtrading.com/en/articles/12945790-lucidflex-evaluation-account",
+    "https://support.lucidtrading.com/en/articles/12945815-lucidflex-drawdown"
+   ]
+  },
+  {
+   "minDays": null,
+   "levels": [
+    {
+     "from": 0,
+     "contracts": 6,
+     "dll": null
+    }
+   ],
+   "dllEffect": "pause",
+   "consistency": null,
+   "payout": {
+    "qualDays": 5,
+    "qualMin": 200,
+    "cycleMinNet": 0.01,
+    "minRequest": 500,
+    "caps": [
+     2500
+    ],
+    "capPctProfit": 0.5,
+    "split": 0.9,
+    "maxPayouts": 5
+   },
+   "expiryDays": null,
+   "inactivity": null,
+   "billing": "one-time",
+   "notes": [
+    "Requesting a payout locks the loss limit at start + $100.",
+    "Lucid's page says up to 50% of profit in one place and 50% of balance in another: this card uses profit, the stricter reading.",
+    "After 5 payouts the account moves live."
+   ],
+   "verified": "2026-10-25",
+   "id": "lucid-flex-funded-100K",
+   "firm": "Lucid Trading",
+   "plan": "LucidFlex Funded",
+   "size": 100000,
+   "phase": "funded",
+   "startBalance": 100000,
+   "drawdown": {
+    "type": "eod",
+    "amount": 3000,
+    "lock": "start+100",
+    "afterPayout": "start+100"
+   },
+   "sources": [
+    "https://support.lucidtrading.com/en/articles/12945815-lucidflex-drawdown",
+    "https://support.lucidtrading.com/en/articles/12945796-lucidflex-payouts"
+   ]
+  },
+  {
+   "minDays": null,
+   "levels": [
+    {
+     "from": 0,
+     "contracts": 10,
+     "dll": null
+    }
+   ],
+   "dllEffect": "pause",
+   "consistency": {
+    "pct": 0.4,
+    "base": "total",
+    "mode": "blockPass",
+    "strict": false
+   },
+   "payout": null,
+   "expiryDays": null,
+   "inactivity": null,
+   "billing": "one-time",
+   "notes": [
+    "Consistency is 40%, or 50% if you bought the add-on: edit the card if so.",
+    "The daily loss limit is optional at checkout: add it if you chose it."
+   ],
+   "verified": "2026-10-25",
+   "id": "lucid-flex-eval-150K",
+   "firm": "Lucid Trading",
+   "plan": "LucidFlex Evaluation",
+   "size": 150000,
+   "phase": "evaluation",
+   "startBalance": 150000,
+   "target": 9000,
+   "drawdown": {
+    "type": "eod",
+    "amount": 4500,
+    "lock": "start+100",
+    "afterPayout": "none"
+   },
+   "sources": [
+    "https://support.lucidtrading.com/en/articles/12945790-lucidflex-evaluation-account",
+    "https://support.lucidtrading.com/en/articles/12945815-lucidflex-drawdown"
+   ]
+  },
+  {
+   "minDays": null,
+   "levels": [
+    {
+     "from": 0,
+     "contracts": 10,
+     "dll": null
+    }
+   ],
+   "dllEffect": "pause",
+   "consistency": null,
+   "payout": {
+    "qualDays": 5,
+    "qualMin": 250,
+    "cycleMinNet": 0.01,
+    "minRequest": 500,
+    "caps": [
+     3000
+    ],
+    "capPctProfit": 0.5,
+    "split": 0.9,
+    "maxPayouts": 5
+   },
+   "expiryDays": null,
+   "inactivity": null,
+   "billing": "one-time",
+   "notes": [
+    "Requesting a payout locks the loss limit at start + $100.",
+    "Lucid's page says up to 50% of profit in one place and 50% of balance in another: this card uses profit, the stricter reading.",
+    "After 5 payouts the account moves live."
+   ],
+   "verified": "2026-10-25",
+   "id": "lucid-flex-funded-150K",
+   "firm": "Lucid Trading",
+   "plan": "LucidFlex Funded",
+   "size": 150000,
+   "phase": "funded",
+   "startBalance": 150000,
+   "drawdown": {
+    "type": "eod",
+    "amount": 4500,
+    "lock": "start+100",
+    "afterPayout": "start+100"
+   },
+   "sources": [
+    "https://support.lucidtrading.com/en/articles/12945815-lucidflex-drawdown",
+    "https://support.lucidtrading.com/en/articles/12945796-lucidflex-payouts"
+   ]
+  },
+  {
+   "minDays": 3,
+   "levels": [
+    {
+     "from": 0,
+     "contracts": 1,
+     "dll": null
+    }
+   ],
+   "dllEffect": "pause",
+   "consistency": {
+    "pct": 0.4,
+    "base": "total",
+    "mode": "blockPass",
+    "strict": false
+   },
+   "payout": null,
+   "expiryDays": null,
+   "inactivity": null,
+   "billing": "one-time",
+   "notes": [
+    "No single day may exceed 40% of total profit (50% with the add-on, which also lowers the minimum to 2 days)."
+   ],
+   "verified": "2026-10-25",
+   "id": "tradeify-select-eval-25K",
+   "firm": "Tradeify",
+   "plan": "Select Evaluation",
+   "size": 25000,
+   "phase": "evaluation",
+   "startBalance": 25000,
+   "target": 1500,
+   "drawdown": {
+    "type": "eod",
+    "amount": 1000,
+    "lock": "start+100",
+    "afterPayout": "none"
+   },
+   "sources": [
+    "https://help.tradeify.co/en/articles/12853921-select-evaluation-accounts"
+   ]
+  },
+  {
+   "minDays": 1,
+   "levels": [
+    {
+     "from": 0,
+     "contracts": 1,
+     "dll": 600
+    },
+    {
+     "from": 1500,
+     "contracts": 1,
+     "dll": 1000
+    }
+   ],
+   "dllEffect": "pause",
+   "consistency": null,
+   "payout": null,
+   "expiryDays": null,
+   "inactivity": {
+    "days": 7,
+    "text": "Tradeify asks for at least one trade every week (Monday to Friday)."
+   },
+   "billing": "one-time",
+   "notes": [
+    "The daily loss limit is a soft breach: trading pauses until the next session. It rises after 6% profit.",
+    "No consistency rule.",
+    "Accounts bought before 12 Sep 2025 have larger contract limits: edit the card if yours is one of them."
+   ],
+   "verified": "2026-10-25",
+   "id": "tradeify-growth-eval-25K",
+   "firm": "Tradeify",
+   "plan": "Growth Evaluation",
+   "size": 25000,
+   "phase": "evaluation",
+   "startBalance": 25000,
+   "target": 1500,
+   "drawdown": {
+    "type": "eod",
+    "amount": 1000,
+    "lock": "none",
+    "afterPayout": "none"
+   },
+   "sources": [
+    "https://help.tradeify.co/en/articles/10495915-growth-evaluation-accounts",
+    "https://help.tradeify.co/en/articles/10468321-rules-daily-loss-limit"
+   ]
+  },
+  {
+   "minDays": null,
+   "levels": [
+    {
+     "from": 0,
+     "contracts": 1,
+     "dll": null
+    }
+   ],
+   "dllEffect": "pause",
+   "consistency": null,
+   "payout": {
+    "qualDays": 5,
+    "qualMin": 0.01,
+    "cycleMinNet": 0.01,
+    "minRequest": 250,
+    "caps": [
+     1250
+    ],
+    "capPctProfit": 0.5,
+    "split": 0.9
+   },
+   "expiryDays": null,
+   "inactivity": null,
+   "billing": "one-time",
+   "notes": [
+    "Payout caps changed on 1 Sep 2026: accounts bought before then may have different caps.",
+    "No daily loss limit."
+   ],
+   "verified": "2026-10-25",
+   "id": "tradeify-select-flex-25K",
+   "firm": "Tradeify",
+   "plan": "Select Flex (funded)",
+   "size": 25000,
+   "phase": "funded",
+   "startBalance": 25000,
+   "drawdown": {
+    "type": "eod",
+    "amount": 1000,
+    "lock": "start+100",
+    "afterPayout": "none"
+   },
+   "sources": [
+    "https://help.tradeify.co/en/articles/12853966-select-flex-and-select-daily-payout-policies",
+    "https://help.tradeify.co/en/articles/12853921-select-evaluation-accounts"
+   ]
+  },
+  {
+   "minDays": null,
+   "levels": [
+    {
+     "from": 0,
+     "contracts": 1,
+     "dll": 500
+    }
+   ],
+   "dllEffect": "pause",
+   "consistency": null,
+   "payout": {
+    "qualDays": 0,
+    "qualMin": null,
+    "cycleMinNet": 0.01,
+    "bufferProfit": 1100,
+    "aboveBuffer": true,
+    "minRequest": 250,
+    "caps": [
+     600
+    ],
+    "capMultCycle": 2,
+    "split": 0.9
+   },
+   "expiryDays": null,
+   "inactivity": null,
+   "billing": "one-time",
+   "notes": [
+    "Daily payouts of up to 2× the profit since your last payout, above the buffer.",
+    "Payout caps changed on 1 Sep 2026."
+   ],
+   "verified": "2026-10-25",
+   "id": "tradeify-select-daily-25K",
+   "firm": "Tradeify",
+   "plan": "Select Daily (funded)",
+   "size": 25000,
+   "phase": "funded",
+   "startBalance": 25000,
+   "drawdown": {
+    "type": "eod",
+    "amount": 1000,
+    "lock": "start+100",
+    "afterPayout": "none"
+   },
+   "sources": [
+    "https://help.tradeify.co/en/articles/12853966-select-flex-and-select-daily-payout-policies",
+    "https://help.tradeify.co/en/articles/10468321-rules-daily-loss-limit"
+   ]
+  },
+  {
+   "minDays": 3,
+   "levels": [
+    {
+     "from": 0,
+     "contracts": 4,
+     "dll": null
+    }
+   ],
+   "dllEffect": "pause",
+   "consistency": {
+    "pct": 0.4,
+    "base": "total",
+    "mode": "blockPass",
+    "strict": false
+   },
+   "payout": null,
+   "expiryDays": null,
+   "inactivity": null,
+   "billing": "one-time",
+   "notes": [
+    "No single day may exceed 40% of total profit (50% with the add-on, which also lowers the minimum to 2 days)."
+   ],
+   "verified": "2026-10-25",
+   "id": "tradeify-select-eval-50K",
+   "firm": "Tradeify",
+   "plan": "Select Evaluation",
+   "size": 50000,
+   "phase": "evaluation",
+   "startBalance": 50000,
+   "target": 3000,
+   "drawdown": {
+    "type": "eod",
+    "amount": 2000,
+    "lock": "start+100",
+    "afterPayout": "none"
+   },
+   "sources": [
+    "https://help.tradeify.co/en/articles/12853921-select-evaluation-accounts"
+   ]
+  },
+  {
+   "minDays": 1,
+   "levels": [
+    {
+     "from": 0,
+     "contracts": 4,
+     "dll": 1250
+    },
+    {
+     "from": 3000,
+     "contracts": 4,
+     "dll": 2000
+    }
+   ],
+   "dllEffect": "pause",
+   "consistency": null,
+   "payout": null,
+   "expiryDays": null,
+   "inactivity": {
+    "days": 7,
+    "text": "Tradeify asks for at least one trade every week (Monday to Friday)."
+   },
+   "billing": "one-time",
+   "notes": [
+    "The daily loss limit is a soft breach: trading pauses until the next session. It rises after 6% profit.",
+    "No consistency rule.",
+    "Accounts bought before 12 Sep 2025 have larger contract limits: edit the card if yours is one of them."
+   ],
+   "verified": "2026-10-25",
+   "id": "tradeify-growth-eval-50K",
+   "firm": "Tradeify",
+   "plan": "Growth Evaluation",
+   "size": 50000,
+   "phase": "evaluation",
+   "startBalance": 50000,
+   "target": 3000,
+   "drawdown": {
+    "type": "eod",
+    "amount": 2000,
+    "lock": "none",
+    "afterPayout": "none"
+   },
+   "sources": [
+    "https://help.tradeify.co/en/articles/10495915-growth-evaluation-accounts",
+    "https://help.tradeify.co/en/articles/10468321-rules-daily-loss-limit"
+   ]
+  },
+  {
+   "minDays": null,
+   "levels": [
+    {
+     "from": 0,
+     "contracts": 4,
+     "dll": null
+    }
+   ],
+   "dllEffect": "pause",
+   "consistency": null,
+   "payout": {
+    "qualDays": 5,
+    "qualMin": 0.01,
+    "cycleMinNet": 0.01,
+    "minRequest": 250,
+    "caps": [
+     2500
+    ],
+    "capPctProfit": 0.5,
+    "split": 0.9
+   },
+   "expiryDays": null,
+   "inactivity": null,
+   "billing": "one-time",
+   "notes": [
+    "Payout caps changed on 1 Sep 2026: accounts bought before then may have different caps.",
+    "No daily loss limit."
+   ],
+   "verified": "2026-10-25",
+   "id": "tradeify-select-flex-50K",
+   "firm": "Tradeify",
+   "plan": "Select Flex (funded)",
+   "size": 50000,
+   "phase": "funded",
+   "startBalance": 50000,
+   "drawdown": {
+    "type": "eod",
+    "amount": 2000,
+    "lock": "start+100",
+    "afterPayout": "none"
+   },
+   "sources": [
+    "https://help.tradeify.co/en/articles/12853966-select-flex-and-select-daily-payout-policies",
+    "https://help.tradeify.co/en/articles/12853921-select-evaluation-accounts"
+   ]
+  },
+  {
+   "minDays": null,
+   "levels": [
+    {
+     "from": 0,
+     "contracts": 4,
+     "dll": 1000
+    }
+   ],
+   "dllEffect": "pause",
+   "consistency": null,
+   "payout": {
+    "qualDays": 0,
+    "qualMin": null,
+    "cycleMinNet": 0.01,
+    "bufferProfit": 2100,
+    "aboveBuffer": true,
+    "minRequest": 250,
+    "caps": [
+     1250
+    ],
+    "capMultCycle": 2,
+    "split": 0.9
+   },
+   "expiryDays": null,
+   "inactivity": null,
+   "billing": "one-time",
+   "notes": [
+    "Daily payouts of up to 2× the profit since your last payout, above the buffer.",
+    "Payout caps changed on 1 Sep 2026."
+   ],
+   "verified": "2026-10-25",
+   "id": "tradeify-select-daily-50K",
+   "firm": "Tradeify",
+   "plan": "Select Daily (funded)",
+   "size": 50000,
+   "phase": "funded",
+   "startBalance": 50000,
+   "drawdown": {
+    "type": "eod",
+    "amount": 2000,
+    "lock": "start+100",
+    "afterPayout": "none"
+   },
+   "sources": [
+    "https://help.tradeify.co/en/articles/12853966-select-flex-and-select-daily-payout-policies",
+    "https://help.tradeify.co/en/articles/10468321-rules-daily-loss-limit"
+   ]
+  },
+  {
+   "minDays": 3,
+   "levels": [
+    {
+     "from": 0,
+     "contracts": 8,
+     "dll": null
+    }
+   ],
+   "dllEffect": "pause",
+   "consistency": {
+    "pct": 0.4,
+    "base": "total",
+    "mode": "blockPass",
+    "strict": false
+   },
+   "payout": null,
+   "expiryDays": null,
+   "inactivity": null,
+   "billing": "one-time",
+   "notes": [
+    "No single day may exceed 40% of total profit (50% with the add-on, which also lowers the minimum to 2 days)."
+   ],
+   "verified": "2026-10-25",
+   "id": "tradeify-select-eval-100K",
+   "firm": "Tradeify",
+   "plan": "Select Evaluation",
+   "size": 100000,
+   "phase": "evaluation",
+   "startBalance": 100000,
+   "target": 6000,
+   "drawdown": {
+    "type": "eod",
+    "amount": 3000,
+    "lock": "start+100",
+    "afterPayout": "none"
+   },
+   "sources": [
+    "https://help.tradeify.co/en/articles/12853921-select-evaluation-accounts"
+   ]
+  },
+  {
+   "minDays": 1,
+   "levels": [
+    {
+     "from": 0,
+     "contracts": 8,
+     "dll": 2500
+    },
+    {
+     "from": 6000,
+     "contracts": 8,
+     "dll": 3500
+    }
+   ],
+   "dllEffect": "pause",
+   "consistency": null,
+   "payout": null,
+   "expiryDays": null,
+   "inactivity": {
+    "days": 7,
+    "text": "Tradeify asks for at least one trade every week (Monday to Friday)."
+   },
+   "billing": "one-time",
+   "notes": [
+    "The daily loss limit is a soft breach: trading pauses until the next session. It rises after 6% profit.",
+    "No consistency rule.",
+    "Accounts bought before 12 Sep 2025 have larger contract limits: edit the card if yours is one of them."
+   ],
+   "verified": "2026-10-25",
+   "id": "tradeify-growth-eval-100K",
+   "firm": "Tradeify",
+   "plan": "Growth Evaluation",
+   "size": 100000,
+   "phase": "evaluation",
+   "startBalance": 100000,
+   "target": 6000,
+   "drawdown": {
+    "type": "eod",
+    "amount": 3500,
+    "lock": "none",
+    "afterPayout": "none"
+   },
+   "sources": [
+    "https://help.tradeify.co/en/articles/10495915-growth-evaluation-accounts",
+    "https://help.tradeify.co/en/articles/10468321-rules-daily-loss-limit"
+   ]
+  },
+  {
+   "minDays": null,
+   "levels": [
+    {
+     "from": 0,
+     "contracts": 8,
+     "dll": null
+    }
+   ],
+   "dllEffect": "pause",
+   "consistency": null,
+   "payout": {
+    "qualDays": 5,
+    "qualMin": 0.01,
+    "cycleMinNet": 0.01,
+    "minRequest": 250,
+    "caps": [
+     3500
+    ],
+    "capPctProfit": 0.5,
+    "split": 0.9
+   },
+   "expiryDays": null,
+   "inactivity": null,
+   "billing": "one-time",
+   "notes": [
+    "Payout caps changed on 1 Sep 2026: accounts bought before then may have different caps.",
+    "No daily loss limit."
+   ],
+   "verified": "2026-10-25",
+   "id": "tradeify-select-flex-100K",
+   "firm": "Tradeify",
+   "plan": "Select Flex (funded)",
+   "size": 100000,
+   "phase": "funded",
+   "startBalance": 100000,
+   "drawdown": {
+    "type": "eod",
+    "amount": 3000,
+    "lock": "start+100",
+    "afterPayout": "none"
+   },
+   "sources": [
+    "https://help.tradeify.co/en/articles/12853966-select-flex-and-select-daily-payout-policies",
+    "https://help.tradeify.co/en/articles/12853921-select-evaluation-accounts"
+   ]
+  },
+  {
+   "minDays": null,
+   "levels": [
+    {
+     "from": 0,
+     "contracts": 8,
+     "dll": 1250
+    }
+   ],
+   "dllEffect": "pause",
+   "consistency": null,
+   "payout": {
+    "qualDays": 0,
+    "qualMin": null,
+    "cycleMinNet": 0.01,
+    "bufferProfit": 2600,
+    "aboveBuffer": true,
+    "minRequest": 250,
+    "caps": [
+     1750
+    ],
+    "capMultCycle": 2,
+    "split": 0.9
+   },
+   "expiryDays": null,
+   "inactivity": null,
+   "billing": "one-time",
+   "notes": [
+    "Daily payouts of up to 2× the profit since your last payout, above the buffer.",
+    "Payout caps changed on 1 Sep 2026."
+   ],
+   "verified": "2026-10-25",
+   "id": "tradeify-select-daily-100K",
+   "firm": "Tradeify",
+   "plan": "Select Daily (funded)",
+   "size": 100000,
+   "phase": "funded",
+   "startBalance": 100000,
+   "drawdown": {
+    "type": "eod",
+    "amount": 2500,
+    "lock": "start+100",
+    "afterPayout": "none"
+   },
+   "sources": [
+    "https://help.tradeify.co/en/articles/12853966-select-flex-and-select-daily-payout-policies",
+    "https://help.tradeify.co/en/articles/10468321-rules-daily-loss-limit"
+   ]
+  },
+  {
+   "minDays": 3,
+   "levels": [
+    {
+     "from": 0,
+     "contracts": 12,
+     "dll": null
+    }
+   ],
+   "dllEffect": "pause",
+   "consistency": {
+    "pct": 0.4,
+    "base": "total",
+    "mode": "blockPass",
+    "strict": false
+   },
+   "payout": null,
+   "expiryDays": null,
+   "inactivity": null,
+   "billing": "one-time",
+   "notes": [
+    "No single day may exceed 40% of total profit (50% with the add-on, which also lowers the minimum to 2 days)."
+   ],
+   "verified": "2026-10-25",
+   "id": "tradeify-select-eval-150K",
+   "firm": "Tradeify",
+   "plan": "Select Evaluation",
+   "size": 150000,
+   "phase": "evaluation",
+   "startBalance": 150000,
+   "target": 9000,
+   "drawdown": {
+    "type": "eod",
+    "amount": 4500,
+    "lock": "start+100",
+    "afterPayout": "none"
+   },
+   "sources": [
+    "https://help.tradeify.co/en/articles/12853921-select-evaluation-accounts"
+   ]
+  },
+  {
+   "minDays": 1,
+   "levels": [
+    {
+     "from": 0,
+     "contracts": 12,
+     "dll": 3750
+    },
+    {
+     "from": 9000,
+     "contracts": 12,
+     "dll": 5000
+    }
+   ],
+   "dllEffect": "pause",
+   "consistency": null,
+   "payout": null,
+   "expiryDays": null,
+   "inactivity": {
+    "days": 7,
+    "text": "Tradeify asks for at least one trade every week (Monday to Friday)."
+   },
+   "billing": "one-time",
+   "notes": [
+    "The daily loss limit is a soft breach: trading pauses until the next session. It rises after 6% profit.",
+    "No consistency rule.",
+    "Accounts bought before 12 Sep 2025 have larger contract limits: edit the card if yours is one of them."
+   ],
+   "verified": "2026-10-25",
+   "id": "tradeify-growth-eval-150K",
+   "firm": "Tradeify",
+   "plan": "Growth Evaluation",
+   "size": 150000,
+   "phase": "evaluation",
+   "startBalance": 150000,
+   "target": 9000,
+   "drawdown": {
+    "type": "eod",
+    "amount": 5000,
+    "lock": "none",
+    "afterPayout": "none"
+   },
+   "sources": [
+    "https://help.tradeify.co/en/articles/10495915-growth-evaluation-accounts",
+    "https://help.tradeify.co/en/articles/10468321-rules-daily-loss-limit"
+   ]
+  },
+  {
+   "minDays": null,
+   "levels": [
+    {
+     "from": 0,
+     "contracts": 12,
+     "dll": null
+    }
+   ],
+   "dllEffect": "pause",
+   "consistency": null,
+   "payout": {
+    "qualDays": 5,
+    "qualMin": 0.01,
+    "cycleMinNet": 0.01,
+    "minRequest": 250,
+    "caps": [
+     4500
+    ],
+    "capPctProfit": 0.5,
+    "split": 0.9
+   },
+   "expiryDays": null,
+   "inactivity": null,
+   "billing": "one-time",
+   "notes": [
+    "Payout caps changed on 1 Sep 2026: accounts bought before then may have different caps.",
+    "No daily loss limit."
+   ],
+   "verified": "2026-10-25",
+   "id": "tradeify-select-flex-150K",
+   "firm": "Tradeify",
+   "plan": "Select Flex (funded)",
+   "size": 150000,
+   "phase": "funded",
+   "startBalance": 150000,
+   "drawdown": {
+    "type": "eod",
+    "amount": 4500,
+    "lock": "start+100",
+    "afterPayout": "none"
+   },
+   "sources": [
+    "https://help.tradeify.co/en/articles/12853966-select-flex-and-select-daily-payout-policies",
+    "https://help.tradeify.co/en/articles/12853921-select-evaluation-accounts"
+   ]
+  },
+  {
+   "minDays": null,
+   "levels": [
+    {
+     "from": 0,
+     "contracts": 12,
+     "dll": 1750
+    }
+   ],
+   "dllEffect": "pause",
+   "consistency": null,
+   "payout": {
+    "qualDays": 0,
+    "qualMin": null,
+    "cycleMinNet": 0.01,
+    "bufferProfit": 3600,
+    "aboveBuffer": true,
+    "minRequest": 250,
+    "caps": [
+     2500
+    ],
+    "capMultCycle": 2,
+    "split": 0.9
+   },
+   "expiryDays": null,
+   "inactivity": null,
+   "billing": "one-time",
+   "notes": [
+    "Daily payouts of up to 2× the profit since your last payout, above the buffer.",
+    "Payout caps changed on 1 Sep 2026."
+   ],
+   "verified": "2026-10-25",
+   "id": "tradeify-select-daily-150K",
+   "firm": "Tradeify",
+   "plan": "Select Daily (funded)",
+   "size": 150000,
+   "phase": "funded",
+   "startBalance": 150000,
+   "drawdown": {
+    "type": "eod",
+    "amount": 3500,
+    "lock": "start+100",
+    "afterPayout": "none"
+   },
+   "sources": [
+    "https://help.tradeify.co/en/articles/12853966-select-flex-and-select-daily-payout-policies",
+    "https://help.tradeify.co/en/articles/10468321-rules-daily-loss-limit"
+   ]
+  },
+  {
+   "minDays": 3,
+   "levels": [
+    {
+     "from": 0,
+     "contracts": 3,
+     "dll": null
+    }
+   ],
+   "dllEffect": "pause",
+   "consistency": {
+    "pct": 0.5,
+    "base": "total",
+    "mode": "blockPass",
+    "strict": true
+   },
+   "payout": null,
+   "expiryDays": null,
+   "inactivity": null,
+   "billing": "monthly",
+   "notes": [
+    "Your biggest day must stay under 50%: going over doesn't fail the test, you keep trading.",
+    "No daily loss limit on new Test and PRO accounts (removed in January 2025)."
+   ],
+   "verified": "2026-10-25",
+   "id": "tpt-test-25K",
+   "firm": "Take Profit Trader",
+   "plan": "Test",
+   "size": 25000,
+   "phase": "evaluation",
+   "startBalance": 25000,
+   "target": 1500,
+   "drawdown": {
+    "type": "eod",
+    "amount": 1500,
+    "lock": "start",
+    "afterPayout": "none"
+   },
+   "sources": [
+    "https://takeprofittrader.crunch.help/test-rules/rule-4-do-not-hit-end-of-day-eod-maximum-trailing-drawdown",
+    "https://try.takeprofittrader.com/TPT-FAQs-nf40-4-0725"
+   ]
+  },
+  {
+   "minDays": null,
+   "levels": [
+    {
+     "from": 0,
+     "contracts": 3,
+     "dll": null
+    }
+   ],
+   "dllEffect": "pause",
+   "consistency": null,
+   "payout": {
+    "qualDays": 0,
+    "qualMin": null,
+    "bufferProfit": 1500,
+    "aboveBuffer": true,
+    "minRequest": 1,
+    "caps": [],
+    "split": 0.8
+   },
+   "expiryDays": null,
+   "inactivity": null,
+   "billing": "one-time",
+   "notes": [
+    "PRO uses an intraday drawdown. Withdrawals above the buffer (equal to your drawdown) are split 80/20.",
+    "Withdrawing from inside the buffer closes the account. Withdrawals of $250 or less cost $50.",
+    "Take Profit Trader doesn't say when the PRO drawdown stops trailing: this card assumes it never does."
+   ],
+   "verified": "2026-10-25",
+   "id": "tpt-pro-25K",
+   "firm": "Take Profit Trader",
+   "plan": "PRO (funded)",
+   "size": 25000,
+   "phase": "funded",
+   "startBalance": 25000,
+   "drawdown": {
+    "type": "intraday",
+    "amount": 1500,
+    "lock": "none",
+    "afterPayout": "none"
+   },
+   "sources": [
+    "https://try.takeprofittrader.com/TPT-FAQs-nf40-4-0725"
+   ]
+  },
+  {
+   "minDays": 3,
+   "levels": [
+    {
+     "from": 0,
+     "contracts": 6,
+     "dll": null
+    }
+   ],
+   "dllEffect": "pause",
+   "consistency": {
+    "pct": 0.5,
+    "base": "total",
+    "mode": "blockPass",
+    "strict": true
+   },
+   "payout": null,
+   "expiryDays": null,
+   "inactivity": null,
+   "billing": "monthly",
+   "notes": [
+    "Your biggest day must stay under 50%: going over doesn't fail the test, you keep trading.",
+    "No daily loss limit on new Test and PRO accounts (removed in January 2025)."
+   ],
+   "verified": "2026-10-25",
+   "id": "tpt-test-50K",
+   "firm": "Take Profit Trader",
+   "plan": "Test",
+   "size": 50000,
+   "phase": "evaluation",
+   "startBalance": 50000,
+   "target": 3000,
+   "drawdown": {
+    "type": "eod",
+    "amount": 2000,
+    "lock": "start",
+    "afterPayout": "none"
+   },
+   "sources": [
+    "https://takeprofittrader.crunch.help/test-rules/rule-4-do-not-hit-end-of-day-eod-maximum-trailing-drawdown",
+    "https://try.takeprofittrader.com/TPT-FAQs-nf40-4-0725"
+   ]
+  },
+  {
+   "minDays": null,
+   "levels": [
+    {
+     "from": 0,
+     "contracts": 6,
+     "dll": null
+    }
+   ],
+   "dllEffect": "pause",
+   "consistency": null,
+   "payout": {
+    "qualDays": 0,
+    "qualMin": null,
+    "bufferProfit": 2000,
+    "aboveBuffer": true,
+    "minRequest": 1,
+    "caps": [],
+    "split": 0.8
+   },
+   "expiryDays": null,
+   "inactivity": null,
+   "billing": "one-time",
+   "notes": [
+    "PRO uses an intraday drawdown. Withdrawals above the buffer (equal to your drawdown) are split 80/20.",
+    "Withdrawing from inside the buffer closes the account. Withdrawals of $250 or less cost $50.",
+    "Take Profit Trader doesn't say when the PRO drawdown stops trailing: this card assumes it never does."
+   ],
+   "verified": "2026-10-25",
+   "id": "tpt-pro-50K",
+   "firm": "Take Profit Trader",
+   "plan": "PRO (funded)",
+   "size": 50000,
+   "phase": "funded",
+   "startBalance": 50000,
+   "drawdown": {
+    "type": "intraday",
+    "amount": 2000,
+    "lock": "none",
+    "afterPayout": "none"
+   },
+   "sources": [
+    "https://try.takeprofittrader.com/TPT-FAQs-nf40-4-0725"
+   ]
+  },
+  {
+   "minDays": 3,
+   "levels": [
+    {
+     "from": 0,
+     "contracts": 9,
+     "dll": null
+    }
+   ],
+   "dllEffect": "pause",
+   "consistency": {
+    "pct": 0.5,
+    "base": "total",
+    "mode": "blockPass",
+    "strict": true
+   },
+   "payout": null,
+   "expiryDays": null,
+   "inactivity": null,
+   "billing": "monthly",
+   "notes": [
+    "Your biggest day must stay under 50%: going over doesn't fail the test, you keep trading.",
+    "No daily loss limit on new Test and PRO accounts (removed in January 2025)."
+   ],
+   "verified": "2026-10-25",
+   "id": "tpt-test-75K",
+   "firm": "Take Profit Trader",
+   "plan": "Test",
+   "size": 75000,
+   "phase": "evaluation",
+   "startBalance": 75000,
+   "target": 4500,
+   "drawdown": {
+    "type": "eod",
+    "amount": 2500,
+    "lock": "start",
+    "afterPayout": "none"
+   },
+   "sources": [
+    "https://takeprofittrader.crunch.help/test-rules/rule-4-do-not-hit-end-of-day-eod-maximum-trailing-drawdown",
+    "https://try.takeprofittrader.com/TPT-FAQs-nf40-4-0725"
+   ]
+  },
+  {
+   "minDays": null,
+   "levels": [
+    {
+     "from": 0,
+     "contracts": 9,
+     "dll": null
+    }
+   ],
+   "dllEffect": "pause",
+   "consistency": null,
+   "payout": {
+    "qualDays": 0,
+    "qualMin": null,
+    "bufferProfit": 2500,
+    "aboveBuffer": true,
+    "minRequest": 1,
+    "caps": [],
+    "split": 0.8
+   },
+   "expiryDays": null,
+   "inactivity": null,
+   "billing": "one-time",
+   "notes": [
+    "PRO uses an intraday drawdown. Withdrawals above the buffer (equal to your drawdown) are split 80/20.",
+    "Withdrawing from inside the buffer closes the account. Withdrawals of $250 or less cost $50.",
+    "Take Profit Trader doesn't say when the PRO drawdown stops trailing: this card assumes it never does."
+   ],
+   "verified": "2026-10-25",
+   "id": "tpt-pro-75K",
+   "firm": "Take Profit Trader",
+   "plan": "PRO (funded)",
+   "size": 75000,
+   "phase": "funded",
+   "startBalance": 75000,
+   "drawdown": {
+    "type": "intraday",
+    "amount": 2500,
+    "lock": "none",
+    "afterPayout": "none"
+   },
+   "sources": [
+    "https://try.takeprofittrader.com/TPT-FAQs-nf40-4-0725"
+   ]
+  },
+  {
+   "minDays": 3,
+   "levels": [
+    {
+     "from": 0,
+     "contracts": 12,
+     "dll": null
+    }
+   ],
+   "dllEffect": "pause",
+   "consistency": {
+    "pct": 0.5,
+    "base": "total",
+    "mode": "blockPass",
+    "strict": true
+   },
+   "payout": null,
+   "expiryDays": null,
+   "inactivity": null,
+   "billing": "monthly",
+   "notes": [
+    "Your biggest day must stay under 50%: going over doesn't fail the test, you keep trading.",
+    "No daily loss limit on new Test and PRO accounts (removed in January 2025)."
+   ],
+   "verified": "2026-10-25",
+   "id": "tpt-test-100K",
+   "firm": "Take Profit Trader",
+   "plan": "Test",
+   "size": 100000,
+   "phase": "evaluation",
+   "startBalance": 100000,
+   "target": 6000,
+   "drawdown": {
+    "type": "eod",
+    "amount": 3000,
+    "lock": "start",
+    "afterPayout": "none"
+   },
+   "sources": [
+    "https://takeprofittrader.crunch.help/test-rules/rule-4-do-not-hit-end-of-day-eod-maximum-trailing-drawdown",
+    "https://try.takeprofittrader.com/TPT-FAQs-nf40-4-0725"
+   ]
+  },
+  {
+   "minDays": null,
+   "levels": [
+    {
+     "from": 0,
+     "contracts": 12,
+     "dll": null
+    }
+   ],
+   "dllEffect": "pause",
+   "consistency": null,
+   "payout": {
+    "qualDays": 0,
+    "qualMin": null,
+    "bufferProfit": 3000,
+    "aboveBuffer": true,
+    "minRequest": 1,
+    "caps": [],
+    "split": 0.8
+   },
+   "expiryDays": null,
+   "inactivity": null,
+   "billing": "one-time",
+   "notes": [
+    "PRO uses an intraday drawdown. Withdrawals above the buffer (equal to your drawdown) are split 80/20.",
+    "Withdrawing from inside the buffer closes the account. Withdrawals of $250 or less cost $50.",
+    "Take Profit Trader doesn't say when the PRO drawdown stops trailing: this card assumes it never does."
+   ],
+   "verified": "2026-10-25",
+   "id": "tpt-pro-100K",
+   "firm": "Take Profit Trader",
+   "plan": "PRO (funded)",
+   "size": 100000,
+   "phase": "funded",
+   "startBalance": 100000,
+   "drawdown": {
+    "type": "intraday",
+    "amount": 3000,
+    "lock": "none",
+    "afterPayout": "none"
+   },
+   "sources": [
+    "https://try.takeprofittrader.com/TPT-FAQs-nf40-4-0725"
+   ]
+  },
+  {
+   "minDays": 3,
+   "levels": [
+    {
+     "from": 0,
+     "contracts": 15,
+     "dll": null
+    }
+   ],
+   "dllEffect": "pause",
+   "consistency": {
+    "pct": 0.5,
+    "base": "total",
+    "mode": "blockPass",
+    "strict": true
+   },
+   "payout": null,
+   "expiryDays": null,
+   "inactivity": null,
+   "billing": "monthly",
+   "notes": [
+    "Your biggest day must stay under 50%: going over doesn't fail the test, you keep trading.",
+    "No daily loss limit on new Test and PRO accounts (removed in January 2025)."
+   ],
+   "verified": "2026-10-25",
+   "id": "tpt-test-150K",
+   "firm": "Take Profit Trader",
+   "plan": "Test",
+   "size": 150000,
+   "phase": "evaluation",
+   "startBalance": 150000,
+   "target": 9000,
+   "drawdown": {
+    "type": "eod",
+    "amount": 4500,
+    "lock": "start",
+    "afterPayout": "none"
+   },
+   "sources": [
+    "https://takeprofittrader.crunch.help/test-rules/rule-4-do-not-hit-end-of-day-eod-maximum-trailing-drawdown",
+    "https://try.takeprofittrader.com/TPT-FAQs-nf40-4-0725"
+   ]
+  },
+  {
+   "minDays": null,
+   "levels": [
+    {
+     "from": 0,
+     "contracts": 15,
+     "dll": null
+    }
+   ],
+   "dllEffect": "pause",
+   "consistency": null,
+   "payout": {
+    "qualDays": 0,
+    "qualMin": null,
+    "bufferProfit": 4500,
+    "aboveBuffer": true,
+    "minRequest": 1,
+    "caps": [],
+    "split": 0.8
+   },
+   "expiryDays": null,
+   "inactivity": null,
+   "billing": "one-time",
+   "notes": [
+    "PRO uses an intraday drawdown. Withdrawals above the buffer (equal to your drawdown) are split 80/20.",
+    "Withdrawing from inside the buffer closes the account. Withdrawals of $250 or less cost $50.",
+    "Take Profit Trader doesn't say when the PRO drawdown stops trailing: this card assumes it never does."
+   ],
+   "verified": "2026-10-25",
+   "id": "tpt-pro-150K",
+   "firm": "Take Profit Trader",
+   "plan": "PRO (funded)",
+   "size": 150000,
+   "phase": "funded",
+   "startBalance": 150000,
+   "drawdown": {
+    "type": "intraday",
+    "amount": 4500,
+    "lock": "none",
+    "afterPayout": "none"
+   },
+   "sources": [
+    "https://try.takeprofittrader.com/TPT-FAQs-nf40-4-0725"
+   ]
+  }
+ ]
+}
