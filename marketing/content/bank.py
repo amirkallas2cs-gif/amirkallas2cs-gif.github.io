@@ -231,6 +231,7 @@ PFM_LINK = "https://kallas8.gumroad.com/l/prop-firm-manager"
 PFM_PAGE = "/prop-firm-manager/"
 PFM_TAG = "Example accounts · demo data"
 PFM_RULE_TAG = "Worked example · check your firm's current rules"
+BUNDLE_LINK = "https://kallas8.gumroad.com/l/znfvjd"
 PFM_TAGS = ["#propfirm", "#fundedtrader", "#futurestrading", "#daytrading", "#trading"]
 
 CTA_PFM = lambda text="Every prop account, one calm screen.": {
@@ -244,8 +245,8 @@ def post_pfm(title, body, tags, pin=None):
     return {
         "instagram": f"{body}\n\n{tail} Link in bio.\n\n{hashtags}",
         "tiktok": f"{body} {' '.join(dict.fromkeys(tags + PFM_TAGS[:3]))}",
-        "youtube": {"title": f"{title} #shorts", "description": f"{body}\n\n{tail}\n{PFM_LINK}\n\nExample numbers. Not affiliated with any prop firm. Always check your firm's current rules. Not financial advice.\n\n{hashtags} #shorts"},
-        "facebook": f"{body}\n\nProp Firm Manager (Windows & Mac): {PFM_LINK}",
+        "youtube": {"title": f"{title} #shorts", "description": f"{body}\n\n{tail}\n{PFM_LINK}\n\nProp Trader Bundle (Prop Firm Manager + Trading Journal AI, $55): {BUNDLE_LINK}\n\nExample numbers. Not affiliated with any prop firm. Always check your firm's current rules. Not financial advice.\n\n{hashtags} #shorts"},
+        "facebook": f"{body}\n\nProp Firm Manager (Windows & Mac): {PFM_LINK}\nBundle with Trading Journal AI, $55: {BUNDLE_LINK}",
         "pinterest": {"title": pin or title, "description": f"{body} Prop firm tracker app for Windows & Mac.", "link": PFM_LINK},
     }
 
