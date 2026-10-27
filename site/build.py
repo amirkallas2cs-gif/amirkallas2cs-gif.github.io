@@ -23,6 +23,9 @@ def front(path):
 
 
 def callout(kind="app"):
+    if kind == "bundle":
+        return (f'<div class="callout"><div><b>Prop Trader Bundle · {CFG["bundle_price"]}</b><p>Trading Journal AI + Prop Firm Manager, both desktop apps for Windows &amp; Mac. '
+                f'Separately $68: save $13.</p></div><a class="btn" href="{CFG["bundle_url"]}">Get the bundle</a></div>')
     if kind == "prop":
         return (f'<div class="callout"><div><b>Track every prop account automatically</b><p>Prop Firm Manager is a desktop app for Windows &amp; Mac: '
                 f'loss limits, consistency, payout conditions and fees vs payouts for Topstep, Apex, MFFU, Lucid, Tradeify and Take Profit Trader.</p></div>'
@@ -156,7 +159,7 @@ def build(out):
     fill = lambda s: (s.replace("{{product_url}}", CFG["product_url"]).replace("{{freebie_url}}", CFG["freebie_url"])
                       .replace("{{tools}}", tools_cards).replace("{{learn}}", "".join(card(f"/learn/{a['slug']}/", a["title"], a["description"]) for a in articles[:6]))
                       .replace("{{freebie}}", callout("freebie")).replace("{{price}}", CFG["price"])
-                      .replace("{{prop_url}}", CFG["prop_url"]).replace("{{prop_price}}", CFG["prop_price"]))
+                      .replace("{{prop_url}}", CFG["prop_url"]).replace("{{prop_price}}", CFG["prop_price"]).replace("{{bundle}}", callout("bundle")))
     app_ld = {"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Trading Journal AI", "operatingSystem": "Windows 10, Windows 11, macOS 11+",
               "applicationCategory": "FinanceApplication", "offers": {"@type": "Offer", "price": CFG["price"].strip("$"), "priceCurrency": "USD", "url": CFG["product_url"]},
               "image": f"{SITE}/static/img/01_cover.jpg", "description": "Desktop trading journal with a one-click AI weekly review in Claude, ChatGPT or Gemini."}
