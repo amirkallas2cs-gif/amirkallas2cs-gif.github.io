@@ -23,6 +23,10 @@ def front(path):
 
 
 def callout(kind="app"):
+    if kind == "prop":
+        return (f'<div class="callout"><div><b>Track every prop account automatically</b><p>Prop Firm Manager is a desktop app for Windows &amp; Mac: '
+                f'loss limits, consistency, payout conditions and fees vs payouts for Topstep, Apex, MFFU, Lucid, Tradeify and Take Profit Trader.</p></div>'
+                f'<a class="btn" href="/prop-firm-manager/">See the app</a></div>')
     if kind == "freebie" and not CFG.get("freebie_url"):
         return ""  # the free kit isn't on Gumroad yet
     if kind == "freebie":
@@ -108,7 +112,7 @@ def build(out):
     # articles
     for a in articles:
         md = markdown.Markdown(extensions=["tables", "toc", "attr_list"])
-        body = md.convert(a["body"].replace("{{app}}", callout()).replace("{{freebie}}", callout("freebie")))
+        body = md.convert(a["body"].replace("{{app}}", callout()).replace("{{prop}}", callout("prop")).replace("{{freebie}}", callout("freebie")))
         faq_html, faq_ld = faq_block(a.get("faq"))
         path = f"/learn/{a['slug']}/"
         ld = [{"@context": "https://schema.org", "@type": "Article", "headline": a["title"], "description": a["description"],
@@ -151,12 +155,19 @@ def build(out):
     home = (ROOT / "pages" / "home.html").read_text(encoding="utf-8")
     fill = lambda s: (s.replace("{{product_url}}", CFG["product_url"]).replace("{{freebie_url}}", CFG["freebie_url"])
                       .replace("{{tools}}", tools_cards).replace("{{learn}}", "".join(card(f"/learn/{a['slug']}/", a["title"], a["description"]) for a in articles[:6]))
-                      .replace("{{freebie}}", callout("freebie")).replace("{{price}}", CFG["price"]))
+                      .replace("{{freebie}}", callout("freebie")).replace("{{price}}", CFG["price"])
+                      .replace("{{prop_url}}", CFG["prop_url"]).replace("{{prop_price}}", CFG["prop_price"]))
     app_ld = {"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Trading Journal AI", "operatingSystem": "Windows 10, Windows 11, macOS 11+",
               "applicationCategory": "FinanceApplication", "offers": {"@type": "Offer", "price": CFG["price"].strip("$"), "priceCurrency": "USD", "url": CFG["product_url"]},
               "image": f"{SITE}/static/img/01_cover.jpg", "description": "Desktop trading journal with a one-click AI weekly review in Claude, ChatGPT or Gemini."}
     page(out, "/trading-journal-ai/", "Trading Journal AI: desktop trading journal with one-click AI review", "A calm desktop trading journal for Windows & Mac. Log a trade in ten fields, find your edge by setup and hour, and get a one-click weekly review from Claude, ChatGPT or Gemini.",
          fill(prod), "product", [app_ld])
+    prop = (ROOT / "pages" / "prop.html").read_text(encoding="utf-8")
+    prop_ld = {"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Prop Firm Manager", "operatingSystem": "Windows 10, Windows 11, macOS 11+",
+               "applicationCategory": "FinanceApplication", "offers": {"@type": "Offer", "price": CFG["prop_price"].strip("$"), "priceCurrency": "USD", "url": CFG["prop_url"]},
+               "image": f"{SITE}/static/img/pfm_home.jpg", "description": "Desktop app that tracks every prop firm account: trailing loss limits, consistency rules, payouts and ROI on fees."}
+    page(out, "/prop-firm-manager/", "Prop Firm Manager: track every prop account, loss limit and payout", "Desktop app for Windows & Mac that tracks Topstep, Apex, MFFU, Lucid, Tradeify and Take Profit Trader accounts: trailing drawdown, consistency, payouts and real ROI.",
+         fill(prop), "prop", [prop_ld], og_image="pfm_home.jpg")
     page(out, "/", "Calm Edge: honest trading journal and free trading calculators", "Calm, honest tools for traders: Trading Journal AI for Windows & Mac, free position size and R multiple calculators, and plain-English guides.",
          fill(home), "", [{"@context": "https://schema.org", "@type": "Organization", "name": "Calm Edge", "url": SITE, "logo": f"{SITE}/static/img/logo.png"}])
 
