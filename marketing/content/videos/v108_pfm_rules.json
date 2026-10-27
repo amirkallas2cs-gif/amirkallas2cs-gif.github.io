@@ -1,0 +1,60 @@
+{
+ "id": "v108_pfm_rules",
+ "site_path": "/prop-firm-manager/",
+ "scenes": [
+  {
+   "type": "hook",
+   "kicker": "Prop firm rules",
+   "text": "89 account types. 6 firms. Rules checked at the source.",
+   "say": "Eighty nine account types, from six prop firms, checked against their official help centers."
+  },
+  {
+   "type": "shot",
+   "img": "pfm_rule_card",
+   "title": "Every rule, in plain English.",
+   "chips": [
+    {
+     "text": "Topstep",
+     "color": "mint"
+    },
+    {
+     "text": "Apex",
+     "color": "blue"
+    },
+    {
+     "text": "MFFU",
+     "color": "gold"
+    }
+   ],
+   "say": "Drawdown, size, consistency, payouts and inactivity, in plain English."
+  },
+  {
+   "type": "hook",
+   "text": "Rules change? The app checks for updated cards.",
+   "say": "When a firm changes its rules, the app checks for updated cards. Or edit any card yourself."
+  },
+  {
+   "type": "cta",
+   "title": "Prop Firm Manager",
+   "sub": "Desktop app · Windows & Mac",
+   "text": "Topstep · Apex · MFFU · Lucid · Tradeify · TPT",
+   "button": "Link in bio",
+   "say": "Prop Firm Manager. Link in bio."
+  }
+ ],
+ "post": {
+  "instagram": "89 account types from Topstep, Apex, MyFundedFutures, Lucid, Tradeify and Take Profit Trader, checked against their official help centers. Edit any card yourself.\n\nProp Firm Manager: desktop app for Windows & Mac. Loss limits, payouts, consistency and fees for Topstep, Apex, MFFU, Lucid, Tradeify and Take Profit Trader. Link in bio.\n\n#topstep #apextraderfunding #myfundedfutures #propfirm #fundedtrader #futurestrading #daytrading #trading",
+  "tiktok": "89 account types from Topstep, Apex, MyFundedFutures, Lucid, Tradeify and Take Profit Trader, checked against their official help centers. Edit any card yourself. #topstep #apextraderfunding #myfundedfutures #propfirm #fundedtrader #futurestrading",
+  "youtube": {
+   "title": "Prop firm rules in plain English #shorts",
+   "description": "89 account types from Topstep, Apex, MyFundedFutures, Lucid, Tradeify and Take Profit Trader, checked against their official help centers. Edit any card yourself.\n\nProp Firm Manager: desktop app for Windows & Mac. Loss limits, payouts, consistency and fees for Topstep, Apex, MFFU, Lucid, Tradeify and Take Profit Trader.\nhttps://kallas8.gumroad.com/l/prop-firm-manager\n\nExample numbers. Not affiliated with any prop firm. Always check your firm's current rules. Not financial advice.\n\n#topstep #apextraderfunding #myfundedfutures #propfirm #fundedtrader #futurestrading #daytrading #trading #shorts"
+  },
+  "facebook": "89 account types from Topstep, Apex, MyFundedFutures, Lucid, Tradeify and Take Profit Trader, checked against their official help centers. Edit any card yourself.\n\nProp Firm Manager (Windows & Mac): https://kallas8.gumroad.com/l/prop-firm-manager",
+  "pinterest": {
+   "title": "Prop firm rules compared",
+   "description": "89 account types from Topstep, Apex, MyFundedFutures, Lucid, Tradeify and Take Profit Trader, checked against their official help centers. Edit any card yourself. Prop firm tracker app for Windows & Mac.",
+   "link": "https://kallas8.gumroad.com/l/prop-firm-manager"
+  }
+ },
+ "voice": "andrew_up"
+}

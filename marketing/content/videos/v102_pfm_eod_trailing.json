@@ -1,0 +1,91 @@
+{
+ "id": "v102_pfm_eod_trailing",
+ "tag": "Worked example · check your firm's current rules",
+ "site_path": "/learn/prop-firm-trailing-drawdown-explained/",
+ "scenes": [
+  {
+   "type": "hook",
+   "kicker": "Trailing drawdown",
+   "text": "Your loss limit moves up. It never moves back down.",
+   "say": "On a prop account, your loss limit moves up with you. It never moves back down."
+  },
+  {
+   "type": "rows",
+   "title": "50K account, $2,000 end-of-day trailing",
+   "head": [
+    "Day",
+    "Close",
+    "Loss limit"
+   ],
+   "rows": [
+    {
+     "cells": [
+      "Start",
+      "$50,000",
+      "$48,000"
+     ]
+    },
+    {
+     "cells": [
+      "Day 1",
+      "$50,800",
+      "$48,800"
+     ],
+     "good": true
+    },
+    {
+     "cells": [
+      "Day 2",
+      "$50,300",
+      "$48,800"
+     ],
+     "hl": true
+    },
+    {
+     "cells": [
+      "Day 3",
+      "$52,100",
+      "$50,100"
+     ],
+     "good": true
+    }
+   ],
+   "say": "Close at fifty thousand eight hundred, and the limit climbs to forty eight thousand eight hundred. Lose five hundred the next day, and it stays there."
+  },
+  {
+   "type": "hook",
+   "kicker": "Then it locks",
+   "text": "At $50,100: the starting balance + $100.",
+   "say": "On many accounts it stops trailing at the starting balance plus one hundred dollars. From there, it's locked."
+  },
+  {
+   "type": "shot",
+   "img": "pfm_chart",
+   "title": "Balance vs loss limit, day by day.",
+   "say": "Prop Firm Manager replays every day with your firm's rules, so you always see the real number."
+  },
+  {
+   "type": "cta",
+   "title": "Prop Firm Manager",
+   "sub": "Desktop app · Windows & Mac",
+   "text": "Know your real loss limit, every day.",
+   "button": "Link in bio",
+   "say": "Prop Firm Manager. Link in bio."
+  }
+ ],
+ "post": {
+  "instagram": "On a 50K account with a $2,000 end-of-day trailing drawdown, the loss limit follows your best close and never moves back down. On many accounts it locks at the starting balance + $100.\n\nProp Firm Manager: desktop app for Windows & Mac. Loss limits, payouts, consistency and fees for Topstep, Apex, MFFU, Lucid, Tradeify and Take Profit Trader. Link in bio.\n\n#drawdown #riskmanagement #propfirm #fundedtrader #futurestrading #daytrading #trading",
+  "tiktok": "On a 50K account with a $2,000 end-of-day trailing drawdown, the loss limit follows your best close and never moves back down. On many accounts it locks at the starting balance + $100. #drawdown #riskmanagement #propfirm #fundedtrader #futurestrading",
+  "youtube": {
+   "title": "Trailing drawdown explained in 30 seconds #shorts",
+   "description": "On a 50K account with a $2,000 end-of-day trailing drawdown, the loss limit follows your best close and never moves back down. On many accounts it locks at the starting balance + $100.\n\nProp Firm Manager: desktop app for Windows & Mac. Loss limits, payouts, consistency and fees for Topstep, Apex, MFFU, Lucid, Tradeify and Take Profit Trader.\nhttps://kallas8.gumroad.com/l/prop-firm-manager\n\nExample numbers. Not affiliated with any prop firm. Always check your firm's current rules. Not financial advice.\n\n#drawdown #riskmanagement #propfirm #fundedtrader #futurestrading #daytrading #trading #shorts"
+  },
+  "facebook": "On a 50K account with a $2,000 end-of-day trailing drawdown, the loss limit follows your best close and never moves back down. On many accounts it locks at the starting balance + $100.\n\nProp Firm Manager (Windows & Mac): https://kallas8.gumroad.com/l/prop-firm-manager",
+  "pinterest": {
+   "title": "Prop firm trailing drawdown explained",
+   "description": "On a 50K account with a $2,000 end-of-day trailing drawdown, the loss limit follows your best close and never moves back down. On many accounts it locks at the starting balance + $100. Prop firm tracker app for Windows & Mac.",
+   "link": "https://kallas8.gumroad.com/l/prop-firm-manager"
+  }
+ },
+ "voice": "andrew_up"
+}

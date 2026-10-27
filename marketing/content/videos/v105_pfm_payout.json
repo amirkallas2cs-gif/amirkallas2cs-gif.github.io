@@ -1,0 +1,69 @@
+{
+ "id": "v105_pfm_payout",
+ "tag": "Example accounts · demo data",
+ "site_path": "/prop-firm-manager/",
+ "scenes": [
+  {
+   "type": "hook",
+   "kicker": "Payouts",
+   "text": "Can you request a payout today? How much?",
+   "say": "Can you request a payout today? And how much?"
+  },
+  {
+   "type": "shot",
+   "img": "pfm_payout",
+   "title": "Every payout condition, checked.",
+   "ring": "pfm_gate_days",
+   "chips": [
+    {
+     "html": "Days <b>4 / 5</b>",
+     "color": "gold"
+    },
+    {
+     "html": "Now <b>$760</b>",
+     "color": "mint"
+    }
+   ],
+   "say": "Every condition is checked for you. Here, four qualifying days out of five, and seven hundred and sixty dollars above the safety net."
+  },
+  {
+   "type": "shot",
+   "img": "pfm_log_apex",
+   "title": "Type today's result. See what changes.",
+   "ring": "pfm_pv_apex",
+   "say": "Type today's result before you save it. Three hundred dollars more, and the payout is ready: up to one thousand and sixty."
+  },
+  {
+   "type": "stat",
+   "label": "Payout ready",
+   "value": 1060,
+   "prefix": "$",
+   "color": "mint",
+   "sub": "5 / 5 qualifying days",
+   "say": "No spreadsheets, no guessing."
+  },
+  {
+   "type": "cta",
+   "title": "Prop Firm Manager",
+   "sub": "Desktop app · Windows & Mac",
+   "text": "Know when, and how much, to withdraw.",
+   "button": "Link in bio",
+   "say": "Prop Firm Manager. Link in bio."
+  }
+ ],
+ "post": {
+  "instagram": "Qualifying days, buffer, consistency and payout caps, checked for you. In this example, one more $300 day makes the payout ready: up to $1,060.\n\nProp Firm Manager: desktop app for Windows & Mac. Loss limits, payouts, consistency and fees for Topstep, Apex, MFFU, Lucid, Tradeify and Take Profit Trader. Link in bio.\n\n#payout #apextraderfunding #propfirm #fundedtrader #futurestrading #daytrading #trading",
+  "tiktok": "Qualifying days, buffer, consistency and payout caps, checked for you. In this example, one more $300 day makes the payout ready: up to $1,060. #payout #apextraderfunding #propfirm #fundedtrader #futurestrading",
+  "youtube": {
+   "title": "Prop firm payout: when and how much #shorts",
+   "description": "Qualifying days, buffer, consistency and payout caps, checked for you. In this example, one more $300 day makes the payout ready: up to $1,060.\n\nProp Firm Manager: desktop app for Windows & Mac. Loss limits, payouts, consistency and fees for Topstep, Apex, MFFU, Lucid, Tradeify and Take Profit Trader.\nhttps://kallas8.gumroad.com/l/prop-firm-manager\n\nExample numbers. Not affiliated with any prop firm. Always check your firm's current rules. Not financial advice.\n\n#payout #apextraderfunding #propfirm #fundedtrader #futurestrading #daytrading #trading #shorts"
+  },
+  "facebook": "Qualifying days, buffer, consistency and payout caps, checked for you. In this example, one more $300 day makes the payout ready: up to $1,060.\n\nProp Firm Manager (Windows & Mac): https://kallas8.gumroad.com/l/prop-firm-manager",
+  "pinterest": {
+   "title": "Prop firm payout checklist app",
+   "description": "Qualifying days, buffer, consistency and payout caps, checked for you. In this example, one more $300 day makes the payout ready: up to $1,060. Prop firm tracker app for Windows & Mac.",
+   "link": "https://kallas8.gumroad.com/l/prop-firm-manager"
+  }
+ },
+ "voice": "andrew_up"
+}

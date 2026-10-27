@@ -1,0 +1,84 @@
+{
+ "id": "v103_pfm_intraday",
+ "tag": "Worked example · check your firm's current rules",
+ "site_path": "/learn/prop-firm-trailing-drawdown-explained/",
+ "scenes": [
+  {
+   "type": "hook",
+   "kicker": "Intraday drawdown",
+   "text": "You closed green. Your loss limit still went up.",
+   "say": "You closed the day green. And your loss limit still went up more than you think."
+  },
+  {
+   "type": "rows",
+   "title": "50K account, $2,000 intraday trailing",
+   "head": [
+    "Moment",
+    "Balance",
+    "Loss limit"
+   ],
+   "rows": [
+    {
+     "cells": [
+      "Open",
+      "$50,000",
+      "$48,000"
+     ]
+    },
+    {
+     "cells": [
+      "Day's high",
+      "$50,900",
+      "$48,900"
+     ],
+     "hl": true
+    },
+    {
+     "cells": [
+      "Close",
+      "$50,200",
+      "$48,900"
+     ]
+    }
+   ],
+   "say": "Intraday accounts trail your highest balance, open profit included. A high of fifty thousand nine hundred pulls the limit to forty eight thousand nine hundred."
+  },
+  {
+   "type": "stat",
+   "label": "Room left at the close",
+   "value": 1300,
+   "prefix": "$",
+   "color": "gold",
+   "sub": "not $2,200",
+   "say": "So at the close you have thirteen hundred dollars of room. Not twenty two hundred."
+  },
+  {
+   "type": "hook",
+   "text": "Log your close and the day's high. The app does the rest.",
+   "say": "Type your close and the day's high. Prop Firm Manager does the rest."
+  },
+  {
+   "type": "cta",
+   "title": "Prop Firm Manager",
+   "sub": "Desktop app · Windows & Mac",
+   "text": "Every prop account, one calm screen.",
+   "button": "Link in bio",
+   "say": "Prop Firm Manager. Link in bio."
+  }
+ ],
+ "post": {
+  "instagram": "On intraday accounts the loss limit trails your highest balance, open profit included. A high of $50,900 moves the limit to $48,900, even if you close at $50,200.\n\nProp Firm Manager: desktop app for Windows & Mac. Loss limits, payouts, consistency and fees for Topstep, Apex, MFFU, Lucid, Tradeify and Take Profit Trader. Link in bio.\n\n#drawdown #riskmanagement #propfirm #fundedtrader #futurestrading #daytrading #trading",
+  "tiktok": "On intraday accounts the loss limit trails your highest balance, open profit included. A high of $50,900 moves the limit to $48,900, even if you close at $50,200. #drawdown #riskmanagement #propfirm #fundedtrader #futurestrading",
+  "youtube": {
+   "title": "Intraday trailing drawdown: the trap #shorts",
+   "description": "On intraday accounts the loss limit trails your highest balance, open profit included. A high of $50,900 moves the limit to $48,900, even if you close at $50,200.\n\nProp Firm Manager: desktop app for Windows & Mac. Loss limits, payouts, consistency and fees for Topstep, Apex, MFFU, Lucid, Tradeify and Take Profit Trader.\nhttps://kallas8.gumroad.com/l/prop-firm-manager\n\nExample numbers. Not affiliated with any prop firm. Always check your firm's current rules. Not financial advice.\n\n#drawdown #riskmanagement #propfirm #fundedtrader #futurestrading #daytrading #trading #shorts"
+  },
+  "facebook": "On intraday accounts the loss limit trails your highest balance, open profit included. A high of $50,900 moves the limit to $48,900, even if you close at $50,200.\n\nProp Firm Manager (Windows & Mac): https://kallas8.gumroad.com/l/prop-firm-manager",
+  "pinterest": {
+   "title": "Intraday trailing drawdown explained",
+   "description": "On intraday accounts the loss limit trails your highest balance, open profit included. A high of $50,900 moves the limit to $48,900, even if you close at $50,200. Prop firm tracker app for Windows & Mac.",
+   "link": "https://kallas8.gumroad.com/l/prop-firm-manager"
+  }
+ },
+ "voice": "andrew_up"
+}

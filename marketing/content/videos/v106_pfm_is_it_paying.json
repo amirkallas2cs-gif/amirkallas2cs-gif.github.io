@@ -1,0 +1,59 @@
+{
+ "id": "v106_pfm_is_it_paying",
+ "tag": "Example accounts · demo data",
+ "site_path": "/prop-firm-manager/",
+ "scenes": [
+  {
+   "type": "hook",
+   "kicker": "The honest number",
+   "text": "Are prop firms paying you, or are you paying them?",
+   "say": "Are prop firms paying you? Or are you paying them?"
+  },
+  {
+   "type": "shot",
+   "img": "pfm_money_kpis",
+   "title": "Fees in, payouts out.",
+   "ring": "pfm_money_net",
+   "say": "Every evaluation, reset and activation fee, against every payout you actually received."
+  },
+  {
+   "type": "stat",
+   "label": "Return on fees",
+   "value": 186.4,
+   "decimals": 1,
+   "suffix": "%",
+   "color": "mint",
+   "sub": "$660 spent · $1,890 received",
+   "say": "In this example, six hundred and sixty dollars spent, eighteen hundred and ninety received."
+  },
+  {
+   "type": "shot",
+   "img": "pfm_money_firms",
+   "title": "Firm by firm.",
+   "say": "Firm by firm, so you know where your money really goes."
+  },
+  {
+   "type": "cta",
+   "title": "Prop Firm Manager",
+   "sub": "Desktop app · Windows & Mac",
+   "text": "The honest number on your prop trading.",
+   "button": "Link in bio",
+   "say": "Prop Firm Manager. Link in bio."
+  }
+ ],
+ "post": {
+  "instagram": "Track every evaluation, reset and activation fee against the payouts you actually received. In this example: $660 spent, $1,890 received, ROI on fees 186.4%.\n\nProp Firm Manager: desktop app for Windows & Mac. Loss limits, payouts, consistency and fees for Topstep, Apex, MFFU, Lucid, Tradeify and Take Profit Trader. Link in bio.\n\n#fundedtrader #propfirm #futurestrading #daytrading #trading",
+  "tiktok": "Track every evaluation, reset and activation fee against the payouts you actually received. In this example: $660 spent, $1,890 received, ROI on fees 186.4%. #fundedtrader #propfirm #futurestrading",
+  "youtube": {
+   "title": "Are prop firms paying you, or are you paying them? #shorts",
+   "description": "Track every evaluation, reset and activation fee against the payouts you actually received. In this example: $660 spent, $1,890 received, ROI on fees 186.4%.\n\nProp Firm Manager: desktop app for Windows & Mac. Loss limits, payouts, consistency and fees for Topstep, Apex, MFFU, Lucid, Tradeify and Take Profit Trader.\nhttps://kallas8.gumroad.com/l/prop-firm-manager\n\nExample numbers. Not affiliated with any prop firm. Always check your firm's current rules. Not financial advice.\n\n#fundedtrader #propfirm #futurestrading #daytrading #trading #shorts"
+  },
+  "facebook": "Track every evaluation, reset and activation fee against the payouts you actually received. In this example: $660 spent, $1,890 received, ROI on fees 186.4%.\n\nProp Firm Manager (Windows & Mac): https://kallas8.gumroad.com/l/prop-firm-manager",
+  "pinterest": {
+   "title": "Track prop firm fees and payouts",
+   "description": "Track every evaluation, reset and activation fee against the payouts you actually received. In this example: $660 spent, $1,890 received, ROI on fees 186.4%. Prop firm tracker app for Windows & Mac.",
+   "link": "https://kallas8.gumroad.com/l/prop-firm-manager"
+  }
+ },
+ "voice": "andrew_up"
+}

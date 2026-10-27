@@ -225,6 +225,139 @@ V.append({"id": "v014_habit", "scenes": [
     "post": post("A trading journal you'll actually keep", "Ten fields per trade, about 30 seconds. Dashboard, calendar, setups and mistakes fill in by themselves.",
                  ["#tradinghabits"], "Simple trading journal app")})
 
+# ---------------------------------------------------------------- Prop Firm Manager ($29)
+# Numbers: the app's example accounts (same as the product previews) or worked examples of the published rules.
+PFM_LINK = "https://kallas8.gumroad.com/l/prop-firm-manager"
+PFM_PAGE = "/prop-firm-manager/"
+PFM_TAG = "Example accounts · demo data"
+PFM_RULE_TAG = "Worked example · check your firm's current rules"
+PFM_TAGS = ["#propfirm", "#fundedtrader", "#futurestrading", "#daytrading", "#trading"]
+
+CTA_PFM = lambda text="Every prop account, one calm screen.": {
+    "type": "cta", "title": "Prop Firm Manager", "sub": "Desktop app · Windows & Mac", "text": text, "button": "Link in bio",
+    "say": "Prop Firm Manager. Link in bio."}
+
+
+def post_pfm(title, body, tags, pin=None):
+    hashtags = " ".join(dict.fromkeys(tags + PFM_TAGS))
+    tail = "Prop Firm Manager: desktop app for Windows & Mac. Loss limits, payouts, consistency and fees for Topstep, Apex, MFFU, Lucid, Tradeify and Take Profit Trader."
+    return {
+        "instagram": f"{body}\n\n{tail} Link in bio.\n\n{hashtags}",
+        "tiktok": f"{body} {' '.join(dict.fromkeys(tags + PFM_TAGS[:3]))}",
+        "youtube": {"title": f"{title} #shorts", "description": f"{body}\n\n{tail}\n{PFM_LINK}\n\nExample numbers. Not affiliated with any prop firm. Always check your firm's current rules. Not financial advice.\n\n{hashtags} #shorts"},
+        "facebook": f"{body}\n\nProp Firm Manager (Windows & Mac): {PFM_LINK}",
+        "pinterest": {"title": pin or title, "description": f"{body} Prop firm tracker app for Windows & Mac.", "link": PFM_LINK},
+    }
+
+
+V.append({"id": "v101_pfm_one_screen", "tag": PFM_TAG, "site_path": PFM_PAGE, "scenes": [
+    {"type": "hook", "kicker": "Prop firm traders", "text": "Three accounts. Three loss limits. Do you know all of them right now?",
+     "say": "Three prop accounts. Three loss limits. Do you know all of them, right now?"},
+    {"type": "shot", "img": "pfm_card_apex", "title": "Your real loss limit, after every day.", "ring": "pfm_apex_room",
+     "chips": [{"html": "Room <b>$2,760</b>", "color": "mint"}, {"html": "<b>Locked</b> at $50,100", "color": "blue"}],
+     "say": "Log each day's result, and every account shows its real loss limit and how much room is left."},
+    {"type": "shot", "img": "pfm_card_topstep", "title": "Targets, size and today's max.", "ring": "pfm_ts_facts",
+     "say": "Evaluations show the target, the size you're allowed, and the most you can make today."},
+    {"type": "shot", "img": "pfm_today", "title": "What matters today, first.", "ring": "pfm_today_first",
+     "say": "And the most important thing for today is always at the top."},
+    CTA_PFM()],
+    "post": post_pfm("Every prop firm account on one screen", "Three prop accounts, three different loss limits. Log each day's result and see every account's real loss limit, room left and today's max.",
+                     ["#topstep", "#apextraderfunding"], "Track all your prop firm accounts in one app")})
+
+V.append({"id": "v102_pfm_eod_trailing", "tag": PFM_RULE_TAG, "site_path": "/learn/prop-firm-trailing-drawdown-explained/", "scenes": [
+    {"type": "hook", "kicker": "Trailing drawdown", "text": "Your loss limit moves up. It never moves back down.",
+     "say": "On a prop account, your loss limit moves up with you. It never moves back down."},
+    {"type": "rows", "title": "50K account, $2,000 end-of-day trailing", "head": ["Day", "Close", "Loss limit"],
+     "rows": [{"cells": ["Start", "$50,000", "$48,000"]}, {"cells": ["Day 1", "$50,800", "$48,800"], "good": True},
+              {"cells": ["Day 2", "$50,300", "$48,800"], "hl": True}, {"cells": ["Day 3", "$52,100", "$50,100"], "good": True}],
+     "say": "Close at fifty thousand eight hundred, and the limit climbs to forty eight thousand eight hundred. Lose five hundred the next day, and it stays there."},
+    {"type": "hook", "kicker": "Then it locks", "text": "At $50,100: the starting balance + $100.",
+     "say": "On many accounts it stops trailing at the starting balance plus one hundred dollars. From there, it's locked."},
+    {"type": "shot", "img": "pfm_chart", "title": "Balance vs loss limit, day by day.",
+     "say": "Prop Firm Manager replays every day with your firm's rules, so you always see the real number."},
+    CTA_PFM("Know your real loss limit, every day.")],
+    "post": post_pfm("Trailing drawdown explained in 30 seconds", "On a 50K account with a $2,000 end-of-day trailing drawdown, the loss limit follows your best close and never moves back down. On many accounts it locks at the starting balance + $100.",
+                     ["#drawdown", "#riskmanagement"], "Prop firm trailing drawdown explained")})
+
+V.append({"id": "v103_pfm_intraday", "tag": PFM_RULE_TAG, "site_path": "/learn/prop-firm-trailing-drawdown-explained/", "scenes": [
+    {"type": "hook", "kicker": "Intraday drawdown", "text": "You closed green. Your loss limit still went up.",
+     "say": "You closed the day green. And your loss limit still went up more than you think."},
+    {"type": "rows", "title": "50K account, $2,000 intraday trailing", "head": ["Moment", "Balance", "Loss limit"],
+     "rows": [{"cells": ["Open", "$50,000", "$48,000"]}, {"cells": ["Day's high", "$50,900", "$48,900"], "hl": True},
+              {"cells": ["Close", "$50,200", "$48,900"]}],
+     "say": "Intraday accounts trail your highest balance, open profit included. A high of fifty thousand nine hundred pulls the limit to forty eight thousand nine hundred."},
+    {"type": "stat", "label": "Room left at the close", "value": 1300, "prefix": "$", "color": "gold", "sub": "not $2,200",
+     "say": "So at the close you have thirteen hundred dollars of room. Not twenty two hundred."},
+    {"type": "hook", "text": "Log your close and the day's high. The app does the rest.",
+     "say": "Type your close and the day's high. Prop Firm Manager does the rest."},
+    CTA_PFM()],
+    "post": post_pfm("Intraday trailing drawdown: the trap", "On intraday accounts the loss limit trails your highest balance, open profit included. A high of $50,900 moves the limit to $48,900, even if you close at $50,200.",
+                     ["#drawdown", "#riskmanagement"], "Intraday trailing drawdown explained")})
+
+V.append({"id": "v104_pfm_consistency", "tag": PFM_RULE_TAG, "site_path": PFM_PAGE, "scenes": [
+    {"type": "hook", "kicker": "Consistency rule", "text": "A great day can push your target further away.",
+     "say": "A great day can push your profit target further away."},
+    {"type": "rows", "title": "50K evaluation, $3,000 target, 55% rule", "head": ["Best day", "Of target", "Target"],
+     "rows": [{"cells": ["$1,500", "50%", "$3,000"], "good": True}, {"cells": ["$1,650", "55%", "$3,000"], "good": True},
+              {"cells": ["$1,800", "60%", "$3,273"], "hl": True}],
+     "say": "If your best day is more than fifty five percent of the target, the target rises to best day divided by point fifty five. Eighteen hundred dollars makes it three thousand two hundred and seventy three."},
+    {"type": "shot", "img": "pfm_today", "title": "Today's max, before you trade.", "ring": "pfm_today_first",
+     "say": "Prop Firm Manager tells you today's max before you start. Here, sixteen hundred and fifty dollars."},
+    CTA_PFM("Know today's max before you trade.")],
+    "post": post_pfm("The consistency rule that moves your target", "With a 55% consistency rule on a $3,000 target, a $1,800 best day raises the target to $3,273. Know today's max before you trade.",
+                     ["#topstep", "#consistency"], "Prop firm consistency rule explained")})
+
+V.append({"id": "v105_pfm_payout", "tag": PFM_TAG, "site_path": PFM_PAGE, "scenes": [
+    {"type": "hook", "kicker": "Payouts", "text": "Can you request a payout today? How much?",
+     "say": "Can you request a payout today? And how much?"},
+    {"type": "shot", "img": "pfm_payout", "title": "Every payout condition, checked.", "ring": "pfm_gate_days",
+     "chips": [{"html": "Days <b>4 / 5</b>", "color": "gold"}, {"html": "Now <b>$760</b>", "color": "mint"}],
+     "say": "Every condition is checked for you. Here, four qualifying days out of five, and seven hundred and sixty dollars above the safety net."},
+    {"type": "shot", "img": "pfm_log_apex", "title": "Type today's result. See what changes.", "ring": "pfm_pv_apex",
+     "say": "Type today's result before you save it. Three hundred dollars more, and the payout is ready: up to one thousand and sixty."},
+    {"type": "stat", "label": "Payout ready", "value": 1060, "prefix": "$", "color": "mint", "sub": "5 / 5 qualifying days",
+     "say": "No spreadsheets, no guessing."},
+    CTA_PFM("Know when, and how much, to withdraw.")],
+    "post": post_pfm("Prop firm payout: when and how much", "Qualifying days, buffer, consistency and payout caps, checked for you. In this example, one more $300 day makes the payout ready: up to $1,060.",
+                     ["#payout", "#apextraderfunding"], "Prop firm payout checklist app")})
+
+V.append({"id": "v106_pfm_is_it_paying", "tag": PFM_TAG, "site_path": PFM_PAGE, "scenes": [
+    {"type": "hook", "kicker": "The honest number", "text": "Are prop firms paying you, or are you paying them?",
+     "say": "Are prop firms paying you? Or are you paying them?"},
+    {"type": "shot", "img": "pfm_money_kpis", "title": "Fees in, payouts out.", "ring": "pfm_money_net",
+     "say": "Every evaluation, reset and activation fee, against every payout you actually received."},
+    {"type": "stat", "label": "Return on fees", "value": 186.4, "decimals": 1, "suffix": "%", "color": "mint", "sub": "$660 spent · $1,890 received",
+     "say": "In this example, six hundred and sixty dollars spent, eighteen hundred and ninety received."},
+    {"type": "shot", "img": "pfm_money_firms", "title": "Firm by firm.",
+     "say": "Firm by firm, so you know where your money really goes."},
+    CTA_PFM("The honest number on your prop trading.")],
+    "post": post_pfm("Are prop firms paying you, or are you paying them?", "Track every evaluation, reset and activation fee against the payouts you actually received. In this example: $660 spent, $1,890 received, ROI on fees 186.4%.",
+                     ["#fundedtrader"], "Track prop firm fees and payouts")})
+
+V.append({"id": "v107_pfm_alerts_ai", "site_path": PFM_PAGE, "scenes": [
+    {"type": "hook", "kicker": "Never miss a deadline", "text": "Evaluation expiring. Subscription renewing. Payout ready.",
+     "say": "Evaluation about to expire. Subscription about to renew. Payout ready."},
+    {"type": "shot", "img": "pfm_alerts", "title": "Desktop notifications. Each one optional.",
+     "say": "Prop Firm Manager sends a desktop notification for each one. Turn off what you don't need."},
+    {"type": "shot", "img": "pfm_ai", "title": "Ask your own AI, with your numbers.", "ring": "pfm_ai_btn",
+     "chips": [{"text": "Claude", "color": "mint"}, {"text": "ChatGPT", "color": "blue"}, {"text": "Gemini", "color": "gold"}],
+     "say": "And one click opens your own AI with the account and its rules already written in."},
+    CTA_PFM("Rules, deadlines and payouts, handled.")],
+    "post": post_pfm("Never miss a prop firm deadline again", "Desktop notifications before an evaluation expires, before a subscription renews, when a payout is ready and when you're close to the loss limit. Each one optional.",
+                     ["#tradingtools"], "Prop firm deadline reminders app")})
+
+V.append({"id": "v108_pfm_rules", "site_path": PFM_PAGE, "scenes": [
+    {"type": "hook", "kicker": "Prop firm rules", "text": "89 account types. 6 firms. Rules checked at the source.",
+     "say": "Eighty nine account types, from six prop firms, checked against their official help centers."},
+    {"type": "shot", "img": "pfm_rule_card", "title": "Every rule, in plain English.",
+     "chips": [{"text": "Topstep", "color": "mint"}, {"text": "Apex", "color": "blue"}, {"text": "MFFU", "color": "gold"}],
+     "say": "Drawdown, size, consistency, payouts and inactivity, in plain English."},
+    {"type": "hook", "text": "Rules change? The app checks for updated cards.",
+     "say": "When a firm changes its rules, the app checks for updated cards. Or edit any card yourself."},
+    CTA_PFM("Topstep · Apex · MFFU · Lucid · Tradeify · TPT")],
+    "post": post_pfm("Prop firm rules in plain English", "89 account types from Topstep, Apex, MyFundedFutures, Lucid, Tradeify and Take Profit Trader, checked against their official help centers. Edit any card yourself.",
+                     ["#topstep", "#apextraderfunding", "#myfundedfutures"], "Prop firm rules compared")})
+
 
 if __name__ == "__main__":
     OUT.mkdir(exist_ok=True)
