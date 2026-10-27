@@ -49,6 +49,8 @@ jobs:
           set -o pipefail
           python marketing/render_all.py build/media --jobs 2 2>&1 | tee build/render_log.txt
           ls -la build/media | tee -a build/render_log.txt
+          # Results as run annotations, readable from the API without downloading logs.
+          python -c "import json,pathlib;m=pathlib.Path('build/media');idx=json.loads((m/'index.json').read_text());[print(f'::notice title=video {k}::{v.get(\"status\")} {v.get(\"seconds\")}s voice={v.get(\"engines\")} problems={v.get(\"problems\")}') for k,v in idx.items() if v.get('status')=='rendered'];[print(f'::warning title=video failed {f[\"id\"]}::'+f['error'][-400:].replace(chr(10),' | ')) for f in json.loads((m/'failed.json').read_text())]"
       - name: Site
         run: |
           python site/build.py build/site
