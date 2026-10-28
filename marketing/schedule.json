@@ -139,5 +139,85 @@
    "facebook",
    "youtube"
   ]
+ },
+ {
+  "id": "v201_edu_rsi_70",
+  "date": "2026-10-29",
+  "time": "17:30",
+  "channels": [
+   "instagram",
+   "facebook",
+   "youtube"
+  ]
+ },
+ {
+  "id": "v202_edu_20ema",
+  "date": "2026-10-30",
+  "time": "17:30",
+  "channels": [
+   "instagram",
+   "facebook",
+   "youtube"
+  ]
+ },
+ {
+  "id": "v203_edu_vwap",
+  "date": "2026-10-31",
+  "time": "17:30",
+  "channels": [
+   "instagram",
+   "facebook",
+   "youtube"
+  ]
+ },
+ {
+  "id": "v204_edu_sr_flip",
+  "date": "2026-11-01",
+  "time": "17:30",
+  "channels": [
+   "instagram",
+   "facebook",
+   "youtube"
+  ]
+ },
+ {
+  "id": "v205_edu_failed_breakout",
+  "date": "2026-11-02",
+  "time": "17:30",
+  "channels": [
+   "instagram",
+   "facebook",
+   "youtube"
+  ]
+ },
+ {
+  "id": "v206_edu_double_top",
+  "date": "2026-11-03",
+  "time": "17:30",
+  "channels": [
+   "instagram",
+   "facebook",
+   "youtube"
+  ]
+ },
+ {
+  "id": "v207_edu_atr_stop",
+  "date": "2026-11-04",
+  "time": "17:30",
+  "channels": [
+   "instagram",
+   "facebook",
+   "youtube"
+  ]
+ },
+ {
+  "id": "v210_edu_position_size",
+  "date": "2026-11-05",
+  "time": "17:30",
+  "channels": [
+   "instagram",
+   "facebook",
+   "youtube"
+  ]
  }
 ]
