@@ -50,7 +50,7 @@ jobs:
           python marketing/render_all.py build/media --jobs 2 2>&1 | tee build/render_log.txt
           ls -la build/media | tee -a build/render_log.txt
           # Results as run annotations, readable from the API without downloading logs.
-          python -c "import json,pathlib;m=pathlib.Path('build/media');idx=json.loads((m/'index.json').read_text());[print(f'::notice title=video {k}::{v.get(\"status\")} {v.get(\"seconds\")}s voice={v.get(\"engines\")} problems={v.get(\"problems\")}') for k,v in idx.items() if v.get('status')=='rendered' or k.startswith('v1')];[print(f'::warning title=video failed {f[\"id\"]}::'+f['error'][-400:].replace(chr(10),' | ')) for f in json.loads((m/'failed.json').read_text())]"
+          python -c "import json,pathlib;m=pathlib.Path('build/media');idx=json.loads((m/'index.json').read_text());print('::notice title=videos ok::'+' '.join(f'{k}:{v.get(\"status\")}:{v.get(\"seconds\")}s:{\"+\".join(v.get(\"engines\") or [])}' + (':problems=' + ';'.join(v['problems']) if v.get('problems') else '') for k,v in sorted(idx.items())));[print(f'::warning title=video failed {f[\"id\"]}::'+f['error'][-400:].replace(chr(10),' | ')) for f in json.loads((m/'failed.json').read_text())]"
       - name: Site
         run: |
           python site/build.py build/site
