@@ -28,6 +28,10 @@ CHECK = """() => {
       if (cr && r.bottom > cr.top + 2 && r.top < cr.bottom) bad.push('screenshot under captions'); });
   });
   if (cr && (cr.left < 60 || cr.right > 1080 - 120)) bad.push('captions too wide');
+  (window.__problems || []).forEach(p => bad.push(p)); window.__problems = [];
+  document.querySelectorAll('.layer').forEach(l => { if (l.style.display === 'none' || +l.style.opacity < 0.98) return;
+    l.querySelectorAll('svg.chart rect, svg.chart text').forEach(e => { const r = e.getBoundingClientRect();
+      if (cr && r.width && r.bottom > cr.top + 2 && r.top < cr.bottom && r.right > cr.left && r.left < cr.right) bad.push('chart under captions'); }); });
   // Nothing may overlap the demo-data tag.
   const tg = document.querySelector('.tag');
   if (tg) { const t = tg.getBoundingClientRect();
@@ -51,6 +55,7 @@ def main():
 
     work = pathlib.Path(tempfile.mkdtemp(prefix=f"vid-{vid}-"))
     shutil.copy(HERE / "player.html", work / "player.html")
+    shutil.copy(HERE / "chart.js", work / "chart.js")
     shutil.copytree(FONTS, work / "fonts")
     shutil.copytree(a.shots, work / "shots")
 

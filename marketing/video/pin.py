@@ -24,9 +24,20 @@ def main():
     ap = argparse.ArgumentParser(); ap.add_argument("spec"); ap.add_argument("out"); ap.add_argument("--shots", required=True)
     a = ap.parse_args()
     spec = json.loads(pathlib.Path(a.spec).read_text())
-    hook = next(s for s in spec["scenes"] if s["type"] == "hook")
+    hook = next((s for s in spec["scenes"] if s["type"] == "hook"), None)
+    charts = [s for s in spec["scenes"] if s["type"] == "chart"]
+    if hook is None:  # chart lessons: the first headline is the pin's title
+        hook = {"text": charts[0]["headline"], "kicker": "Trading, explained"}
     visual = next((s for t in ("rows", "stat", "shot") for s in spec["scenes"] if s["type"] == t), None)
-    if visual and visual["type"] == "rows":
+    chart_state = None
+    if charts:
+        sc = next((s for s in charts if s.get("pin")), charts[-1])
+        n = len(spec["charts"][sc["chart"]]["candles"])
+        chart_state = {"chart": sc["chart"], "state": {"bars": (sc.get("reveal") or [n, n])[1], "show": {k: 1 for k in sc.get("show", []) + sc.get("add", [])},
+                       "levels": [{**l, "alpha": 1} for l in sc.get("levels", [])], "zones": [{**z, "alpha": 1} for z in sc.get("zones", [])],
+                       "marks": [{**m, "alpha": 1} for m in sc.get("marks", [])]}}
+        vis = '<svg id="pc" width="860" height="560" style="overflow:visible"></svg>'
+    elif visual and visual["type"] == "rows":
         vis = f'<div class="vt">{html.escape(visual.get("title", ""))}</div>{rows_html(visual)}'
     elif visual and visual["type"] == "stat":
         v = visual["value"]; d = visual.get("decimals", 0)
@@ -34,6 +45,9 @@ def main():
         vis = f'<div class="vt">{html.escape(visual["label"])}</div><div class="stat" style="color:var(--{visual.get("color", "mint")})">{num}</div>'
     else:
         vis = f'<div class="shot"><img src="shots/{visual["img"]}.png"></div>' if visual else ""
+    brand = (("Calm Edge", "Trading, explained · one concept a day") if "_edu_" in spec["id"] else
+             ("Prop Firm Manager", "Desktop app · every prop account, one screen") if "_pfm_" in spec["id"] else
+             ("Trading Journal AI", "Desktop app · one-click AI review"))
     page = f"""<!doctype html><html><head><meta charset="utf-8"><style>
 @font-face {{ font-family: Inter; font-weight: 400; src: url(fonts/Inter-Regular.woff) }}
 @font-face {{ font-family: Inter; font-weight: 700; src: url(fonts/Inter-Bold.woff) }}
@@ -64,22 +78,32 @@ h1 {{ font-size:84px; line-height:1.05; letter-spacing:-2px; font-weight:700; te
 <div class="g" style="width:900px;height:900px;left:-350px;top:-400px;background:#5FD3A0"></div>
 <div class="g" style="width:800px;height:800px;right:-350px;bottom:-350px;background:#6CA8FF"></div>
 <div class="safe"><div class="k">{html.escape(hook.get("kicker", "Trading journal"))}</div><h1>{html.escape(hook["text"])}</h1>{vis}
-<div class="brand">{LOGO}<div><b>Trading Journal AI</b><span>Desktop app · one-click AI review</span></div></div>
-{f'<div class="tag">{html.escape(spec["tag"])}</div>' if spec.get("tag") else ""}</div></body></html>"""
+<div class="brand">{LOGO}<div><b>{brand[0]}</b><span>{brand[1]}</span></div></div>
+{f'<div class="tag">{html.escape(spec["tag"])}</div>' if spec.get("tag") else ""}</div>
+<script src="chart.js"></script></body></html>"""
     work = pathlib.Path(tempfile.mkdtemp())
-    shutil.copytree(FONTS, work / "fonts"); shutil.copytree(a.shots, work / "shots")
+    shutil.copytree(FONTS, work / "fonts"); shutil.copytree(a.shots, work / "shots"); shutil.copy(HERE / "chart.js", work / "chart.js")
     (work / "pin.html").write_text(page, encoding="utf-8")
     out = pathlib.Path(a.out); out.mkdir(parents=True, exist_ok=True)
     with sync_playwright() as p:
         exe = os.environ.get("CHROME_PATH") or "/opt/pw-browsers/chromium-1194/chrome-linux/chrome"
         b = p.chromium.launch(executable_path=exe if os.path.exists(exe) else None)
         pg = b.new_page(viewport={"width": 1000, "height": 1500}); pg.goto((work / "pin.html").as_uri()); pg.evaluate("document.fonts.ready")
+        chart_bad = []
+        if chart_state:
+            chart_bad = pg.evaluate("""([ch, st]) => { const svg = document.getElementById('pc'); const r = svg.getBoundingClientRect();
+              const slack = document.querySelector('.brand').getBoundingClientRect().top - r.bottom - 50;
+              const h = Math.min(780, 560 + Math.max(0, slack)); svg.setAttribute('height', h);
+              ch._extra = []; ch._marked = st.marks.some(m => !m.panel); st.levels.forEach(l => ch._extra.push(l.price)); st.zones.forEach(z => ch._extra.push(z.lo, z.hi));
+              const g = document.createElementNS('http://www.w3.org/2000/svg', 'g'); g.setAttribute('transform', `translate(${-r.left} ${-r.top})`); svg.appendChild(g);
+              return drawChart(g, ch, {x: r.left + 18, y: r.top, w: 824, h: h}, st); }""", [spec["charts"][chart_state["chart"]], chart_state["state"]])
         bad = pg.evaluate("""() => { const s = document.querySelector('.safe').getBoundingClientRect(), out = [];
           document.querySelectorAll('.safe > *').forEach(e => { const r = e.getBoundingClientRect(); if (r.bottom > s.bottom + 1 || r.right > s.right + 1) out.push(e.className || e.tagName); });
           return out; }""")
         pg.screenshot(path=str(out / f"{spec['id']}_pin.jpg"), type="jpeg", quality=90)
         b.close()
     shutil.rmtree(work, ignore_errors=True)
+    bad += chart_bad
     print(spec["id"], "pin", "overflow: " + ",".join(bad) if bad else "ok")
     if bad:
         sys.exit(1)

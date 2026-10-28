@@ -6,7 +6,7 @@ from concurrent.futures import ThreadPoolExecutor
 
 ROOT = pathlib.Path(__file__).parent
 SPECS = sorted((ROOT / "content" / "videos").glob("*.json"))
-ENGINE = [ROOT / "video" / f for f in ("player.html", "render.py", "tts.py", "pin.py")]
+ENGINE = [ROOT / "video" / f for f in ("player.html", "chart.js", "render.py", "tts.py", "pin.py")]
 SHOTS = sorted((ROOT / "shots").glob("*"))
 
 

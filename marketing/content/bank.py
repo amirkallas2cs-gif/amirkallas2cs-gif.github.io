@@ -360,6 +360,12 @@ V.append({"id": "v108_pfm_rules", "site_path": PFM_PAGE, "scenes": [
                      ["#topstep", "#apextraderfunding", "#myfundedfutures"], "Prop firm rules compared")})
 
 
+# ---------------------------------------------------------------- educational series (content/edu.py)
+import sys as _sys
+_sys.path.insert(0, str(pathlib.Path(__file__).parent))
+import edu as _edu
+V.extend(_edu.V)
+
 if __name__ == "__main__":
     OUT.mkdir(exist_ok=True)
     for v in V:

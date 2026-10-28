@@ -1,0 +1,643 @@
+{
+ "id": "v202_edu_20ema",
+ "tag": "Illustrative chart · education, not financial advice",
+ "site_path": "/learn/",
+ "charts": {
+  "a": {
+   "candles": [
+    {
+     "o": 101.57,
+     "h": 102.21,
+     "l": 101.26,
+     "c": 102.04,
+     "v": 2799
+    },
+    {
+     "o": 101.98,
+     "h": 102.99,
+     "l": 101.81,
+     "c": 102.85,
+     "v": 3196
+    },
+    {
+     "o": 102.83,
+     "h": 104.12,
+     "l": 102.77,
+     "c": 103.89,
+     "v": 3762
+    },
+    {
+     "o": 103.89,
+     "h": 104.51,
+     "l": 103.35,
+     "c": 104.39,
+     "v": 2773
+    },
+    {
+     "o": 104.31,
+     "h": 105.26,
+     "l": 104.27,
+     "c": 104.87,
+     "v": 2300
+    },
+    {
+     "o": 104.9,
+     "h": 106.19,
+     "l": 104.82,
+     "c": 106.01,
+     "v": 3772
+    },
+    {
+     "o": 106.01,
+     "h": 106.22,
+     "l": 105.69,
+     "c": 106.0,
+     "v": 1109
+    },
+    {
+     "o": 105.97,
+     "h": 106.18,
+     "l": 105.14,
+     "c": 105.18,
+     "v": 2400
+    },
+    {
+     "o": 105.13,
+     "h": 105.29,
+     "l": 103.65,
+     "c": 104.16,
+     "v": 4071
+    },
+    {
+     "o": 104.25,
+     "h": 104.31,
+     "l": 103.72,
+     "c": 103.83,
+     "v": 1454
+    },
+    {
+     "o": 103.84,
+     "h": 103.84,
+     "l": 103.46,
+     "c": 103.6,
+     "v": 1714
+    },
+    {
+     "o": 103.61,
+     "h": 104.5,
+     "l": 103.3,
+     "c": 104.3,
+     "v": 2175
+    },
+    {
+     "o": 104.37,
+     "h": 105.04,
+     "l": 104.3,
+     "c": 104.79,
+     "v": 2010
+    },
+    {
+     "o": 104.79,
+     "h": 105.86,
+     "l": 104.7,
+     "c": 105.69,
+     "v": 2473
+    },
+    {
+     "o": 105.65,
+     "h": 106.55,
+     "l": 105.26,
+     "c": 106.45,
+     "v": 3548
+    },
+    {
+     "o": 106.45,
+     "h": 107.19,
+     "l": 106.07,
+     "c": 106.9,
+     "v": 1700
+    },
+    {
+     "o": 106.84,
+     "h": 107.44,
+     "l": 106.78,
+     "c": 107.24,
+     "v": 2577
+    },
+    {
+     "o": 107.19,
+     "h": 108.0,
+     "l": 106.76,
+     "c": 107.93,
+     "v": 2673
+    },
+    {
+     "o": 107.91,
+     "h": 108.47,
+     "l": 107.83,
+     "c": 108.4,
+     "v": 1955
+    },
+    {
+     "o": 108.38,
+     "h": 108.59,
+     "l": 107.75,
+     "c": 108.31,
+     "v": 1045
+    },
+    {
+     "o": 108.28,
+     "h": 108.48,
+     "l": 107.82,
+     "c": 107.94,
+     "v": 1308
+    },
+    {
+     "o": 107.93,
+     "h": 108.26,
+     "l": 106.37,
+     "c": 107.07,
+     "v": 3293
+    },
+    {
+     "o": 107.15,
+     "h": 107.61,
+     "l": 105.92,
+     "c": 106.0,
+     "v": 3888
+    },
+    {
+     "o": 106.03,
+     "h": 106.8,
+     "l": 105.6,
+     "c": 106.67,
+     "v": 2508
+    },
+    {
+     "o": 106.69,
+     "h": 107.38,
+     "l": 106.48,
+     "c": 107.25,
+     "v": 2397
+    },
+    {
+     "o": 107.33,
+     "h": 107.55,
+     "l": 107.3,
+     "c": 107.5,
+     "v": 1170
+    },
+    {
+     "o": 107.62,
+     "h": 107.82,
+     "l": 107.35,
+     "c": 107.76,
+     "v": 1122
+    },
+    {
+     "o": 107.69,
+     "h": 108.57,
+     "l": 107.57,
+     "c": 108.32,
+     "v": 3170
+    },
+    {
+     "o": 108.27,
+     "h": 109.23,
+     "l": 108.25,
+     "c": 109.01,
+     "v": 3236
+    },
+    {
+     "o": 109.02,
+     "h": 110.12,
+     "l": 108.91,
+     "c": 109.94,
+     "v": 3802
+    },
+    {
+     "o": 109.89,
+     "h": 110.78,
+     "l": 109.69,
+     "c": 110.6,
+     "v": 2427
+    },
+    {
+     "o": 110.55,
+     "h": 111.16,
+     "l": 109.87,
+     "c": 110.04,
+     "v": 1780
+    },
+    {
+     "o": 110.04,
+     "h": 110.15,
+     "l": 109.33,
+     "c": 109.36,
+     "v": 3275
+    },
+    {
+     "o": 109.28,
+     "h": 109.5,
+     "l": 108.66,
+     "c": 109.01,
+     "v": 1966
+    },
+    {
+     "o": 109.05,
+     "h": 109.07,
+     "l": 108.28,
+     "c": 108.4,
+     "v": 2255
+    },
+    {
+     "o": 108.36,
+     "h": 109.46,
+     "l": 108.21,
+     "c": 109.16,
+     "v": 2597
+    },
+    {
+     "o": 109.08,
+     "h": 110.26,
+     "l": 109.05,
+     "c": 109.82,
+     "v": 2150
+    },
+    {
+     "o": 109.88,
+     "h": 111.0,
+     "l": 109.83,
+     "c": 110.79,
+     "v": 4226
+    },
+    {
+     "o": 110.8,
+     "h": 110.91,
+     "l": 110.61,
+     "c": 110.8,
+     "v": 1150
+    },
+    {
+     "o": 110.86,
+     "h": 111.43,
+     "l": 110.26,
+     "c": 110.81,
+     "v": 1407
+    },
+    {
+     "o": 110.84,
+     "h": 110.98,
+     "l": 109.82,
+     "c": 109.84,
+     "v": 3834
+    },
+    {
+     "o": 109.84,
+     "h": 110.09,
+     "l": 109.1,
+     "c": 109.12,
+     "v": 2943
+    },
+    {
+     "o": 109.14,
+     "h": 109.75,
+     "l": 108.04,
+     "c": 108.3,
+     "v": 3962
+    },
+    {
+     "o": 108.3,
+     "h": 109.03,
+     "l": 107.89,
+     "c": 108.94,
+     "v": 3370
+    },
+    {
+     "o": 108.92,
+     "h": 109.17,
+     "l": 108.73,
+     "c": 109.05,
+     "v": 1336
+    },
+    {
+     "o": 109.08,
+     "h": 109.94,
+     "l": 108.96,
+     "c": 109.72,
+     "v": 3373
+    },
+    {
+     "o": 109.74,
+     "h": 111.04,
+     "l": 109.18,
+     "c": 110.6,
+     "v": 2933
+    },
+    {
+     "o": 110.64,
+     "h": 110.87,
+     "l": 109.06,
+     "c": 109.59,
+     "v": 4478
+    },
+    {
+     "o": 109.63,
+     "h": 110.01,
+     "l": 108.98,
+     "c": 109.09,
+     "v": 2489
+    },
+    {
+     "o": 109.09,
+     "h": 109.1,
+     "l": 108.51,
+     "c": 108.63,
+     "v": 2231
+    },
+    {
+     "o": 108.64,
+     "h": 108.8,
+     "l": 108.01,
+     "c": 108.2,
+     "v": 2458
+    },
+    {
+     "o": 108.2,
+     "h": 108.4,
+     "l": 107.89,
+     "c": 108.18,
+     "v": 1233
+    },
+    {
+     "o": 108.24,
+     "h": 109.91,
+     "l": 107.78,
+     "c": 109.67,
+     "v": 5930
+    },
+    {
+     "o": 109.64,
+     "h": 110.5,
+     "l": 109.41,
+     "c": 110.22,
+     "v": 3065
+    },
+    {
+     "o": 110.31,
+     "h": 110.91,
+     "l": 109.8,
+     "c": 110.5,
+     "v": 1062
+    },
+    {
+     "o": 110.59,
+     "h": 110.81,
+     "l": 109.14,
+     "c": 109.76,
+     "v": 3707
+    },
+    {
+     "o": 109.69,
+     "h": 109.83,
+     "l": 109.1,
+     "c": 109.39,
+     "v": 1385
+    },
+    {
+     "o": 109.33,
+     "h": 109.33,
+     "l": 108.78,
+     "c": 108.89,
+     "v": 2672
+    },
+    {
+     "o": 108.84,
+     "h": 109.4,
+     "l": 108.45,
+     "c": 108.6,
+     "v": 1549
+    },
+    {
+     "o": 108.62,
+     "h": 108.87,
+     "l": 108.56,
+     "c": 108.87,
+     "v": 1752
+    },
+    {
+     "o": 108.9,
+     "h": 109.35,
+     "l": 108.79,
+     "c": 109.09,
+     "v": 1152
+    },
+    {
+     "o": 109.11,
+     "h": 110.14,
+     "l": 108.85,
+     "c": 110,
+     "v": 3030
+    }
+   ],
+   "lines": [
+    {
+     "id": "ema",
+     "label": "20 EMA",
+     "color": "gold",
+     "values": [
+      null,
+      null,
+      null,
+      null,
+      102.377,
+      102.723,
+      103.036,
+      103.24,
+      103.327,
+      103.375,
+      103.397,
+      103.483,
+      103.607,
+      103.806,
+      104.057,
+      104.328,
+      104.605,
+      104.922,
+      105.253,
+      105.544,
+      105.773,
+      105.896,
+      105.906,
+      105.979,
+      106.1,
+      106.233,
+      106.379,
+      106.564,
+      106.797,
+      107.096,
+      107.43,
+      107.678,
+      107.838,
+      107.95,
+      107.993,
+      108.104,
+      108.267,
+      108.508,
+      108.726,
+      108.924,
+      109.012,
+      109.022,
+      108.953,
+      108.952,
+      108.961,
+      109.034,
+      109.183,
+      109.222,
+      109.209,
+      109.154,
+      109.063,
+      108.979,
+      109.045,
+      109.157,
+      109.285,
+      109.33,
+      109.336,
+      109.293,
+      109.227,
+      109.193,
+      109.183,
+      109.261
+     ]
+    }
+   ],
+   "bands": []
+  }
+ },
+ "scenes": [
+  {
+   "type": "chart",
+   "chart": "a",
+   "headline": "One line that shows you the trend.",
+   "big": true,
+   "reveal": [
+    8,
+    16
+   ],
+   "add": [
+    "ema"
+   ],
+   "addAt": 0.2,
+   "say": "One line that shows you the trend: the twenty EMA."
+  },
+  {
+   "type": "chart",
+   "chart": "a",
+   "headline": "Price above a rising 20 EMA: uptrend.",
+   "reveal": [
+    16,
+    32
+   ],
+   "show": [
+    "ema"
+   ],
+   "marks": [
+    {
+     "bar": 10,
+     "dir": "up",
+     "text": "Pullback",
+     "color": "mint",
+     "at": 0.35
+    },
+    {
+     "bar": 22,
+     "dir": "up",
+     "text": "Pullback",
+     "color": "mint",
+     "at": 0.7
+    }
+   ],
+   "say": "It's an average of recent closes that weighs the newest ones more. Above a rising EMA, the trend is up, and pullbacks often find buyers near it."
+  },
+  {
+   "type": "chart",
+   "chart": "a",
+   "headline": "Flat EMA: no trend, no edge.",
+   "reveal": [
+    32,
+    62
+   ],
+   "show": [
+    "ema"
+   ],
+   "zones": [
+    {
+     "from": 35,
+     "to": 61,
+     "lo": 107.78,
+     "hi": 111.43,
+     "color": "coral",
+     "label": "Crossed 6 times",
+     "at": 0.6
+    }
+   ],
+   "say": "But it lags. When price goes sideways, the line goes flat, and price crossed it six times in twenty-seven bars."
+  },
+  {
+   "type": "rows",
+   "title": "How to read the 20 EMA",
+   "head": [
+    "",
+    "",
+    ""
+   ],
+   "rows": [
+    {
+     "cells": [
+      "Rising, price above",
+      "",
+      "Uptrend"
+     ],
+     "good": true,
+     "hl": true
+    },
+    {
+     "cells": [
+      "Falling, price below",
+      "",
+      "Downtrend"
+     ]
+    },
+    {
+     "cells": [
+      "Flat, crossed often",
+      "",
+      "No trend"
+     ],
+     "hl": true
+    }
+   ],
+   "say": "Use it as a trend filter, not as a signal on its own."
+  },
+  {
+   "type": "follow",
+   "text": "Follow for one trading concept a day.",
+   "say": "Save this, and follow for one trading concept a day."
+  }
+ ],
+ "post": {
+  "instagram": "The 20 EMA is an average of recent closes that weighs the newest ones more. Price above a rising EMA: uptrend, and pullbacks often find buyers near it. When it goes flat, it lags: here price crossed it 6 times in 27 bars. Use it as a filter, not a signal.\n\nSave this for later and follow @calmedgeofficial for one trading concept a day.\n\nEducational example on an illustrative chart. Not financial advice; trading involves risk of loss.\n\n#ema #movingaverage #indicators #tradingeducation #technicalanalysis #daytrading #trading #learntotrade",
+  "tiktok": "The 20 EMA is an average of recent closes that weighs the newest ones more. Price above a rising EMA: uptrend, and pullbacks often find buyers near it. When it goes flat, it lags: here price crossed it 6 times in 27 bars. Use it as a filter, not a signal. Follow for one trading concept a day. #ema #movingaverage #indicators #tradingeducation #technicalanalysis #daytrading",
+  "youtube": {
+   "title": "The 20 EMA trend filter in 30 seconds #shorts",
+   "description": "The 20 EMA is an average of recent closes that weighs the newest ones more. Price above a rising EMA: uptrend, and pullbacks often find buyers near it. When it goes flat, it lags: here price crossed it 6 times in 27 bars. Use it as a filter, not a signal.\n\nFree guides and calculators: https://amirkallas2cs-gif.github.io/\n\nEducational example on an illustrative chart. Not financial advice; trading involves risk of loss.\n\n#ema #movingaverage #indicators #tradingeducation #technicalanalysis #daytrading #trading #learntotrade #shorts"
+  },
+  "facebook": "The 20 EMA is an average of recent closes that weighs the newest ones more. Price above a rising EMA: uptrend, and pullbacks often find buyers near it. When it goes flat, it lags: here price crossed it 6 times in 27 bars. Use it as a filter, not a signal.\n\nSave this for later and follow @calmedgeofficial for one trading concept a day.\n\nFree guides and calculators: https://amirkallas2cs-gif.github.io/",
+  "pinterest": {
+   "title": "How to use the 20 EMA as a trend filter",
+   "description": "The 20 EMA is an average of recent closes that weighs the newest ones more. Price above a rising EMA: uptrend, and pullbacks often find buyers near it. When it goes flat, it lags: here price crossed it 6 times in 27 bars. Use it as a filter, not a signal. Trading concepts explained simply, one a day.",
+   "link": "https://amirkallas2cs-gif.github.io/"
+  }
+ },
+ "voice": "andrew_up"
+}

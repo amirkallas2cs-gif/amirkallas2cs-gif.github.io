@@ -45,12 +45,15 @@ html, body { width:1080px; height:1920px; overflow:hidden; background:var(--canv
 .chip { background:var(--card); border:3px solid var(--c); color:var(--ink); border-radius:24px; padding:16px 28px; font-size:44px; font-weight:700; white-space:nowrap; }
 .chip b { color:var(--c); }
 .logo { display:flex; align-items:center; gap:28px; }
+.chart { position:absolute; left:0; top:0; overflow:visible; font-family:Inter, sans-serif; }
+.head { position:absolute; left:80px; right:140px; top:330px; }
 .cta { background:var(--mint); color:#0F1720; font-weight:700; font-size:50px; border-radius:24px; padding:26px 44px; display:inline-block; }
 </style></head>
 <body>
 <div class="glow" style="width:1100px;height:1100px;left:-420px;top:-480px;background:#5FD3A0"></div>
 <div class="glow" style="width:1000px;height:1000px;right:-420px;bottom:-420px;background:#6CA8FF"></div>
 <div id="stage"></div>
+<script src="chart.js"></script>
 <script>
 // Everything on screen is a pure function of time: render(t) draws exactly frame t, so capture is frame-accurate.
 const LOGO = (s) => `<svg width="${s}" height="${s}" viewBox="0 0 1024 1024"><circle cx="512" cy="512" r="470" fill="#16212D" stroke="#2A3A4C" stroke-width="24"/><path d="M236 640 C 330 640, 360 560, 430 575 S 520 650, 590 540 S 700 420, 790 380" fill="none" stroke="#5FD3A0" stroke-width="64" stroke-linecap="round"/></svg>`;
@@ -61,7 +64,10 @@ const esc = (s) => String(s).replace(/[&<>]/g, (c) => ({ "&": "&amp;", "<": "&lt
 let SPEC = null, TIMES = [];
 
 window.load = (spec) => {
-  SPEC = spec; let t = 0;
+  SPEC = spec; let t = 0; window.__problems = [];
+  Object.entries(spec.charts || {}).forEach(([name, ch]) => { ch._extra = [];
+    spec.scenes.filter((s) => s.chart === name).forEach((s) => { (s.levels || []).forEach((l) => ch._extra.push(l.price));
+      (s.zones || []).forEach((z) => ch._extra.push(z.lo, z.hi)); (s.marks || []).forEach((m) => { if (!m.panel) ch._marked = true; if (m.price !== undefined && !m.panel) ch._extra.push(m.price); }); }); });
   TIMES = spec.scenes.map((s) => { const st = t; t += s.duration; return [st, t]; });
   const stage = document.getElementById("stage");
   stage.innerHTML = spec.scenes.map((s, i) => `<div class="layer" id="s${i}">${build(s, i)}</div>`).join("") +
@@ -75,6 +81,13 @@ window.load = (spec) => {
 };
 
 function build(s, i) {
+  if (s.type === "chart") return `${s.headline ? `<div class="head" id="hd${i}">${s.kicker ? `<div class="kicker" style="margin-bottom:18px">${esc(s.kicker)}</div>` : ""}<div class="${s.big ? "big" : "mid"}">${esc(s.headline)}</div></div>` : ""}
+      <svg class="chart" id="cv${i}" width="1080" height="1920" viewBox="0 0 1080 1920"></svg>`;
+  if (s.type === "follow") return `<div class="safe" style="display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:44px">
+      <div class="logo">${LOGO(130)}<div><div style="font-size:64px;font-weight:700;letter-spacing:-1px">${esc(s.handle || "@calmedgeofficial")}</div>
+      <div class="label" style="font-size:36px">${esc(s.sub || "Calm Edge · trading, explained")}</div></div></div>
+      <div class="big" style="font-size:80px">${esc(s.text || "Follow for one trading concept a day.")}</div>
+      <div class="cta">${esc(s.button || "Follow")}</div></div>`;
   if (s.type === "hook") return `<div class="safe" style="display:flex;flex-direction:column;justify-content:center;gap:40px">
       ${s.kicker ? `<div class="kicker">${esc(s.kicker)}</div>` : ""}
       <div class="big">${s.text.split(" ").map((w) => `<span class="w">${esc(w)}</span>`).join(" ")}</div></div>`;
@@ -142,6 +155,27 @@ function placeShot(i, s, p) {
   }
 }
 
+// Chart scenes: candles grow from reveal[0] to reveal[1] bars over the scene; overlays, levels, zones and marks fade in at `at` (0..1 of the scene).
+function drawScene(i, s, local, d) {
+  const ch = SPEC.charts[s.chart], n = ch.candles.length, p = local / d;
+  const hd = document.getElementById(`hd${i}`);
+  const top = hd ? hd.getBoundingClientRect().bottom + 44 : 380;
+  const box = { x: 98, y: top, w: 824, h: 1270 - top };
+  const [r0, r1] = s.reveal || [n, n];
+  const grow = s.grow || 0.85;
+  const bars = r0 + (r1 - r0) * clamp(local / Math.max(0.5, d * grow));
+  const show = {};
+  (s.show || []).forEach((id) => (show[id] = 1));
+  (s.add || []).forEach((id) => (show[id] = ease((p - (s.addAt || 0.12)) / 0.4)));
+  const fade = (x) => ease((p - (x.at || 0)) / 0.12);
+  const st = { bars, show, readout: s.readout,
+    levels: (s.levels || []).map((l) => ({ ...l, alpha: fade(l) })), zones: (s.zones || []).map((z) => ({ ...z, alpha: fade(z) })),
+    marks: (s.marks || []).map((m) => ({ ...m, alpha: m.bar < bars - 0.2 ? fade(m) : 0 })) };
+  const probs = drawChart(document.getElementById(`cv${i}`), ch, box, st);
+  if (+document.getElementById(`s${i}`).style.opacity > 0.98) probs.forEach((x) => window.__problems.push(x));
+  if (box.h < 520) window.__problems.push("chart too small: headline too long");
+}
+
 const fmtNum = (v, s) => `${v < 0 ? "−" : s.plus && v > 0 ? "+" : ""}${s.prefix || ""}${Math.abs(v).toLocaleString("en-US", { minimumFractionDigits: s.decimals || 0, maximumFractionDigits: s.decimals || 0 })}${s.suffix || ""}`;
 
 window.render = (t) => {
@@ -158,6 +192,7 @@ window.render = (t) => {
       const st = (k / all.length) * Math.min(1.1, d * 0.45); w.style.opacity = ease((local - st) / 0.22);
       w.style.transform = `translateY(${(1 - ease((local - st) / 0.3)) * 26}px)`; });
     if (s.type === "shot") placeShot(i, s, p);
+    if (s.type === "chart") drawScene(i, s, local, d);
     if (s.type === "rows") s.rows.forEach((_, k) => { const e = document.getElementById(`row${i}_${k}`), st = 0.3 + k * 0.25;
       e.style.opacity = ease((local - st) / 0.3); e.style.transform = `translateX(${(1 - ease((local - st) / 0.35)) * 40}px)`; });
     if (s.type === "rows") return `<div class="safe" style="display:flex;flex-direction:column;justify-content:center;gap:46px">
@@ -176,7 +211,7 @@ window.render = (t) => {
   const i = Math.max(0, TIMES.findIndex(([a, b]) => t >= a && t < b));
   const s = SPEC.scenes[i === -1 ? SPEC.scenes.length - 1 : i], [a] = TIMES[i];
   const cap = document.getElementById("cap");
-  if (!s.say || SPEC.captions === false || s.captions === false || s.type === "hook" || s.type === "cta") { cap.parentElement.style.display = "none"; return; }
+  if (!s.say || SPEC.captions === false || s.captions === false || s.type === "hook" || s.type === "cta" || s.type === "follow") { cap.parentElement.style.display = "none"; return; }
   cap.parentElement.style.display = "flex";
   const words = s.say.split(/\s+/), weights = words.map((w) => w.length + 2), total = weights.reduce((x, y) => x + y, 0);
   const speech = s.speech || (s.duration - 0.35), lt = (t - a - (s.lead || 0.12)) / speech;
