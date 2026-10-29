@@ -100,7 +100,9 @@ def reddit():
 
 def main():
     result = {"generated_at": NOW.isoformat(timespec="minutes"), "targets": [], "notes": {}}
-    for name, fn in (("youtube", youtube), ("instagram", instagram), ("reddit", reddit)):
+    # Reddit is not read automatically: its Responsible Builder Policy requires approved API access for any
+    # automated reading. Reddit threads come from the daily routine's web search and are answered by hand.
+    for name, fn in (("youtube", youtube), ("instagram", instagram)):
         try:
             items, note = fn()
         except Exception as e:
