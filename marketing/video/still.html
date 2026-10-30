@@ -1,0 +1,123 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face { font-family: Inter; font-weight: 400; src: url(fonts/Inter-Regular.woff); }
+@font-face { font-family: Inter; font-weight: 600; src: url(fonts/Inter-SemiBold.woff); }
+@font-face { font-family: Inter; font-weight: 700; src: url(fonts/Inter-Bold.woff); }
+:root { --canvas:#0F1720; --card:#16212D; --card2:#1B2836; --line:#2A3A4C; --ink:#E8EDF3; --muted:#93A3B5;
+  --mint:#5FD3A0; --coral:#F2848A; --gold:#F2C14E; --blue:#6CA8FF; --violet:#B48CFF; }
+* { margin:0; padding:0; box-sizing:border-box; }
+html, body { overflow:hidden; background:var(--canvas); font-family:Inter, sans-serif; color:var(--ink); }
+.glow { position:absolute; border-radius:50%; filter:blur(140px); opacity:.30; }
+#slide { position:absolute; inset:0; }
+.content { position:absolute; display:flex; flex-direction:column; gap:38px; justify-content:center; }
+.kicker { font-size:30px; letter-spacing:5px; text-transform:uppercase; font-weight:700; color:var(--mint); }
+.title { font-size:78px; font-weight:700; line-height:1.06; letter-spacing:-2px; text-wrap:balance; }
+.title.mid { font-size:64px; letter-spacing:-1px; line-height:1.12; }
+.text { font-size:42px; line-height:1.42; color:#C9D4E0; text-wrap:pretty; }
+.text b { color:var(--ink); }
+.points { display:flex; flex-direction:column; gap:26px; }
+.pt { display:flex; gap:24px; align-items:flex-start; background:var(--card); border:3px solid var(--line); border-radius:26px; padding:26px 30px; }
+.pt .n { flex:none; width:58px; height:58px; border-radius:50%; background:var(--c, var(--mint)); color:#0F1720; font-weight:700; font-size:32px; display:flex; align-items:center; justify-content:center; }
+.pt .t { font-size:38px; line-height:1.36; color:#C9D4E0; min-width:0; }
+.pt .t b { display:block; color:var(--ink); font-size:42px; margin-bottom:4px; }
+.formula { background:var(--card); border:3px solid var(--line); border-radius:26px; padding:48px 36px; font-size:58px; font-weight:700; text-align:center; line-height:1.25; }
+.formula .fx { display:block; }
+.formula small { display:block; font-size:32px; font-weight:600; color:var(--muted); margin-top:16px; }
+.rows { background:var(--card); border-radius:26px; border:3px solid var(--line); overflow:hidden; }
+.rows .hd, .rows .r { display:grid; grid-template-columns: 1.6fr 1fr 1.2fr; align-items:center; padding:0 30px; }
+.rows.two .hd, .rows.two .r { grid-template-columns: 1fr auto; gap:24px; }
+.rows .r > div, .rows .hd > div { white-space:nowrap; }
+.rows .hd { background:var(--card2); color:var(--muted); font-size:28px; font-weight:700; height:76px; }
+.rows .r { height:116px; font-size:42px; border-top:2px solid var(--line); }
+.rows .r:first-child { border-top:0; }
+.rows .r > :not(:first-child), .rows .hd > :not(:first-child) { text-align:right; }
+.rows .r.hl { background:rgba(242,132,138,.10); box-shadow: inset 8px 0 0 var(--coral); }
+.rows .r.good.hl { background:rgba(95,211,160,.10); box-shadow: inset 8px 0 0 var(--mint); }
+.pos { color:var(--mint); font-weight:700; } .neg { color:var(--coral); font-weight:700; }
+.chartbox { position:relative; flex:none; }
+.chartbox svg { position:absolute; left:0; top:0; overflow:visible; }
+.foot { position:absolute; display:flex; align-items:center; gap:18px; color:var(--muted); font-size:28px; font-weight:600; }
+.foot b { color:var(--ink); }
+.foot .pg { margin-left:auto; background:var(--card); border:2px solid var(--line); border-radius:30px; padding:8px 20px; }
+.tag { position:absolute; font-size:24px; color:var(--muted); }
+.swipe { display:inline-flex; align-self:flex-start; gap:14px; align-items:center; background:var(--mint); color:#0F1720; font-weight:700; font-size:36px; border-radius:22px; padding:18px 30px; }
+.save { display:inline-flex; align-self:flex-start; background:var(--card); border:3px solid var(--mint); color:var(--ink); font-weight:700; font-size:38px; border-radius:22px; padding:20px 32px; }
+/* landscape thumbnail */
+.thumb .title { font-size:96px; letter-spacing:-3px; }
+</style></head>
+<body>
+<div class="glow" style="width:1000px;height:1000px;left:-420px;top:-480px;background:#5FD3A0"></div>
+<div class="glow" style="width:900px;height:900px;right:-420px;bottom:-420px;background:#6CA8FF"></div>
+<div id="slide"></div>
+<script src="chart.js"></script>
+<script>
+const esc = (s) => String(s).replace(/[&<>]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" }[c]));
+const LOGO = (s) => `<svg width="${s}" height="${s}" viewBox="0 0 1024 1024"><circle cx="512" cy="512" r="470" fill="#16212D" stroke="#2A3A4C" stroke-width="24"/><path d="M236 640 C 330 640, 360 560, 430 575 S 520 650, 590 540 S 700 420, 790 380" fill="none" stroke="#5FD3A0" stroke-width="64" stroke-linecap="round"/></svg>`;
+const rich = (s) => esc(s).replace(/\*\*(.+?)\*\*/g, "<b>$1</b>");
+
+function rowsHtml(s) {
+  const two = s.head.length === 3 && s.head[1] === "" && s.rows.every((r) => r.cells[1] === "");
+  const hd = s.head.map((h, j) => (two && j === 1 ? null : h)).filter((h) => h !== null);
+  const head = hd.every((h) => h === "") ? "" : `<div class="hd">${hd.map((h) => `<div>${esc(h)}</div>`).join("")}</div>`;
+  return `<div class="rows ${two ? "two" : ""}">${head}${s.rows.map((r) => {
+    const cells = r.cells.filter((_, j) => !(two && j === 1));
+    return `<div class="r ${r.hl ? "hl" : ""} ${r.good ? "good" : ""}">${cells.map((c, j) => `<div class="${j === cells.length - 1 ? (String(c).startsWith("−") || String(c).startsWith("-") ? "neg" : String(c).startsWith("+") ? "pos" : "") : ""}">${esc(c)}</div>`).join("")}</div>`;
+  }).join("")}</div>`;
+}
+
+// Draws slide i of the spec on a W x H canvas and returns the layout problems found.
+window.renderSlide = (spec, i, W, H) => {
+  document.documentElement.style.width = document.body.style.width = W + "px";
+  document.documentElement.style.height = document.body.style.height = H + "px";
+  const s = spec.slides[i], N = spec.slides.length, land = W > H;
+  const pad = land ? 80 : 76, footH = land ? 0 : 70, top = land ? 70 : 90;
+  const footTop = H - pad - footH;
+  let html = "";
+  const body = (inner) => `<div class="content" id="ct" style="left:${pad}px;right:${pad}px;top:${top}px;bottom:${H - footTop + 26}px">${inner}</div>`;
+  const chartDiv = (h) => `<div class="chartbox" id="cb" style="height:${h}px;width:100%"><svg id="cv" width="${W - 2 * pad}" height="${h}"></svg></div>`;
+  if (s.type === "cover") html = body(`${s.kicker ? `<div class="kicker">${esc(s.kicker)}</div>` : ""}<div class="title">${esc(s.title)}</div>
+      ${s.text ? `<div class="text">${rich(s.text)}</div>` : ""}${s.chart ? chartDiv(s.chartH || 470) : ""}<div class="swipe">Swipe →</div>`);
+  if (s.type === "chart") html = body(`<div class="title mid">${esc(s.title)}</div>${chartDiv(s.chartH || 560)}${s.text ? `<div class="text">${rich(s.text)}</div>` : ""}`);
+  if (s.type === "points") html = body(`<div class="title mid">${esc(s.title)}</div><div class="points">${s.points.map((p, k) =>
+      `<div class="pt"><div class="n" style="--c:var(--${p.color || "mint"})">${p.icon || k + 1}</div><div class="t">${p.b ? `<b>${esc(p.b)}</b>` : ""}${rich(p.t || "")}</div></div>`).join("")}</div>`);
+  if (s.type === "formula") html = body(`<div class="title mid">${esc(s.title)}</div><div class="formula"><span class="fx" style="white-space:nowrap">${esc(s.formula)}</span>${s.small ? `<small>${esc(s.small)}</small>` : ""}</div>${s.text ? `<div class="text">${rich(s.text)}</div>` : ""}`);
+  if (s.type === "rows") html = body(`<div class="title mid">${esc(s.title)}</div>${rowsHtml(s)}${s.text ? `<div class="text">${rich(s.text)}</div>` : ""}`);
+  if (s.type === "end") html = body(`<div class="kicker">Key takeaway</div><div class="title">${esc(s.title)}</div>${s.text ? `<div class="text">${rich(s.text)}</div>` : ""}
+      <div class="save">Save this · Follow ${esc(spec.handle || "@calmedgeofficial")}</div>`);
+  if (s.type === "thumb") html = `<div class="content thumb" id="ct" style="left:${pad}px;top:${pad}px;bottom:${pad}px;width:${W * 0.5}px;justify-content:center">
+      ${s.kicker ? `<div class="kicker">${esc(s.kicker)}</div>` : ""}<div class="title">${esc(s.title)}</div></div>
+      <div class="chartbox" id="cb" style="position:absolute;left:${W * 0.54}px;top:${pad}px;width:${W * 0.46 - pad}px;height:${H - 2 * pad}px"><svg id="cv" width="${W * 0.46 - pad}" height="${H - 2 * pad}"></svg></div>`;
+  if (!land) html += `<div class="foot" style="left:${pad}px;right:${pad}px;top:${footTop}px;height:${footH}px">${LOGO(56)}<div><b>Calm Edge</b> · trading, explained</div>
+      <div class="pg">${i + 1}/${N}</div></div>`;
+  if (spec.tag && !land) html += `<div class="tag" style="left:${pad}px;top:${top - 50}px">${esc(spec.tag)}</div>`;
+  document.getElementById("slide").innerHTML = html;
+  const probs = [];
+  // formulas stay on one line: shrink the font until it fits
+  document.querySelectorAll(".formula .fx").forEach((e) => { let f = 58;
+    while (e.scrollWidth > e.parentElement.clientWidth - 72 && f > 34) { f -= 2; e.style.fontSize = f + "px"; }
+    if (e.scrollWidth > e.parentElement.clientWidth - 72) probs.push("formula too long: " + e.textContent); });
+  if (s.chart) {
+    const ch = spec.charts[s.chart], st = s.state || {}, n = ch.candles.length;
+    ch._marked = (st.marks || []).some((m) => !m.panel);
+    const svg = document.getElementById("cv"), w = +svg.getAttribute("width"), h = +svg.getAttribute("height");
+    const g = document.createElementNS("http://www.w3.org/2000/svg", "g"); svg.appendChild(g);
+    const show = {}; (st.show || []).forEach((id) => (show[id] = 1));
+    const state = { bars: st.bars || n, show, minBars: st.minBars, readout: st.readout,
+      levels: (st.levels || []).map((l) => ({ ...l, alpha: 1 })), zones: (st.zones || []).map((z) => ({ ...z, alpha: 1 })), marks: (st.marks || []).map((m) => ({ ...m, alpha: 1 })) };
+    drawChart(g, ch, { x: 20, y: 0, w: w - 40, h }, state).forEach((p) => probs.push(p));
+  }
+  // layout checks: nothing overflows, the content stays above the footer, inside the canvas
+  const ct = document.getElementById("ct").getBoundingClientRect();
+  document.querySelectorAll("#slide *").forEach((e) => {
+    if (e.closest("svg") || e.classList.contains("tag")) return;
+    const r = e.getBoundingClientRect();
+    if (e.scrollWidth > e.clientWidth + 1 && getComputedStyle(e).overflow !== "hidden") probs.push("text overflow: " + (e.textContent || "").trim().slice(0, 40));
+    if (r.width && (r.right > W - pad + 2 || r.left < pad - 2 || r.bottom > H - pad + 2)) probs.push("outside the slide: " + (e.textContent || e.tagName).trim().slice(0, 40));
+  });
+  const kids = [...document.getElementById("ct").children];
+  if (kids.length && kids[kids.length - 1].getBoundingClientRect().bottom > ct.bottom + 1) probs.push("content taller than the slide");
+  return [...new Set(probs)];
+};
+</script>
+</body></html>

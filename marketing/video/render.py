@@ -16,18 +16,20 @@ FPS, LEAD, TAIL = 30, 0.12, 0.38
 
 CHECK = """() => {
   const bad = [], cap = document.querySelector('.caption .box'), cr = cap && cap.offsetParent ? cap.getBoundingClientRect() : null;
+  const W = document.body.clientWidth, H = document.body.clientHeight, land = W > H;
+  const L = 60, R = land ? W - 60 : W - 120, T = land ? 15 : 200, B = land ? H - 30 : H - 420;
   document.querySelectorAll('.layer').forEach(l => {
     if (l.style.display === 'none' || +l.style.opacity < 0.98) return;
     l.querySelectorAll('.big, .mid, .label, .statv, .bubble, .cta, .kicker, .rows .r > div, .rows .hd > div, .tag, .chip').forEach(e => {
       const r = e.getBoundingClientRect();
-      if (r.left < 60 || r.right > 1080 - 120 || r.top < 200 || r.bottom > 1920 - 420) bad.push('outside safe area: ' + e.textContent.trim().slice(0, 40));
+      if (r.left < L || r.right > R || r.top < T || r.bottom > B) bad.push('outside safe area: ' + e.textContent.trim().slice(0, 40));
       if (e.scrollWidth > e.clientWidth + 1) bad.push('text overflow: ' + e.textContent.trim().slice(0, 40));
       if (cr && r.bottom > cr.top + 2 && r.top < cr.bottom && r.right > cr.left && r.left < cr.right) bad.push('under captions: ' + e.textContent.trim().slice(0, 40));
     });
     l.querySelectorAll('.shot').forEach(e => { const r = e.getBoundingClientRect();
       if (cr && r.bottom > cr.top + 2 && r.top < cr.bottom) bad.push('screenshot under captions'); });
   });
-  if (cr && (cr.left < 60 || cr.right > 1080 - 120)) bad.push('captions too wide');
+  if (cr && (cr.left < L || cr.right > R)) bad.push('captions too wide');
   (window.__problems || []).forEach(p => bad.push(p)); window.__problems = [];
   document.querySelectorAll('.layer').forEach(l => { if (l.style.display === 'none' || +l.style.opacity < 0.98) return;
     l.querySelectorAll('svg.chart rect, svg.chart text').forEach(e => { const r = e.getBoundingClientRect();
@@ -100,7 +102,8 @@ def main():
     with sync_playwright() as p:
         exe = os.environ.get("CHROME_PATH") or "/opt/pw-browsers/chromium-1194/chrome-linux/chrome"
         b = p.chromium.launch(executable_path=exe if os.path.exists(exe) else None, args=["--allow-file-access-from-files"])
-        pg = b.new_page(viewport={"width": 1080, "height": 1920})
+        land = spec.get("format") == "landscape"
+        pg = b.new_page(viewport={"width": 1920, "height": 1080} if land else {"width": 1080, "height": 1920})
         pg.goto((work / "player.html").as_uri())
         pg.evaluate("spec => window.load(spec)", spec)
         for f in range(frames):
@@ -117,7 +120,12 @@ def main():
     if len(engines - {"silence"}) > 1:
         problems.add("mixed voices: " + ", ".join(sorted(engines)))
     import datetime
-    meta = {"id": vid, "rendered_at": datetime.datetime.utcnow().isoformat(timespec="seconds") + "Z", "seconds": round(total, 2), "voice": voice, "engines": sorted(engines), "problems": sorted(problems)}
+    chapters, t0 = [], 0.0
+    for s in spec["scenes"]:  # YouTube chapters: m:ss at the start of each scene that opens a chapter
+        if s.get("chapter"):
+            chapters.append({"t": round(t0, 2), "title": s["chapter"]})
+        t0 += s["duration"]
+    meta = {"chapters": chapters, "kind": spec.get("kind", "reel"), "id": vid, "rendered_at": datetime.datetime.utcnow().isoformat(timespec="seconds") + "Z", "seconds": round(total, 2), "voice": voice, "engines": sorted(engines), "problems": sorted(problems)}
     (out / f"{vid}.json").write_text(json.dumps(meta, indent=2))
     print(json.dumps(meta))
     if ff.returncode or problems:

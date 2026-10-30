@@ -6,7 +6,7 @@ from concurrent.futures import ThreadPoolExecutor
 
 ROOT = pathlib.Path(__file__).parent
 SPECS = sorted((ROOT / "content" / "videos").glob("*.json"))
-ENGINE = [ROOT / "video" / f for f in ("player.html", "chart.js", "render.py", "tts.py", "pin.py")]
+ENGINE = [ROOT / "video" / f for f in ("player.html", "chart.js", "render.py", "tts.py", "pin.py", "still.py", "still.html")]
 SHOTS = sorted((ROOT / "shots").glob("*"))
 
 
@@ -17,18 +17,42 @@ def digest(spec):
     return h.hexdigest()[:16]
 
 
+def outputs(spec, media):
+    """Files a spec must produce: reels -> mp4 + pin; carousels -> slides + pin; long lessons -> mp4 + thumbnail + pin."""
+    d = json.loads(spec.read_text()); vid = spec.stem; kind = d.get("kind", "reel")
+    if kind == "carousel":
+        return kind, [media / f"{vid}_{i + 1}.jpg" for i in range(len(d["slides"]))] + [media / f"{vid}_pin.jpg"]
+    files = [media / f"{vid}.mp4", media / f"{vid}_pin.jpg"]
+    return kind, files + ([media / f"{vid}_thumb.jpg"] if kind == "long" else [])
+
+
 def one(spec, media):
     vid = spec.stem
     want = digest(spec)
     stamp = media / f"{vid}.hash"
-    if stamp.exists() and stamp.read_text() == want and (media / f"{vid}.mp4").exists() and (media / f"{vid}_pin.jpg").exists():
+    kind, files = outputs(spec, media)
+    if stamp.exists() and stamp.read_text() == want and all(f.exists() for f in files) and (media / f"{vid}.json").exists():
         return vid, "cached", None
-    r1 = subprocess.run([sys.executable, str(ROOT / "video" / "render.py"), str(spec), str(media), "--shots", str(ROOT / "shots")], capture_output=True, text=True)
-    r2 = subprocess.run([sys.executable, str(ROOT / "video" / "pin.py"), str(spec), str(media), "--shots", str(ROOT / "shots")], capture_output=True, text=True)
-    if r1.returncode or r2.returncode:  # never publish a video that failed its checks; it's retried next run
+    py = sys.executable; shots = str(ROOT / "shots")
+    steps = []
+    if kind in ("reel", "long"):
+        steps.append([py, str(ROOT / "video" / "render.py"), str(spec), str(media), "--shots", shots])
+    if kind in ("carousel", "long"):
+        steps.append([py, str(ROOT / "video" / "still.py"), str(spec), str(media)])
+    if kind in ("reel", "long"):
+        steps.append([py, str(ROOT / "video" / "pin.py"), str(spec), str(media), "--shots", shots])
+    logs, failed = "", False
+    for cmd in steps:
+        r = subprocess.run(cmd, capture_output=True, text=True)
+        logs += r.stdout + r.stderr
+        failed |= bool(r.returncode)
+    if kind == "carousel" and not failed:  # still.py prints the metadata line; keep it like render.py does
+        line = [l for l in logs.splitlines() if l.startswith("{")][-1]
+        (media / f"{vid}.json").write_text(json.dumps({**json.loads(line), "seconds": 0, "engines": []}, indent=2))
+    if failed:  # never publish media that failed its checks; it's retried next run
         for f in media.glob(f"{vid}*"):
             f.unlink()
-        return vid, "failed", (r1.stdout + r1.stderr + r2.stdout + r2.stderr)[-1500:]
+        return vid, "failed", logs[-1500:]
     stamp.write_text(want)
     return vid, "rendered", None
 

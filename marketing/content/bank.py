@@ -365,6 +365,10 @@ import sys as _sys
 _sys.path.insert(0, str(pathlib.Path(__file__).parent))
 import edu as _edu
 V.extend(_edu.V)
+import carousels as _car
+V.extend(_car.C)
+import longform as _long
+V.extend(_long.Y)
 
 if __name__ == "__main__":
     OUT.mkdir(exist_ok=True)

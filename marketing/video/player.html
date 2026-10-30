@@ -47,6 +47,15 @@ html, body { width:1080px; height:1920px; overflow:hidden; background:var(--canv
 .logo { display:flex; align-items:center; gap:28px; }
 .chart { position:absolute; left:0; top:0; overflow:visible; font-family:Inter, sans-serif; }
 .head { position:absolute; left:80px; right:140px; top:330px; }
+/* 16:9 long-form lessons (YouTube) */
+body.land .safe { left:150px; right:150px; top:120px; bottom:200px; }
+body.land .head { left:150px; right:150px; top:70px; }
+body.land .caption { left:150px; right:150px; bottom:44px; }
+body.land .caption span.box { font-size:46px; padding:14px 28px; }
+body.land .tag { left:150px; top:22px; }
+body.land .big { font-size:96px; }
+body.land .mid { font-size:58px; }
+body.land .chapter { font-size:40px; color:var(--muted); font-weight:700; letter-spacing:4px; text-transform:uppercase; }
 .cta { background:var(--mint); color:#0F1720; font-weight:700; font-size:50px; border-radius:24px; padding:26px 44px; display:inline-block; }
 </style></head>
 <body>
@@ -65,6 +74,8 @@ let SPEC = null, TIMES = [];
 
 window.load = (spec) => {
   SPEC = spec; let t = 0; window.__problems = [];
+  if (spec.format === "landscape") { document.body.classList.add("land");
+    for (const e of [document.documentElement, document.body]) { e.style.width = "1920px"; e.style.height = "1080px"; } }
   Object.entries(spec.charts || {}).forEach(([name, ch]) => { ch._extra = [];
     spec.scenes.filter((s) => s.chart === name).forEach((s) => { (s.levels || []).forEach((l) => ch._extra.push(l.price));
       (s.zones || []).forEach((z) => ch._extra.push(z.lo, z.hi)); (s.marks || []).forEach((m) => { if (!m.panel) ch._marked = true; if (m.price !== undefined && !m.panel) ch._extra.push(m.price); }); }); });
@@ -160,7 +171,8 @@ function drawScene(i, s, local, d) {
   const ch = SPEC.charts[s.chart], n = ch.candles.length, p = local / d;
   const hd = document.getElementById(`hd${i}`);
   const top = hd ? hd.getBoundingClientRect().bottom + 44 : 380;
-  const box = { x: 98, y: top, w: 824, h: 1270 - top };
+  const land = SPEC.format === "landscape";
+  const box = land ? { x: 170, y: hd ? top : 110, w: 1580, h: 1080 - 190 - (hd ? top : 110) } : { x: 98, y: top, w: 824, h: 1270 - top };
   const [r0, r1] = s.reveal || [n, n];
   const grow = s.grow || 0.85;
   const bars = r0 + (r1 - r0) * clamp(local / Math.max(0.5, d * grow));
@@ -173,7 +185,7 @@ function drawScene(i, s, local, d) {
     marks: (s.marks || []).map((m) => ({ ...m, alpha: m.bar < bars - 0.2 ? fade(m) : 0 })) };
   const probs = drawChart(document.getElementById(`cv${i}`), ch, box, st);
   if (+document.getElementById(`s${i}`).style.opacity > 0.98) probs.forEach((x) => window.__problems.push(x));
-  if (box.h < 520) window.__problems.push("chart too small: headline too long");
+  if (box.h < (land ? 480 : 520)) window.__problems.push("chart too small: headline too long");
 }
 
 const fmtNum = (v, s) => `${v < 0 ? "−" : s.plus && v > 0 ? "+" : ""}${s.prefix || ""}${Math.abs(v).toLocaleString("en-US", { minimumFractionDigits: s.decimals || 0, maximumFractionDigits: s.decimals || 0 })}${s.suffix || ""}`;

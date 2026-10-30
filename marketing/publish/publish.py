@@ -1,4 +1,5 @@
-"""Publishes today's approved videos to Instagram (Reels), Facebook Page, YouTube Shorts and Pinterest.
+"""Publishes today's approved content: reels (Instagram Reels, Facebook, YouTube Shorts), carousels (Instagram carousel,
+Facebook multi-photo post) and long lessons (YouTube with chapters and thumbnail, Facebook video).
 
   python publish.py --schedule schedule.json --media-base https://<site>/media --log published.json [--dry-run] [--only instagram,youtube]
 
@@ -69,6 +70,49 @@ def facebook(item, spec, video_url, cover_url):
     return f"https://www.facebook.com/{page}/videos/{r['id']}", None
 
 
+def ig_carousel(item, spec, image_urls):
+    creds = env("IG_USER_ID", "META_TOKEN")
+    if not creds:
+        return None, "missing IG_USER_ID / META_TOKEN"
+    ig, token = creds
+    children = []
+    for u in image_urls:  # one container per slide, then the carousel container
+        _, r, _ = http("POST", f"{GRAPH}/{ig}/media", {"image_url": u, "is_carousel_item": "true", "access_token": token})
+        children.append(r["id"])
+    _, r, _ = http("POST", f"{GRAPH}/{ig}/media", {"media_type": "CAROUSEL", "children": ",".join(children), "caption": spec["post"]["instagram"], "access_token": token})
+    cid = r["id"]
+    for _ in range(30):
+        _, st, _ = http("GET", f"{GRAPH}/{cid}?fields=status_code,status&access_token={token}")
+        if st.get("status_code") == "FINISHED":
+            break
+        if st.get("status_code") == "ERROR":
+            raise RuntimeError(f"Instagram carousel error: {st.get('status')}")
+        time.sleep(5)
+    _, pub, _ = http("POST", f"{GRAPH}/{ig}/media_publish", {"creation_id": cid, "access_token": token})
+    _, info, _ = http("GET", f"{GRAPH}/{pub['id']}?fields=permalink&access_token={token}")
+    return info.get("permalink", pub["id"]), None
+
+
+def fb_photos(item, spec, image_urls):
+    creds = env("FB_PAGE_ID", "META_PAGE_TOKEN")
+    if not creds:
+        return None, "missing FB_PAGE_ID / META_PAGE_TOKEN"
+    page, token = creds
+    ids = []
+    for u in image_urls:  # unpublished photos, then one post with all of them
+        _, r, _ = http("POST", f"{GRAPH}/{page}/photos", {"url": u, "published": "false", "access_token": token})
+        ids.append(r["id"])
+    data = {"message": spec["post"]["facebook"], "access_token": token}
+    data.update({f"attached_media[{k}]": json.dumps({"media_fbid": i}) for k, i in enumerate(ids)})
+    _, r, _ = http("POST", f"{GRAPH}/{page}/feed", data)
+    return f"https://www.facebook.com/{r['id']}", None
+
+
+def chapters_text(chapters):
+    fmt = lambda t: f"{int(t // 60)}:{int(t % 60):02d}"
+    return "\n".join(f"{fmt(c['t'])} {c['title']}" for c in chapters)
+
+
 def youtube(item, spec, video_path, cover_url):
     creds = env("YT_CLIENT_ID", "YT_CLIENT_SECRET", "YT_REFRESH_TOKEN")
     if not creds:
@@ -77,8 +121,15 @@ def youtube(item, spec, video_path, cover_url):
     _, tok, _ = http("POST", "https://oauth2.googleapis.com/token", {"client_id": cid, "client_secret": secret, "refresh_token": refresh, "grant_type": "refresh_token"})
     auth = {"Authorization": f"Bearer {tok['access_token']}"}
     y = spec["post"]["youtube"]
-    meta = {"snippet": {"title": y["title"][:100], "description": y["description"][:4900], "categoryId": "27",
-                        "tags": ["trading journal", "day trading", "trading psychology", "risk management", "AI"]},
+    long = spec.get("kind") == "long"
+    desc = y["description"]
+    if "{chapters}" in desc:  # real timestamps of this render, from the site's media index
+        base = cover_url.rsplit("/", 1)[0]
+        _, idx, _ = http("GET", f"{base}/index.json")
+        ch = (idx.get(item["id"]) or {}).get("chapters") or []
+        desc = desc.replace("{chapters}", ("Chapters\n" + chapters_text(ch)) if len(ch) >= 3 else "")
+    meta = {"snippet": {"title": y["title"][:100], "description": desc[:4900], "categoryId": "27",
+                        "tags": y.get("tags") or ["trading journal", "day trading", "trading psychology", "risk management", "AI"]},
             "status": {"privacyStatus": os.environ.get("YT_PRIVACY", "public"), "selfDeclaredMadeForKids": False}}
     data = pathlib.Path(video_path).read_bytes()
     _, _, h = http("POST", "https://www.googleapis.com/upload/youtube/v3/videos?uploadType=resumable&part=snippet,status",
@@ -86,7 +137,14 @@ def youtube(item, spec, video_path, cover_url):
                                                            "X-Upload-Content-Type": "video/mp4", "X-Upload-Content-Length": str(len(data))})
     loc = h.get("Location") or h.get("location")
     _, v, _ = http("PUT", loc, raw=data, headers={**auth, "Content-Type": "video/mp4"}, timeout=900)
-    return f"https://youtube.com/shorts/{v['id']}", None
+    if not long:
+        return f"https://youtube.com/shorts/{v['id']}", None
+    try:  # custom thumbnails need a verified channel; the video stays up either way
+        thumb = urllib.request.urlopen(cover_url.replace("_cover.jpg", "_thumb.jpg"), timeout=60).read()
+        http("POST", f"https://www.googleapis.com/upload/youtube/v3/thumbnails/set?videoId={v['id']}", raw=thumb, headers={**auth, "Content-Type": "image/jpeg"})
+    except Exception as e:
+        print("thumbnail not set:", str(e)[:200])
+    return f"https://www.youtube.com/watch?v={v['id']}", None
 
 
 def pinterest(item, spec, video_url, cover_url):
@@ -103,6 +161,7 @@ def pinterest(item, spec, video_url, cover_url):
 
 
 CHANNELS = {"instagram": instagram, "facebook": facebook, "youtube": youtube, "pinterest": pinterest}
+CAROUSEL_CHANNELS = {"instagram": ig_carousel, "facebook": fb_photos}
 
 
 def main():
@@ -126,14 +185,20 @@ def main():
         spec = json.loads((ROOT / "content" / "videos" / f"{item['id']}.json").read_text())
         video_url = f"{a.media_base.rstrip('/')}/{item['id']}.mp4"
         cover_url = f"{a.media_base.rstrip('/')}/{item['id']}_cover.jpg"
+        carousel = spec.get("kind") == "carousel"
+        images = [f"{a.media_base.rstrip('/')}/{item['id']}_{k + 1}.jpg" for k in range(len(spec.get("slides", [])))]
         for ch in item.get("channels", []):
-            if ch not in CHANNELS or (only and ch not in only) or (item["id"], ch) in done:
+            table = CAROUSEL_CHANNELS if carousel else CHANNELS
+            if ch not in table or (only and ch not in only) or (item["id"], ch) in done:
                 continue
             if a.dry_run:
-                report.append({"id": item["id"], "channel": ch, "dry_run": True}); continue
+                report.append({"id": item["id"], "channel": ch, "dry_run": True, **({"images": images} if carousel else {})}); continue
             try:
-                src = str(pathlib.Path(a.media_dir) / f"{item['id']}.mp4") if ch == "youtube" else video_url
-                url, skipped = CHANNELS[ch](item, spec, src, cover_url)
+                if carousel:
+                    url, skipped = table[ch](item, spec, images)
+                else:
+                    src = str(pathlib.Path(a.media_dir) / f"{item['id']}.mp4") if ch == "youtube" else video_url
+                    url, skipped = table[ch](item, spec, src, cover_url)
                 entry = {"id": item["id"], "channel": ch, "time": now.isoformat(timespec="minutes")}
                 entry.update({"url": url} if url else {"skipped": skipped})
             except Exception as e:  # keep going with the other channels
