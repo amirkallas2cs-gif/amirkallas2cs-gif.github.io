@@ -1,7 +1,7 @@
 """Educational videos (series "trading, explained"): one concept per video, an animated chart from the first frame,
 a follow call at the end. Every number said or shown is computed from the chart itself (see charts.py) and checked
 here with assertions, so a chart that doesn't show what the script says fails the build instead of being published."""
-from charts import path, closes, ema, rsi, vwap, atr, bollinger, r2
+from charts import path, closes, ema, rsi, vwap, atr, bollinger, macd, r2
 
 HANDLE = "@calmedgeofficial"
 EDU_TAG = "Illustrative chart · education, not financial advice"
@@ -375,3 +375,178 @@ V.append({"id": "v210_edu_position_size", "tag": EDU_TAG, "site_path": "/tools/p
     FOLLOW],
     "post": post_edu("How many futures contracts should you trade?", "1) Max loss: 1% of $50,000 = $500. 2) Risk per contract: a 4-point stop is $20 on the Micro E-mini S&P ($5/point) and $200 on the E-mini ($50/point). 3) Divide and round down: 25 micros or 2 E-minis.",
                      ["#positionsizing", "#futurestrading", "#riskmanagement"], "Futures position size in 3 numbers", "/tools/position-size-calculator/")})
+
+# ------------------------------------------------------------------ 11. Trend structure (higher highs, higher lows)
+
+
+def _trend(seed):
+    wp = [(0, 100), (6, 103), (10, 101.5), (16, 104.8), (20, 103.2), (26, 106.5), (30, 104.9), (35, 106.0), (40, 102.8), (44, 103.4)]
+    c = path(wp, seed=seed, noise=0.22, wick=0.2, force={6: {"h": 103.3}, 10: {"l": 101.2}, 16: {"h": 105.1}, 20: {"l": 102.9}, 26: {"h": 106.8}, 30: {"l": 104.6}, 35: {"h": 106.3}})
+    sh, sl = [6, 16, 26], [10, 20, 30]
+    piv_h = all(c[i]["h"] == max(x["h"] for x in c[max(0, i - 4):i + 5]) for i in sh + [35])
+    piv_l = all(c[i]["l"] == min(x["l"] for x in c[i - 4:i + 5]) for i in sl)
+    hh = all(c[a]["h"] < c[b]["h"] for a, b in zip(sh, sh[1:])) and all(c[a]["l"] < c[b]["l"] for a, b in zip(sl, sl[1:]))
+    lh = c[35]["h"] < c[26]["h"]
+    brk = next((i for i in range(31, len(c)) if c[i]["c"] < c[30]["l"]), None)
+    clean = brk is not None and brk > 35 and all(c[i]["l"] > c[30]["l"] for i in range(31, 36))
+    return dict(c=c, ok=piv_h and piv_l and hh and lh and clean, brk=brk, sh=sh, sl=sl)
+
+
+TS = pick(_trend, lambda d: d["ok"])
+ch = export(TS["c"]); n = len(ch["candles"]); hl = TS["c"][30]["l"]
+assert len(TS["sh"]) == 3
+V.append({"id": "v211_edu_trend_structure", "tag": EDU_TAG, "site_path": "/learn/", "charts": {"a": ch}, "scenes": [
+    {"type": "chart", "chart": "a", "headline": "A trend is just two rules.", "big": True, "reveal": [6, 12],
+     "say": "Forget indicators. A trend is just two simple rules."},
+    {"type": "chart", "chart": "a", "headline": "Higher highs. Higher lows.", "reveal": [12, 32],
+     "marks": [{"bar": 6, "dir": "down", "color": "mint", "at": 0.0}, {"bar": 10, "dir": "up", "color": "mint", "at": 0.05},
+               {"bar": 16, "dir": "down", "text": "HH", "color": "mint", "at": 0.25}, {"bar": 20, "dir": "up", "text": "HL", "color": "mint", "at": 0.4},
+               {"bar": 26, "dir": "down", "text": "HH", "color": "mint", "at": 0.6}, {"bar": 30, "dir": "up", "text": "HL", "color": "mint", "at": 0.8}],
+     "say": "In an uptrend, each high is above the last one, and each pullback stops above the previous low."},
+    {"type": "chart", "chart": "a", "headline": "Lower high, then a break.", "reveal": [32, n],
+     "levels": [{"price": hl, "from": 30, "label": "Last higher low", "color": "gold", "below": True, "labelAt": -6, "at": 0.0}],
+     "marks": [{"bar": 35, "dir": "down", "text": "Lower high", "color": "coral", "at": 0.2}, {"bar": TS["brk"], "dir": "down", "color": "coral", "at": 0.5}],
+     "say": "When price makes a lower high and then closes below the last higher low, the structure is broken. That's often the first warning that the trend is changing."},
+    FOLLOW],
+    "post": post_edu("The two rules that define a trend", "An uptrend is higher highs and higher lows: each high above the last, each pullback stopping above the previous low. A lower high followed by a close below the last higher low breaks that structure, often the first warning that the trend is changing.",
+                     ["#priceaction", "#marketstructure"], "Market structure: higher highs and higher lows explained")})
+
+# ------------------------------------------------------------------ 12. MACD crossover lag
+
+
+def _macd(seed):
+    c = path([(0, 108), (18, 105.5), (24, 106.2), (44, 99.5), (72, 106.5)], seed=seed, noise=0.3, wick=0.28, force={44: {"l": 99.2}})
+    m, s, h = macd(closes(c))
+    low = min(range(36, 56), key=lambda i: c[i]["l"])
+    crosses = [i for i in range(36, len(c)) if m[i - 1] is not None and s[i - 1] is not None and (m[i] - s[i]) * (m[i - 1] - s[i - 1]) < 0]
+    return dict(c=c, m=m, s=s, h=h, low=low, crosses=crosses)
+
+
+M = pick(_macd, lambda d: d["low"] == 44 and len(d["crosses"]) == 1 and d["m"][d["crosses"][0]] > d["s"][d["crosses"][0]] and 3 <= d["crosses"][0] - 44 <= 9
+         and all(d["m"][i] > d["s"][i] for i in range(d["crosses"][0], len(d["c"]))))
+S = 34
+cx = M["crosses"][0]; lag = cx - M["low"]
+rise = (M["c"][cx]["c"] / M["c"][M["low"]]["l"] - 1) * 100
+assert 1 <= rise and lag >= 3
+vals = [x for x in M["m"][S:] + M["s"][S:] + M["h"][S:] if x is not None]
+lo_p, hi_p = min(vals), max(vals); span = hi_p - lo_p
+ch = export(M["c"], S, panel={"id": "macd", "label": "MACD 12, 26, 9", "min": round(lo_p - 0.12 * span, 2), "max": round(hi_p + 0.12 * span, 2),
+                              "levels": [{"y": 0, "label": "0", "color": "muted"}],
+                              "lines": [{"id": "macd", "color": "blue", "values": M["m"]}, {"id": "signal", "color": "gold", "values": M["s"]}],
+                              "hist": {"id": "hist", "values": M["h"]}})
+ch["panel"]["hist"]["values"] = r2(M["h"][S:])
+n = len(ch["candles"]); lw, cs = M["low"] - S, cx - S
+V.append({"id": "v212_edu_macd_cross", "tag": EDU_TAG, "site_path": "/learn/", "charts": {"a": ch}, "scenes": [
+    {"type": "chart", "chart": "a", "headline": "Why MACD crosses always feel late.", "big": True, "reveal": [6, lw - 2], "show": ["macd"],
+     "say": "Why MACD crosses always feel late."},
+    {"type": "chart", "chart": "a", "headline": "Built from moving averages.", "reveal": [lw - 2, cs - 1], "show": ["macd"],
+     "marks": [{"bar": lw, "dir": "up", "text": "The low", "color": "mint", "at": 0.3}],
+     "say": "MACD is the twelve EMA minus the twenty-six EMA, and the signal line is a nine EMA of MACD. Averages need time to turn."},
+    {"type": "chart", "chart": "a", "headline": f"The cross came {lag} bars later.", "reveal": [cs - 1, n], "show": ["macd"],
+     "marks": [{"bar": lw, "dir": "up", "text": "The low", "color": "mint", "at": 0.0}, {"bar": cs, "panel": True, "value": round(M["m"][cx], 3), "text": "Cross", "color": "gold", "at": 0.2}],
+     "say": f"Here the bullish cross came {words(lag)} bars after the low, when price was already {words(round(rise))} percent off the bottom."},
+    {"type": "rows", "title": "Reading a MACD cross", "head": ["", "", ""], "rows": [
+        {"cells": ["In a trend", "", "Confirms momentum"], "good": True, "hl": True}, {"cells": ["In a range", "", "Often noise"]},
+        {"cells": ["At the exact turn", "", "Almost never"], "hl": True}],
+     "say": "So use it to confirm momentum, not to catch the exact turn."},
+    FOLLOW],
+    "post": post_edu("Why MACD crosses feel late", f"MACD is the 12 EMA minus the 26 EMA; the signal line is a 9 EMA of MACD. Built from averages, it lags: in this example the bullish cross came {lag} bars after the low, with price already {rise:.0f}% off the bottom. Use it to confirm momentum, not to catch the turn.",
+                     ["#macd", "#indicators"], "MACD crossover explained: why it lags")})
+
+# ------------------------------------------------------------------ 13. Bull flag
+
+
+def _flag(seed):
+    wp = [(0, 100.2), (5, 100), (13, 106), (16, 105.2), (18, 105.6), (21, 104.8), (23, 105.2), (26, 104.6), (29, 106.6), (40, 113.4)]
+    c = path(wp, seed=seed, noise=0.22, wick=0.2)
+    pole_lo = min(x["l"] for x in c[:6]); top = max(range(27), key=lambda i: c[i]["h"]); pole_hi = c[top]["h"]
+    in_flag = 12 <= top <= 14 and all(c[i]["l"] >= 104.0 for i in range(top + 1, 27))
+    brk = next((i for i in range(27, len(c)) if c[i]["c"] > pole_hi), None)
+    target = round(pole_hi + (pole_hi - pole_lo), 2)
+    hit = brk is not None and max(x["h"] for x in c[brk:]) >= target
+    return dict(c=c, ok=in_flag and brk is not None and brk <= 30 and hit, lo=pole_lo, hi=pole_hi, top=top, brk=brk, target=target)
+
+
+BF = pick(_flag, lambda d: d["ok"])
+ch = export(BF["c"]); n = len(ch["candles"])
+flag_lo = min(x["l"] for x in BF["c"][BF["top"] + 1:27])
+V.append({"id": "v213_edu_bull_flag", "tag": EDU_TAG, "site_path": "/learn/", "charts": {"a": ch}, "scenes": [
+    {"type": "chart", "chart": "a", "headline": "This pattern is a pause, not a top.", "big": True, "reveal": [5, 15],
+     "zones": [{"from": 5, "to": BF["top"], "lo": BF["lo"], "hi": BF["hi"], "color": "mint", "label": "Pole", "at": 0.35}],
+     "say": "This pattern looks like a top, but it's often just a pause."},
+    {"type": "chart", "chart": "a", "headline": "Strong pole. Slow, tight flag.", "reveal": [15, 27],
+     "zones": [{"from": 5, "to": BF["top"], "lo": BF["lo"], "hi": BF["hi"], "color": "mint", "label": "Pole"}, {"from": BF["top"] + 1, "to": 26, "lo": flag_lo, "hi": BF["hi"], "color": "gold", "label": "Flag", "at": 0.3}],
+     "say": "A bull flag is a sharp move up, then a slow, tight drift lower on smaller candles, as buyers take a breather."},
+    {"type": "chart", "chart": "a", "headline": "Breakout, then the classic target.", "reveal": [27, n],
+     "levels": [{"price": BF["hi"], "from": BF["top"], "label": "Flag high", "color": "gold", "below": True, "at": 0.0},
+                {"price": BF["target"], "from": BF["top"], "label": "Classic target", "color": "blue", "at": 0.3}],
+     "marks": [{"bar": BF["brk"], "dir": "up", "text": "Close above", "color": "mint", "at": 0.15}],
+     "say": "It's confirmed by a close above the flag. The classic target adds the pole's height to the breakout. Here price got there, but plenty of flags fail."},
+    FOLLOW],
+    "post": post_edu("The bull flag: a pause, not a top", "A bull flag is a sharp move up (the pole) followed by a slow, tight drift lower on smaller candles. It's confirmed by a close above the flag; the classic target adds the pole's height to the breakout. Plenty of flags fail, so wait for the close.",
+                     ["#chartpatterns", "#bullflag", "#priceaction"], "Bull flag pattern explained")})
+
+# ------------------------------------------------------------------ 14. Bullish engulfing at support
+
+
+def _eng(seed):
+    wp = [(0, 103.5), (6, 100.4), (11, 102.6), (16, 101.6), (19, 101.0), (20, 100.6), (21, 101.5), (30, 104.2)]
+    c = path(wp, seed=seed, noise=0.2, wick=0.18, force={6: {"l": 100.0}, 20: {"o": 101.15, "h": 101.25, "l": 100.05, "c": 100.45}, 21: {"o": 100.38, "h": 101.68, "l": 100.3, "c": 101.55}})
+    a, b = c[20], c[21]
+    eng = a["c"] < a["o"] and b["c"] > b["o"] and b["o"] <= a["c"] and b["c"] >= a["o"]
+    sup = min(x["l"] for x in c[:20]) == 100.0 and all(x["l"] > 100.0 for x in c[7:20])
+    after = all(x["l"] > a["l"] for x in c[22:]) and c[-1]["c"] > 103.5
+    return dict(c=c, ok=eng and sup and after)
+
+
+EG = pick(_eng, lambda d: d["ok"])
+ch = export(EG["c"]); n = len(ch["candles"])
+V.append({"id": "v214_edu_engulfing", "tag": EDU_TAG, "site_path": "/learn/", "charts": {"a": ch}, "scenes": [
+    {"type": "chart", "chart": "a", "headline": "One candle that swallows the last.", "big": True, "reveal": [6, 18],
+     "levels": [{"price": 100.0, "label": "Support", "color": "gold", "below": True, "at": 0.3}],
+     "say": "One candle that swallows the one before it."},
+    {"type": "chart", "chart": "a", "headline": "The bullish engulfing candle.", "reveal": [18, 22],
+     "levels": [{"price": 100.0, "label": "Support", "color": "gold", "below": True}],
+     "marks": [{"bar": 21, "dir": "up", "text": "Engulfing", "color": "mint", "at": 0.6}],
+     "say": "Its green body completely covers the previous red body. Sellers had control, and buyers took all of it back."},
+    {"type": "chart", "chart": "a", "headline": "Location matters more than the candle.", "reveal": [22, n],
+     "levels": [{"price": 100.0, "label": "Support", "color": "gold", "below": True}],
+     "say": "It tends to mean more at support after a pullback, like here, than in the middle of a range."},
+    {"type": "rows", "title": "A bullish engulfing candle…", "head": ["", "", ""], "rows": [
+        {"cells": ["At support", "", "Worth noticing"], "good": True, "hl": True}, {"cells": ["Mid-range", "", "Often noise"]}],
+     "say": "Read it with its location, never on its own."},
+    FOLLOW],
+    "post": post_edu("The bullish engulfing candle", "A bullish engulfing candle's green body completely covers the previous red body: sellers had control and buyers took all of it back. It tends to mean more at support after a pullback than in the middle of a range. Read it with its location, never on its own.",
+                     ["#candlestickpatterns", "#priceaction"], "Bullish engulfing candle explained")})
+
+# ------------------------------------------------------------------ 15. Drawdown math
+
+
+def _dd(seed):
+    c = path([(0, 100), (6, 92), (9, 95), (16, 78), (19, 82), (26, 50), (31, 60), (34, 57), (42, 75)], seed=seed, noise=1.1, wick=0.9)
+    ok = c[0]["c"] == 100 and c[26]["c"] == 50 and c[-1]["c"] == 75 and max(x["h"] for x in c[1:]) < 101.5 and min(x["c"] for x in c) == 50
+    return dict(c=c, ok=ok)
+
+
+DD = pick(_dd, lambda d: d["ok"])
+ch = export(DD["c"]); n = len(ch["candles"])
+c0, cl, ce = DD["c"][0]["c"], DD["c"][26]["c"], DD["c"][-1]["c"]
+down, up, net = (cl / c0 - 1) * 100, (ce / cl - 1) * 100, (ce / c0 - 1) * 100
+assert (round(down), round(up), round(net)) == (-50, 50, -25)
+need = lambda loss: loss / (1 - loss) * 100
+assert (round(need(0.10), 1), round(need(0.25), 1), round(need(0.50))) == (11.1, 33.3, 100)
+V.append({"id": "v215_edu_drawdown_math", "tag": EDU_TAG, "site_path": "/learn/max-drawdown-explained/", "charts": {"a": ch}, "scenes": [
+    {"type": "chart", "chart": "a", "headline": "Down 50%, up 50%, still losing.", "big": True, "reveal": [6, 27],
+     "levels": [{"price": c0, "label": "Start", "color": "muted", "below": True, "at": 0.1}],
+     "marks": [{"bar": 26, "dir": "up", "text": f"−{abs(round(down))}%", "color": "coral", "at": 0.85}],
+     "say": "Down fifty percent, then up fifty percent, and you're still losing."},
+    {"type": "chart", "chart": "a", "headline": "Still 25% below the start.", "reveal": [27, n],
+     "levels": [{"price": c0, "label": "Start", "color": "muted", "below": True}],
+     "marks": [{"bar": 26, "dir": "up", "text": f"−{abs(round(down))}%", "color": "coral", "at": 0.0}, {"bar": n - 1, "dir": "down", "text": f"+{round(up)}%", "color": "mint", "at": 0.5}],
+     "say": "A hundred falls to fifty. A fifty percent gain from fifty only gets back to seventy-five, still twenty-five percent below where it started."},
+    {"type": "rows", "title": "Gain needed to get back", "head": ["Loss", "", "Gain needed"], "rows": [
+        {"cells": ["−10%", "", "+11.1%"]}, {"cells": ["−25%", "", "+33.3%"]}, {"cells": ["−50%", "", "+100%"], "hl": True}],
+     "say": "Losses and recoveries aren't symmetric. A fifty percent loss needs a one hundred percent gain just to get back to even."},
+    FOLLOW],
+    "post": post_edu("Down 50%, up 50%, still losing", "100 falls 50% to 50. A 50% gain from 50 is 75, still 25% below the start. The gain needed to recover is loss / (1 − loss): −10% needs +11.1%, −25% needs +33.3%, −50% needs +100%. That's why keeping drawdowns small matters.",
+                     ["#drawdown", "#riskmanagement"], "Drawdown recovery math explained", "/learn/max-drawdown-explained/")})

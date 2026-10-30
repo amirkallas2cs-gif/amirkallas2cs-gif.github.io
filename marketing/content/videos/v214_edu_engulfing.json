@@ -1,0 +1,345 @@
+{
+ "id": "v214_edu_engulfing",
+ "tag": "Illustrative chart · education, not financial advice",
+ "site_path": "/learn/",
+ "charts": {
+  "a": {
+   "candles": [
+    {
+     "o": 103.54,
+     "h": 103.56,
+     "l": 103.36,
+     "c": 103.5,
+     "v": 1160
+    },
+    {
+     "o": 103.51,
+     "h": 103.53,
+     "l": 102.77,
+     "c": 102.85,
+     "v": 2504
+    },
+    {
+     "o": 102.82,
+     "h": 102.82,
+     "l": 102.49,
+     "c": 102.5,
+     "v": 2126
+    },
+    {
+     "o": 102.48,
+     "h": 102.85,
+     "l": 101.81,
+     "c": 101.94,
+     "v": 2165
+    },
+    {
+     "o": 101.95,
+     "h": 102.11,
+     "l": 101.61,
+     "c": 101.68,
+     "v": 1681
+    },
+    {
+     "o": 101.68,
+     "h": 101.71,
+     "l": 100.82,
+     "c": 101.01,
+     "v": 3513
+    },
+    {
+     "o": 101.03,
+     "h": 101.07,
+     "l": 100.0,
+     "c": 100.4,
+     "v": 2936
+    },
+    {
+     "o": 100.41,
+     "h": 101.5,
+     "l": 100.32,
+     "c": 101.25,
+     "v": 3386
+    },
+    {
+     "o": 101.25,
+     "h": 102.02,
+     "l": 101.14,
+     "c": 101.9,
+     "v": 3906
+    },
+    {
+     "o": 101.84,
+     "h": 102.25,
+     "l": 101.68,
+     "c": 101.95,
+     "v": 1575
+    },
+    {
+     "o": 101.99,
+     "h": 102.46,
+     "l": 101.75,
+     "c": 102.2,
+     "v": 1798
+    },
+    {
+     "o": 102.19,
+     "h": 102.61,
+     "l": 101.87,
+     "c": 102.6,
+     "v": 2391
+    },
+    {
+     "o": 102.63,
+     "h": 102.71,
+     "l": 102.25,
+     "c": 102.5,
+     "v": 1373
+    },
+    {
+     "o": 102.52,
+     "h": 102.56,
+     "l": 101.82,
+     "c": 102.04,
+     "v": 2625
+    },
+    {
+     "o": 102.04,
+     "h": 102.31,
+     "l": 101.79,
+     "c": 101.86,
+     "v": 2140
+    },
+    {
+     "o": 101.84,
+     "h": 101.95,
+     "l": 101.37,
+     "c": 101.56,
+     "v": 2680
+    },
+    {
+     "o": 101.52,
+     "h": 101.68,
+     "l": 101.42,
+     "c": 101.6,
+     "v": 1311
+    },
+    {
+     "o": 101.59,
+     "h": 101.73,
+     "l": 101.55,
+     "c": 101.6,
+     "v": 1055
+    },
+    {
+     "o": 101.59,
+     "h": 101.66,
+     "l": 101.0,
+     "c": 101.33,
+     "v": 2462
+    },
+    {
+     "o": 101.27,
+     "h": 101.5,
+     "l": 100.97,
+     "c": 101.0,
+     "v": 1936
+    },
+    {
+     "o": 101.15,
+     "h": 101.25,
+     "l": 100.05,
+     "c": 100.45,
+     "v": 2586
+    },
+    {
+     "o": 100.38,
+     "h": 101.68,
+     "l": 100.3,
+     "c": 101.55,
+     "v": 5293
+    },
+    {
+     "o": 101.53,
+     "h": 101.78,
+     "l": 101.51,
+     "c": 101.65,
+     "v": 1178
+    },
+    {
+     "o": 101.62,
+     "h": 101.77,
+     "l": 101.31,
+     "c": 101.68,
+     "v": 1432
+    },
+    {
+     "o": 101.73,
+     "h": 102.19,
+     "l": 101.67,
+     "c": 102.15,
+     "v": 1830
+    },
+    {
+     "o": 102.16,
+     "h": 102.9,
+     "l": 102.07,
+     "c": 102.9,
+     "v": 4060
+    },
+    {
+     "o": 102.91,
+     "h": 103.19,
+     "l": 102.72,
+     "c": 103.07,
+     "v": 1277
+    },
+    {
+     "o": 103.11,
+     "h": 103.44,
+     "l": 103.07,
+     "c": 103.29,
+     "v": 1641
+    },
+    {
+     "o": 103.3,
+     "h": 103.89,
+     "l": 103.24,
+     "c": 103.79,
+     "v": 2186
+    },
+    {
+     "o": 103.77,
+     "h": 104.26,
+     "l": 103.53,
+     "c": 104.2,
+     "v": 3102
+    },
+    {
+     "o": 104.2,
+     "h": 104.37,
+     "l": 103.97,
+     "c": 104.2,
+     "v": 799
+    }
+   ],
+   "lines": [],
+   "bands": []
+  }
+ },
+ "scenes": [
+  {
+   "type": "chart",
+   "chart": "a",
+   "headline": "One candle that swallows the last.",
+   "big": true,
+   "reveal": [
+    6,
+    18
+   ],
+   "levels": [
+    {
+     "price": 100.0,
+     "label": "Support",
+     "color": "gold",
+     "below": true,
+     "at": 0.3
+    }
+   ],
+   "say": "One candle that swallows the one before it."
+  },
+  {
+   "type": "chart",
+   "chart": "a",
+   "headline": "The bullish engulfing candle.",
+   "reveal": [
+    18,
+    22
+   ],
+   "levels": [
+    {
+     "price": 100.0,
+     "label": "Support",
+     "color": "gold",
+     "below": true
+    }
+   ],
+   "marks": [
+    {
+     "bar": 21,
+     "dir": "up",
+     "text": "Engulfing",
+     "color": "mint",
+     "at": 0.6
+    }
+   ],
+   "say": "Its green body completely covers the previous red body. Sellers had control, and buyers took all of it back."
+  },
+  {
+   "type": "chart",
+   "chart": "a",
+   "headline": "Location matters more than the candle.",
+   "reveal": [
+    22,
+    31
+   ],
+   "levels": [
+    {
+     "price": 100.0,
+     "label": "Support",
+     "color": "gold",
+     "below": true
+    }
+   ],
+   "say": "It tends to mean more at support after a pullback, like here, than in the middle of a range."
+  },
+  {
+   "type": "rows",
+   "title": "A bullish engulfing candle…",
+   "head": [
+    "",
+    "",
+    ""
+   ],
+   "rows": [
+    {
+     "cells": [
+      "At support",
+      "",
+      "Worth noticing"
+     ],
+     "good": true,
+     "hl": true
+    },
+    {
+     "cells": [
+      "Mid-range",
+      "",
+      "Often noise"
+     ]
+    }
+   ],
+   "say": "Read it with its location, never on its own."
+  },
+  {
+   "type": "follow",
+   "text": "Follow for one trading concept a day.",
+   "say": "Save this, and follow for one trading concept a day."
+  }
+ ],
+ "post": {
+  "instagram": "A bullish engulfing candle's green body completely covers the previous red body: sellers had control and buyers took all of it back. It tends to mean more at support after a pullback than in the middle of a range. Read it with its location, never on its own.\n\nSave this for later and follow @calmedgeofficial for one trading concept a day.\n\nEducational example on an illustrative chart. Not financial advice; trading involves risk of loss.\n\n#candlestickpatterns #priceaction #tradingeducation #technicalanalysis #daytrading #trading #learntotrade",
+  "tiktok": "A bullish engulfing candle's green body completely covers the previous red body: sellers had control and buyers took all of it back. It tends to mean more at support after a pullback than in the middle of a range. Read it with its location, never on its own. Follow for one trading concept a day. #candlestickpatterns #priceaction #tradingeducation #technicalanalysis #daytrading",
+  "youtube": {
+   "title": "The bullish engulfing candle #shorts",
+   "description": "A bullish engulfing candle's green body completely covers the previous red body: sellers had control and buyers took all of it back. It tends to mean more at support after a pullback than in the middle of a range. Read it with its location, never on its own.\n\nFree guides and calculators: https://amirkallas2cs-gif.github.io/\n\nEducational example on an illustrative chart. Not financial advice; trading involves risk of loss.\n\n#candlestickpatterns #priceaction #tradingeducation #technicalanalysis #daytrading #trading #learntotrade #shorts"
+  },
+  "facebook": "A bullish engulfing candle's green body completely covers the previous red body: sellers had control and buyers took all of it back. It tends to mean more at support after a pullback than in the middle of a range. Read it with its location, never on its own.\n\nSave this for later and follow @calmedgeofficial for one trading concept a day.\n\nFree guides and calculators: https://amirkallas2cs-gif.github.io/",
+  "pinterest": {
+   "title": "Bullish engulfing candle explained",
+   "description": "A bullish engulfing candle's green body completely covers the previous red body: sellers had control and buyers took all of it back. It tends to mean more at support after a pullback than in the middle of a range. Read it with its location, never on its own. Trading concepts explained simply, one a day.",
+   "link": "https://amirkallas2cs-gif.github.io/"
+  }
+ },
+ "voice": "andrew_up"
+}

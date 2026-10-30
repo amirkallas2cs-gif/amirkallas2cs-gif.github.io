@@ -1,0 +1,433 @@
+{
+ "id": "v215_edu_drawdown_math",
+ "tag": "Illustrative chart · education, not financial advice",
+ "site_path": "/learn/max-drawdown-explained/",
+ "charts": {
+  "a": {
+   "candles": [
+    {
+     "o": 100.24,
+     "h": 100.3,
+     "l": 99.31,
+     "c": 100.0,
+     "v": 1160
+    },
+    {
+     "o": 100.07,
+     "h": 100.17,
+     "l": 97.54,
+     "c": 97.93,
+     "v": 1766
+    },
+    {
+     "o": 97.78,
+     "h": 97.78,
+     "l": 97.47,
+     "c": 97.53,
+     "v": 1132
+    },
+    {
+     "o": 97.41,
+     "h": 99.24,
+     "l": 95.31,
+     "c": 95.97,
+     "v": 1426
+    },
+    {
+     "o": 96.0,
+     "h": 96.82,
+     "l": 95.67,
+     "c": 96.0,
+     "v": 833
+    },
+    {
+     "o": 96.02,
+     "h": 96.19,
+     "l": 92.88,
+     "c": 93.83,
+     "v": 2487
+    },
+    {
+     "o": 93.95,
+     "h": 94.15,
+     "l": 91.02,
+     "c": 92.0,
+     "v": 2037
+    },
+    {
+     "o": 92.04,
+     "h": 96.49,
+     "l": 91.59,
+     "c": 95.28,
+     "v": 2601
+    },
+    {
+     "o": 95.26,
+     "h": 98.02,
+     "l": 94.7,
+     "c": 97.43,
+     "v": 2809
+    },
+    {
+     "o": 97.05,
+     "h": 98.55,
+     "l": 94.2,
+     "c": 95.0,
+     "v": 2646
+    },
+    {
+     "o": 95.21,
+     "h": 96.5,
+     "l": 91.61,
+     "c": 92.78,
+     "v": 2660
+    },
+    {
+     "o": 92.76,
+     "h": 92.83,
+     "l": 88.41,
+     "c": 90.01,
+     "v": 2726
+    },
+    {
+     "o": 90.2,
+     "h": 90.59,
+     "l": 87.0,
+     "c": 88.29,
+     "v": 2128
+    },
+    {
+     "o": 88.36,
+     "h": 88.56,
+     "l": 83.31,
+     "c": 84.39,
+     "v": 3473
+    },
+    {
+     "o": 84.39,
+     "h": 85.74,
+     "l": 81.71,
+     "c": 82.09,
+     "v": 3308
+    },
+    {
+     "o": 82.0,
+     "h": 82.51,
+     "l": 78.16,
+     "c": 79.09,
+     "v": 3848
+    },
+    {
+     "o": 78.89,
+     "h": 79.31,
+     "l": 77.5,
+     "c": 78.0,
+     "v": 1618
+    },
+    {
+     "o": 77.94,
+     "h": 81.1,
+     "l": 77.76,
+     "c": 80.41,
+     "v": 2761
+    },
+    {
+     "o": 80.4,
+     "h": 81.72,
+     "l": 78.77,
+     "c": 81.37,
+     "v": 2045
+    },
+    {
+     "o": 81.07,
+     "h": 83.15,
+     "l": 80.94,
+     "c": 82.0,
+     "v": 1561
+    },
+    {
+     "o": 82.12,
+     "h": 82.66,
+     "l": 79.41,
+     "c": 79.66,
+     "v": 2681
+    },
+    {
+     "o": 79.68,
+     "h": 80.31,
+     "l": 72.13,
+     "c": 73.06,
+     "v": 5922
+    },
+    {
+     "o": 72.94,
+     "h": 73.58,
+     "l": 67.36,
+     "c": 67.47,
+     "v": 3813
+    },
+    {
+     "o": 67.3,
+     "h": 67.78,
+     "l": 59.85,
+     "c": 61.38,
+     "v": 5995
+    },
+    {
+     "o": 61.7,
+     "h": 61.87,
+     "l": 57.46,
+     "c": 57.79,
+     "v": 2602
+    },
+    {
+     "o": 57.81,
+     "h": 57.82,
+     "l": 55.23,
+     "c": 55.67,
+     "v": 2650
+    },
+    {
+     "o": 55.72,
+     "h": 56.31,
+     "l": 49.07,
+     "c": 50.0,
+     "v": 3923
+    },
+    {
+     "o": 50.26,
+     "h": 52.72,
+     "l": 50.03,
+     "c": 51.95,
+     "v": 2123
+    },
+    {
+     "o": 51.98,
+     "h": 55.56,
+     "l": 51.7,
+     "c": 55.05,
+     "v": 2368
+    },
+    {
+     "o": 54.93,
+     "h": 57.95,
+     "l": 53.75,
+     "c": 57.64,
+     "v": 3386
+    },
+    {
+     "o": 57.64,
+     "h": 59.98,
+     "l": 56.5,
+     "c": 59.11,
+     "v": 1591
+    },
+    {
+     "o": 58.87,
+     "h": 60.61,
+     "l": 58.69,
+     "c": 60.0,
+     "v": 2275
+    },
+    {
+     "o": 59.81,
+     "h": 60.03,
+     "l": 58.19,
+     "c": 59.47,
+     "v": 1153
+    },
+    {
+     "o": 59.4,
+     "h": 59.62,
+     "l": 57.17,
+     "c": 57.4,
+     "v": 2082
+    },
+    {
+     "o": 57.33,
+     "h": 57.95,
+     "l": 55.33,
+     "c": 57.0,
+     "v": 1086
+    },
+    {
+     "o": 56.9,
+     "h": 62.56,
+     "l": 56.55,
+     "c": 61.96,
+     "v": 3140
+    },
+    {
+     "o": 61.93,
+     "h": 64.19,
+     "l": 59.84,
+     "c": 63.21,
+     "v": 1953
+    },
+    {
+     "o": 63.51,
+     "h": 67.13,
+     "l": 63.28,
+     "c": 65.74,
+     "v": 2537
+    },
+    {
+     "o": 65.85,
+     "h": 66.73,
+     "l": 64.55,
+     "c": 66.36,
+     "v": 1298
+    },
+    {
+     "o": 66.44,
+     "h": 69.01,
+     "l": 65.78,
+     "c": 68.63,
+     "v": 2494
+    },
+    {
+     "o": 68.92,
+     "h": 69.83,
+     "l": 68.82,
+     "c": 69.69,
+     "v": 1249
+    },
+    {
+     "o": 70.12,
+     "h": 70.95,
+     "l": 69.32,
+     "c": 70.78,
+     "v": 1202
+    },
+    {
+     "o": 70.5,
+     "h": 75.75,
+     "l": 70.16,
+     "c": 75,
+     "v": 4999
+    }
+   ],
+   "lines": [],
+   "bands": []
+  }
+ },
+ "scenes": [
+  {
+   "type": "chart",
+   "chart": "a",
+   "headline": "Down 50%, up 50%, still losing.",
+   "big": true,
+   "reveal": [
+    6,
+    27
+   ],
+   "levels": [
+    {
+     "price": 100.0,
+     "label": "Start",
+     "color": "muted",
+     "below": true,
+     "at": 0.1
+    }
+   ],
+   "marks": [
+    {
+     "bar": 26,
+     "dir": "up",
+     "text": "−50%",
+     "color": "coral",
+     "at": 0.85
+    }
+   ],
+   "say": "Down fifty percent, then up fifty percent, and you're still losing."
+  },
+  {
+   "type": "chart",
+   "chart": "a",
+   "headline": "Still 25% below the start.",
+   "reveal": [
+    27,
+    43
+   ],
+   "levels": [
+    {
+     "price": 100.0,
+     "label": "Start",
+     "color": "muted",
+     "below": true
+    }
+   ],
+   "marks": [
+    {
+     "bar": 26,
+     "dir": "up",
+     "text": "−50%",
+     "color": "coral",
+     "at": 0.0
+    },
+    {
+     "bar": 42,
+     "dir": "down",
+     "text": "+50%",
+     "color": "mint",
+     "at": 0.5
+    }
+   ],
+   "say": "A hundred falls to fifty. A fifty percent gain from fifty only gets back to seventy-five, still twenty-five percent below where it started."
+  },
+  {
+   "type": "rows",
+   "title": "Gain needed to get back",
+   "head": [
+    "Loss",
+    "",
+    "Gain needed"
+   ],
+   "rows": [
+    {
+     "cells": [
+      "−10%",
+      "",
+      "+11.1%"
+     ]
+    },
+    {
+     "cells": [
+      "−25%",
+      "",
+      "+33.3%"
+     ]
+    },
+    {
+     "cells": [
+      "−50%",
+      "",
+      "+100%"
+     ],
+     "hl": true
+    }
+   ],
+   "say": "Losses and recoveries aren't symmetric. A fifty percent loss needs a one hundred percent gain just to get back to even."
+  },
+  {
+   "type": "follow",
+   "text": "Follow for one trading concept a day.",
+   "say": "Save this, and follow for one trading concept a day."
+  }
+ ],
+ "post": {
+  "instagram": "100 falls 50% to 50. A 50% gain from 50 is 75, still 25% below the start. The gain needed to recover is loss / (1 − loss): −10% needs +11.1%, −25% needs +33.3%, −50% needs +100%. That's why keeping drawdowns small matters.\n\nSave this for later and follow @calmedgeofficial for one trading concept a day.\n\nEducational example on an illustrative chart. Not financial advice; trading involves risk of loss.\n\n#drawdown #riskmanagement #tradingeducation #technicalanalysis #daytrading #trading #learntotrade",
+  "tiktok": "100 falls 50% to 50. A 50% gain from 50 is 75, still 25% below the start. The gain needed to recover is loss / (1 − loss): −10% needs +11.1%, −25% needs +33.3%, −50% needs +100%. That's why keeping drawdowns small matters. Follow for one trading concept a day. #drawdown #riskmanagement #tradingeducation #technicalanalysis #daytrading",
+  "youtube": {
+   "title": "Down 50%, up 50%, still losing #shorts",
+   "description": "100 falls 50% to 50. A 50% gain from 50 is 75, still 25% below the start. The gain needed to recover is loss / (1 − loss): −10% needs +11.1%, −25% needs +33.3%, −50% needs +100%. That's why keeping drawdowns small matters.\n\nFree guides and calculators: https://amirkallas2cs-gif.github.io/learn/max-drawdown-explained/\n\nEducational example on an illustrative chart. Not financial advice; trading involves risk of loss.\n\n#drawdown #riskmanagement #tradingeducation #technicalanalysis #daytrading #trading #learntotrade #shorts"
+  },
+  "facebook": "100 falls 50% to 50. A 50% gain from 50 is 75, still 25% below the start. The gain needed to recover is loss / (1 − loss): −10% needs +11.1%, −25% needs +33.3%, −50% needs +100%. That's why keeping drawdowns small matters.\n\nSave this for later and follow @calmedgeofficial for one trading concept a day.\n\nFree guides and calculators: https://amirkallas2cs-gif.github.io/learn/max-drawdown-explained/",
+  "pinterest": {
+   "title": "Drawdown recovery math explained",
+   "description": "100 falls 50% to 50. A 50% gain from 50 is 75, still 25% below the start. The gain needed to recover is loss / (1 − loss): −10% needs +11.1%, −25% needs +33.3%, −50% needs +100%. That's why keeping drawdowns small matters. Trading concepts explained simply, one a day.",
+   "link": "https://amirkallas2cs-gif.github.io/learn/max-drawdown-explained/"
+  }
+ },
+ "voice": "andrew_up"
+}

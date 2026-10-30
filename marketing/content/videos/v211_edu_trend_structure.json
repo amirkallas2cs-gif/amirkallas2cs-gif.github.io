@@ -1,0 +1,449 @@
+{
+ "id": "v211_edu_trend_structure",
+ "tag": "Illustrative chart · education, not financial advice",
+ "site_path": "/learn/",
+ "charts": {
+  "a": {
+   "candles": [
+    {
+     "o": 100.01,
+     "h": 100.27,
+     "l": 99.69,
+     "c": 100.0,
+     "v": 721
+    },
+    {
+     "o": 100.0,
+     "h": 100.22,
+     "l": 99.79,
+     "c": 99.92,
+     "v": 1372
+    },
+    {
+     "o": 99.92,
+     "h": 100.95,
+     "l": 99.71,
+     "c": 100.89,
+     "v": 4859
+    },
+    {
+     "o": 100.91,
+     "h": 101.71,
+     "l": 100.75,
+     "c": 101.53,
+     "v": 3906
+    },
+    {
+     "o": 101.5,
+     "h": 101.94,
+     "l": 101.28,
+     "c": 101.69,
+     "v": 1276
+    },
+    {
+     "o": 101.74,
+     "h": 102.28,
+     "l": 101.54,
+     "c": 102.25,
+     "v": 2049
+    },
+    {
+     "o": 102.27,
+     "h": 103.3,
+     "l": 101.91,
+     "c": 103.0,
+     "v": 2858
+    },
+    {
+     "o": 102.96,
+     "h": 103.14,
+     "l": 102.82,
+     "c": 102.88,
+     "v": 1244
+    },
+    {
+     "o": 102.89,
+     "h": 102.97,
+     "l": 102.57,
+     "c": 102.62,
+     "v": 2021
+    },
+    {
+     "o": 102.65,
+     "h": 102.76,
+     "l": 102.21,
+     "c": 102.29,
+     "v": 1575
+    },
+    {
+     "o": 102.31,
+     "h": 102.39,
+     "l": 101.2,
+     "c": 101.5,
+     "v": 3749
+    },
+    {
+     "o": 101.48,
+     "h": 102.74,
+     "l": 101.31,
+     "c": 102.51,
+     "v": 3395
+    },
+    {
+     "o": 102.5,
+     "h": 103.12,
+     "l": 102.18,
+     "c": 102.73,
+     "v": 1320
+    },
+    {
+     "o": 102.72,
+     "h": 103.03,
+     "l": 102.59,
+     "c": 102.94,
+     "v": 2283
+    },
+    {
+     "o": 102.94,
+     "h": 103.83,
+     "l": 102.47,
+     "c": 103.7,
+     "v": 3014
+    },
+    {
+     "o": 103.69,
+     "h": 104.4,
+     "l": 103.47,
+     "c": 104.2,
+     "v": 2879
+    },
+    {
+     "o": 104.18,
+     "h": 105.1,
+     "l": 103.86,
+     "c": 104.8,
+     "v": 3256
+    },
+    {
+     "o": 104.81,
+     "h": 105.07,
+     "l": 104.16,
+     "c": 104.18,
+     "v": 2240
+    },
+    {
+     "o": 104.15,
+     "h": 104.28,
+     "l": 103.88,
+     "c": 103.94,
+     "v": 1667
+    },
+    {
+     "o": 103.95,
+     "h": 104.02,
+     "l": 103.46,
+     "c": 103.52,
+     "v": 2878
+    },
+    {
+     "o": 103.53,
+     "h": 103.62,
+     "l": 102.9,
+     "c": 103.2,
+     "v": 2402
+    },
+    {
+     "o": 103.25,
+     "h": 104.07,
+     "l": 103.19,
+     "c": 103.94,
+     "v": 4263
+    },
+    {
+     "o": 103.96,
+     "h": 104.35,
+     "l": 103.81,
+     "c": 104.23,
+     "v": 2128
+    },
+    {
+     "o": 104.29,
+     "h": 105.02,
+     "l": 104.22,
+     "c": 105.01,
+     "v": 4469
+    },
+    {
+     "o": 105.08,
+     "h": 106.01,
+     "l": 105.06,
+     "c": 105.74,
+     "v": 2284
+    },
+    {
+     "o": 105.75,
+     "h": 106.49,
+     "l": 105.57,
+     "c": 106.28,
+     "v": 3587
+    },
+    {
+     "o": 106.29,
+     "h": 106.8,
+     "l": 106.25,
+     "c": 106.5,
+     "v": 1290
+    },
+    {
+     "o": 106.48,
+     "h": 106.68,
+     "l": 105.75,
+     "c": 105.84,
+     "v": 3584
+    },
+    {
+     "o": 105.81,
+     "h": 105.9,
+     "l": 105.5,
+     "c": 105.58,
+     "v": 2019
+    },
+    {
+     "o": 105.51,
+     "h": 105.6,
+     "l": 105.29,
+     "c": 105.29,
+     "v": 1264
+    },
+    {
+     "o": 105.29,
+     "h": 105.35,
+     "l": 104.6,
+     "c": 104.9,
+     "v": 2720
+    },
+    {
+     "o": 104.91,
+     "h": 105.15,
+     "l": 104.71,
+     "c": 105.05,
+     "v": 1549
+    },
+    {
+     "o": 105.06,
+     "h": 105.68,
+     "l": 105.01,
+     "c": 105.2,
+     "v": 1490
+    },
+    {
+     "o": 105.2,
+     "h": 105.95,
+     "l": 105.18,
+     "c": 105.53,
+     "v": 2203
+    },
+    {
+     "o": 105.53,
+     "h": 105.59,
+     "l": 105.45,
+     "c": 105.49,
+     "v": 1202
+    },
+    {
+     "o": 105.49,
+     "h": 106.3,
+     "l": 105.17,
+     "c": 106.0,
+     "v": 2094
+    },
+    {
+     "o": 105.97,
+     "h": 106.25,
+     "l": 105.08,
+     "c": 105.1,
+     "v": 2892
+    },
+    {
+     "o": 105.08,
+     "h": 105.19,
+     "l": 104.31,
+     "c": 104.41,
+     "v": 3934
+    },
+    {
+     "o": 104.36,
+     "h": 104.4,
+     "l": 103.83,
+     "c": 103.87,
+     "v": 2836
+    },
+    {
+     "o": 103.84,
+     "h": 103.9,
+     "l": 103.03,
+     "c": 103.07,
+     "v": 2930
+    },
+    {
+     "o": 103.06,
+     "h": 103.23,
+     "l": 102.73,
+     "c": 102.8,
+     "v": 1852
+    },
+    {
+     "o": 102.8,
+     "h": 102.83,
+     "l": 102.55,
+     "c": 102.73,
+     "v": 1441
+    },
+    {
+     "o": 102.73,
+     "h": 103.99,
+     "l": 102.44,
+     "c": 103.52,
+     "v": 4770
+    },
+    {
+     "o": 103.51,
+     "h": 103.62,
+     "l": 103.39,
+     "c": 103.54,
+     "v": 1265
+    },
+    {
+     "o": 103.56,
+     "h": 103.63,
+     "l": 103.34,
+     "c": 103.4,
+     "v": 1939
+    }
+   ],
+   "lines": [],
+   "bands": []
+  }
+ },
+ "scenes": [
+  {
+   "type": "chart",
+   "chart": "a",
+   "headline": "A trend is just two rules.",
+   "big": true,
+   "reveal": [
+    6,
+    12
+   ],
+   "say": "Forget indicators. A trend is just two simple rules."
+  },
+  {
+   "type": "chart",
+   "chart": "a",
+   "headline": "Higher highs. Higher lows.",
+   "reveal": [
+    12,
+    32
+   ],
+   "marks": [
+    {
+     "bar": 6,
+     "dir": "down",
+     "color": "mint",
+     "at": 0.0
+    },
+    {
+     "bar": 10,
+     "dir": "up",
+     "color": "mint",
+     "at": 0.05
+    },
+    {
+     "bar": 16,
+     "dir": "down",
+     "text": "HH",
+     "color": "mint",
+     "at": 0.25
+    },
+    {
+     "bar": 20,
+     "dir": "up",
+     "text": "HL",
+     "color": "mint",
+     "at": 0.4
+    },
+    {
+     "bar": 26,
+     "dir": "down",
+     "text": "HH",
+     "color": "mint",
+     "at": 0.6
+    },
+    {
+     "bar": 30,
+     "dir": "up",
+     "text": "HL",
+     "color": "mint",
+     "at": 0.8
+    }
+   ],
+   "say": "In an uptrend, each high is above the last one, and each pullback stops above the previous low."
+  },
+  {
+   "type": "chart",
+   "chart": "a",
+   "headline": "Lower high, then a break.",
+   "reveal": [
+    32,
+    45
+   ],
+   "levels": [
+    {
+     "price": 104.6,
+     "from": 30,
+     "label": "Last higher low",
+     "color": "gold",
+     "below": true,
+     "labelAt": -6,
+     "at": 0.0
+    }
+   ],
+   "marks": [
+    {
+     "bar": 35,
+     "dir": "down",
+     "text": "Lower high",
+     "color": "coral",
+     "at": 0.2
+    },
+    {
+     "bar": 37,
+     "dir": "down",
+     "color": "coral",
+     "at": 0.5
+    }
+   ],
+   "say": "When price makes a lower high and then closes below the last higher low, the structure is broken. That's often the first warning that the trend is changing."
+  },
+  {
+   "type": "follow",
+   "text": "Follow for one trading concept a day.",
+   "say": "Save this, and follow for one trading concept a day."
+  }
+ ],
+ "post": {
+  "instagram": "An uptrend is higher highs and higher lows: each high above the last, each pullback stopping above the previous low. A lower high followed by a close below the last higher low breaks that structure, often the first warning that the trend is changing.\n\nSave this for later and follow @calmedgeofficial for one trading concept a day.\n\nEducational example on an illustrative chart. Not financial advice; trading involves risk of loss.\n\n#priceaction #marketstructure #tradingeducation #technicalanalysis #daytrading #trading #learntotrade",
+  "tiktok": "An uptrend is higher highs and higher lows: each high above the last, each pullback stopping above the previous low. A lower high followed by a close below the last higher low breaks that structure, often the first warning that the trend is changing. Follow for one trading concept a day. #priceaction #marketstructure #tradingeducation #technicalanalysis #daytrading",
+  "youtube": {
+   "title": "The two rules that define a trend #shorts",
+   "description": "An uptrend is higher highs and higher lows: each high above the last, each pullback stopping above the previous low. A lower high followed by a close below the last higher low breaks that structure, often the first warning that the trend is changing.\n\nFree guides and calculators: https://amirkallas2cs-gif.github.io/\n\nEducational example on an illustrative chart. Not financial advice; trading involves risk of loss.\n\n#priceaction #marketstructure #tradingeducation #technicalanalysis #daytrading #trading #learntotrade #shorts"
+  },
+  "facebook": "An uptrend is higher highs and higher lows: each high above the last, each pullback stopping above the previous low. A lower high followed by a close below the last higher low breaks that structure, often the first warning that the trend is changing.\n\nSave this for later and follow @calmedgeofficial for one trading concept a day.\n\nFree guides and calculators: https://amirkallas2cs-gif.github.io/",
+  "pinterest": {
+   "title": "Market structure: higher highs and higher lows explained",
+   "description": "An uptrend is higher highs and higher lows: each high above the last, each pullback stopping above the previous low. A lower high followed by a close below the last higher low breaks that structure, often the first warning that the trend is changing. Trading concepts explained simply, one a day.",
+   "link": "https://amirkallas2cs-gif.github.io/"
+  }
+ },
+ "voice": "andrew_up"
+}
